@@ -10,8 +10,7 @@ import Header from "@/components/includes/Header.vue";
 const {base_url} = auth()
 
 const phone = ref('')
-const first_name = ref('')
-const last_name = ref('')
+const name = ref('')
 const email = ref('')
 const password = ref('')
 const c_password = ref('')
@@ -24,8 +23,7 @@ const createAccount =async () => {
   } else if (password.value === c_password.value) {
     const formData = new FormData();
     formData.append('email', email.value)
-    formData.append('first_name', first_name.value)
-    formData.append('last_name', last_name.value)
+    formData.append('name', name.value)
     formData.append('phone', phone.value)
     formData.append('password', password.value)
     const res = await axios.post(base_url.value + 'auth/register', formData)
@@ -53,13 +51,10 @@ const createAccount =async () => {
         <p>Already have an account? <router-link to="/auth/login">LOGIN</router-link></p>
         <form @submit.prevent="createAccount">
 
+
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Fist Name</label>
-            <input type="text" class="form-control" v-model="first_name" placeholder="kemboi">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
-            <input type="text" class="form-control" v-model="last_name" placeholder="freeboy">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" v-model="name" placeholder="John Mark">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Phone</label>
