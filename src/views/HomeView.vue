@@ -14,21 +14,21 @@ import Footer from '@/components/includes/Footer.vue'
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active d-flex align-items-center flex-column" data-bs-interval="10000">
-          <img src="/user.png" class="d-block home-image w-100" alt="...">
+          <img src="/home1.jpeg" class="d-block home-image w-100" alt="...">
           <div class="carousel-caption  d-md-block">
             <h5>First slide label</h5>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div class="carousel-item" data-bs-interval="2000">
-          <img src="/user.png" class="d-block home-image w-100" alt="...">
+          <img src="/home2.jpeg" class="d-block home-image w-100" alt="...">
           <div class="carousel-caption  d-md-block">
             <h5>Second slide label</h5>
             <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img  src="/user.png" class="d-block home-image w-100" alt="...">
+          <img  src="/home3.jpeg" class="d-block home-image w-100" alt="...">
           <div class="carousel-caption  d-md-block">
             <h5>Third slide label</h5>
             <p>Some representative placeholder content for the third slide.</p>

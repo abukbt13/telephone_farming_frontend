@@ -25,20 +25,21 @@ const login =async () => {
   if(res.status=== 200) {
     if (res.data.status === 'success') {
       localStorage.setItem('token', res.data.token);
-      if(res.data.user.role ===0){
-        await router.push('/user/dashboard')
+      if(res.data.user.role ==='telephone farmer'){
+        await router.push('/manager/home')
       }
-      else if(res.data.user.role ===1){
-        await router.push('/admin/admin')
+      else if(res.data.user.role ==='Farm Manager'){
+        await router.push('/farm/home')
       }
-      else{
-        await router.push('/user/dashboard')
+      else if(res.data.user.role ==='lrc/home'){
+        await router.push('/lrc/home')
+      }
+      else {
+        await router.push('/not_found')
       }
 
     }
-    else if(res.data.status === 'failed') {
-      regerror.value = res.data.message;
-    }
+
 
   }else{
     regerror.value ="Error in network"
