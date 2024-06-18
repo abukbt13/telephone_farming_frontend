@@ -30,7 +30,10 @@ onMounted(()=>{
             <router-link class="nav-link active  text-white text-uppercase" to="/">Home</router-link>
           </li>
           <li class="nav-item  text-primary">
-            <router-link class="nav-link active  text-white text-uppercase" to="/media">Media</router-link>
+            <router-link class="nav-link active  text-white text-uppercase" to="/contact">Contact Us</router-link>
+          </li>
+          <li class="nav-item  text-primary">
+            <router-link class="nav-link active  text-white text-uppercase" to="/about">About us</router-link>
           </li>
           <div class="d-flex" v-if="currentUser.name">
             <div  class="" v-if="currentUser.role === 'telephone_farmer'">
@@ -43,50 +46,26 @@ onMounted(()=>{
                 <router-link class="nav-link text-white" to="/farm_manager/home">Dashboard</router-link>
               </li>
             </div>
-            <div  class="" v-else>
+            <div  class="" v-else="currentUser.role === 'lrc'">
               <li class="nav-item text-uppercase">
                 <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
               </li>
             </div>
-
-
-
-            <li class="nav-item text-uppercase"  @click="showProfile = showProfile === false ? true : false">
-              <img width="50" v-if="!currentUser.picture" style="border-radius: 50%;" height="50"  :src="storage + 'media/'+currentUser.profile"  alt="">
-              <img width="50" v-else  style="border-radius: 50%;" height="50"  src="/user.png"  alt="">
-            Profile
+            <li   @click="LogOut()"  class="nav-item text-uppercase" >
+              Logout
+              <i style="font-size: 22px;" class="bi bi-box-arrow-right"></i>
             </li>
-
-          </div>
-
-          <div class="d-flex flex-column flex-md-row flex-lg-row" v-else>
-            <li class="nav-item  text-uppercase">
-              <router-link to="/auth/login" class="m-2 text-decoration-none text-white">LOGIN <i style="font-size: 22px;color:black;" @click="LogOut()" class="bi pt-2 bi-box-arrow-in-right"></i></router-link>
-            </li>
-            <li class="nav-item  text-uppercase">
-              <router-link to="/auth/register" class="mx-2 text-decoration-none text-white">Get Started <i style="font-size: 22px;color:blue;" class="bi pt-4 bi-pen-fill"></i></router-link>
-            </li>
-          </div>
-
-
-
-          <div  :class="showProfile ? '':'d-none'"    class="showProfile d-flex justify-content-center align-items-center m-2 border p-4">
-            <div class="profile">
-              <div class="d-flex justify-content-center">
-                <img  v-if="currentUser.profile" style="border-radius: 50%;" width="50"  height="50" :src="storage + 'media/' + currentUser.profile"   alt="">
-                <img v-else style="border-radius: 50%;" width="50"  height="50" src="/user.png"   alt="No image">
-              </div>
-              <p class="text-center text-uppercase"> {{currentUser.first_name}} {{currentUser.last_name}}</p>
-              <div class="d-flex btn border">
-                <button style="background-color: yellow;" class="button btn btn-sm">Active</button>
-                <button class="button btn btn-sm btn-light">In active</button>
-              </div>
-              <router-link to="/user/profile" style="font-size: 23px;" class="text-decoration-none"><i style="font-size: 22px" class="bi bi-gear"> </i>Settings</router-link>
-
-              <br>
-              <i style="font-size: 22px" @click="LogOut()" class="bi bi-box-arrow-left">  Logout</i>
             </div>
+
+          <div v-else  class="">
+            <li  class="nav-item text-primary">
+              <router-link class="nav-link active  text-white text-uppercase" to="/auth/login">Login</router-link>
+            </li>
+
           </div>
+
+
+
 
         </ul>
       </div>

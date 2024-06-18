@@ -15,7 +15,7 @@ const routes =[
                     component: TelephoneFarmerHome
                 },
                 {
-                    path: '/telephone_farmer/farm',
+                    path: '/telephone_farmer/:id',
                     component: Farms
                 },
                 {

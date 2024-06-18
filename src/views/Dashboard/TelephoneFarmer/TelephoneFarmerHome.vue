@@ -102,7 +102,7 @@ onMounted(()=>{
           <td class="border">{{farm.farm_name}}</td>
           <td class="border">{{farm.type_of_farming}}</td>
           <td>
-            <router-link to="/telephone_farmer/farm" class=" mx-2 btn btn-primary">Visit Farm</router-link>
+            <router-link :to="/telephone_farmer/+farm.id" class=" mx-2 btn btn-primary">Visit Farm</router-link>
             <button class="btn btn-danger">Delete</button></td>
         </tr>
         </tbody>
