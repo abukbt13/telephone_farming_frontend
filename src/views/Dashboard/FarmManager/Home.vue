@@ -1,10 +1,12 @@
 <script setup>
 
+import Header from "@/components/includes/Header.vue";
 </script>
 
 <template>
+  <Header />
 <div class="row">
-    <div class="col col-4">
+    <div class="col bg-dark col-4">
       <h2>Dashboard</h2>
       <ul>
         <li><router-link to="/">Add progress</router-link></li>

@@ -3,13 +3,13 @@ import HomeView from '@/views/HomeView.vue'
 import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
 import RequestReset from "@/views/auth/RequestReset.vue";
-import FarmHome from "@/views/Dashboard/FarmManager/Home.vue";
-import ManagerHome from "@/views/Dashboard/FarmManager/Home.vue";
-import LrcHome from "@/views/Dashboard/LRC/Home.vue";
-
+import DashboardView from "@/views/Dashboard/DashboardView.vue";
+import telephone_farmer from "@/router/telephone_farmer.js";
+import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarmerHome.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+      ...telephone_farmer,
     {
       path: '/',
       component: HomeView
@@ -27,18 +27,16 @@ const router = createRouter({
       component: RequestReset
     },
 
-    {
-      path: '/farm/home',
-      component: FarmHome
-    },
-    {
-      path: '/manager/Home',
-      component: ManagerHome
-    },
-    {
-      path: '/lrc/home',
-      component: LrcHome
-    },
+    // {
+    //   path: '/lrc/dashboard',
+    //   component: DashboardView,
+    // },
+    // {
+    //   path: '/lrc/dashboard',
+    //   component: DashboardView,
+    // },
+
+
   ]
 })
 

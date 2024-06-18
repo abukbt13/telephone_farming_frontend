@@ -21,7 +21,7 @@ onMounted(()=>{
 <template>
   <nav style="background-color: #d538fc;" class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid m-auto">
-      <router-link class="navbar-brand text-white" to="/">Eagles</router-link>
+      <router-link class="navbar-brand text-white" to="/">LRC</router-link>
       <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       </i>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -35,12 +35,17 @@ onMounted(()=>{
           <div class="d-flex" v-if="currentUser.name">
             <div  class="" v-if="currentUser.role === 'telephone_farmer'">
               <li class="nav-item text-uppercase">
-                <router-link class="nav-link text-white" to="/admin/admin">1Dashboard</router-link>
+                <router-link class="nav-link text-white" to="/telephone_farmer/home">Dashboard</router-link>
+              </li>
+            </div>
+            <div  class="" v-else-if="currentUser.role === 'farm_manager'">
+              <li class="nav-item text-uppercase">
+                <router-link class="nav-link text-white" to="/farm_manager/home">Dashboard</router-link>
               </li>
             </div>
             <div  class="" v-else>
               <li class="nav-item text-uppercase">
-                <router-link class="nav-link text-white" to="/user/dashboard">Dashboard</router-link>
+                <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
               </li>
             </div>
 

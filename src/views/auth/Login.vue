@@ -25,13 +25,13 @@ const login =async () => {
   if(res.status=== 200) {
     if (res.data.status === 'success') {
       localStorage.setItem('token', res.data.token);
-      if(res.data.user.role ==='telephone farmer'){
-        await router.push('/manager/home')
+      if(res.data.user.role ==='telephone_farmer'){
+        await router.push('/telephone_farmer/home')
       }
-      else if(res.data.user.role ==='Farm Manager'){
-        await router.push('/farm/home')
+      else if(res.data.user.role ==='farm_manager'){
+        await router.push('/farm_manager/home')
       }
-      else if(res.data.user.role ==='lrc/home'){
+      else if(res.data.user.role ==='lrc'){
         await router.push('/lrc/home')
       }
       else {
