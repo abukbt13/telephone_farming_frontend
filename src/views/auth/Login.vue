@@ -26,13 +26,13 @@ const login =async () => {
     if (res.data.status === 'success') {
       localStorage.setItem('token', res.data.token);
       if(res.data.user.role ==='telephone_farmer'){
-        await router.push('/telephone_farmer/home')
+        await router.push('/telephone_farmer/dashboard')
       }
       else if(res.data.user.role ==='farm_manager'){
-        await router.push('/farm_manager/home')
+        await router.push('/farm_manager/dashboard')
       }
       else if(res.data.user.role ==='lrc'){
-        await router.push('/lrc/home')
+        await router.push('/lrc/dashboard')
       }
       else {
         await router.push('/not_found')
