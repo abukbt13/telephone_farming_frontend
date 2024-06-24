@@ -14,6 +14,8 @@ const email = ref('')
 const name = ref('')
 const phone = ref('')
 const farm_id = ref('')
+const manager_id = ref('')
+const user_id = ref('')
 
 
 const status = ref('')
@@ -49,7 +51,6 @@ const createManager = async () => {
   formData.append('email', email.value);
   formData.append('phone', phone.value);
   formData.append('name', name.value);
-  formData.append('farm_id', farm_id.value);
 
   const res = await axios.post(base_url.value + 'tf/manager', formData,authHeader);
 
@@ -57,6 +58,27 @@ const createManager = async () => {
     await  Swal.fire(
         'Success!',
         'Farm Manager created Successfully',
+        'success'
+    )
+    await getFarmManagers()
+  }
+}
+
+function getFarmID(id){
+  farm_id.value = id
+}
+
+const AssignManagerToFarm = async () => {
+  const formData = new FormData();
+  formData.append('manager_id', manager_id.value);
+  formData.append('farm_id', farm_id.value);
+
+  const res = await axios.post(base_url.value + 'tf/farm/manager', formData,authHeader);
+
+  if (res.data.status === 'success') {
+    await  Swal.fire(
+        'Success!',
+        'Farm Manager assigned Successfully',
         'success'
     )
     await getFarmManagers()
@@ -85,7 +107,7 @@ onMounted(()=>{
         <tr>
           <th colspan="5">
             <h2>My Farms
-              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Farm</button>
+              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Farm</button>
             </h2>
           </th>
         </tr>
@@ -102,8 +124,8 @@ onMounted(()=>{
           <td class="border">{{farm.farm_name}}</td>
           <td class="border">{{farm.type_of_farming}}</td>
           <td>
-            <router-link :to="/telephone_farmer/+farm.id" class=" mx-2 btn btn-primary">Visit Farm</router-link>
-            <button class="btn btn-danger">Delete</button></td>
+            <router-link :to="/telephone_farmer/+farm.id" class="btn-sm mx-2 btn btn-primary">Visit</router-link>
+            <button class="btn btn-danger btn-sm"  @click="getFarmID(farm.id)"  data-bs-toggle="modal" data-bs-target="#AssignManager">Assign manager</button></td>
         </tr>
         </tbody>
       </table>
@@ -113,28 +135,28 @@ onMounted(()=>{
         <thead>
         <tr>
           <th colspan="5">
-            <h2>Farm managers
-              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFarmManager">Add Manager</button>
+            <h2>
+              Farm managers
+              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFarmManager">New Manager</button>
             </h2>
           </th>
         </tr>
         <tr>
-          <th>#</th>
-          <th>Farm Name</th>
-          <th>Type of farm</th>
-          <th colspan="2">Operation</th>
+          <th>Manager Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>peration</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="manager in managers" :key="manager">
-          <td class="border">{{manager.id}}</td>
           <td class="border">{{manager.name}}</td>
           <td class="border">{{manager.email}}</td>
           <td class="border">{{manager.phone}}</td>
           <td>
-            <button class="btn mx-1 btn-danger">View</button>
-
-            <button class="btn btn-danger">Delete</button></td>
+            <button class="btn btn-sm  btn-success">View</button>
+            <button class="btn btn-sm btn-danger">Edit</button>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -155,12 +177,13 @@ onMounted(()=>{
                 <input type="text" v-model="farm_name" class="form-control">
               </div>
               <div class="mb-3">
-                <label class="form-label">Type Of farm</label>
+                <label class="form-label">Type Of farming</label>
                 <select required v-model="type_of_farming" class="form-control" name="">
-                  <option>--Select type of farm--</option>
-                  <option value="emergency">Livestock</option>
-                  <option value="short_term">Crop Farming</option>
-                  <option value="long_term">Chicken Keeping</option>
+<!--                  <option disabled selected>&#45;&#45;Select type of farm&#45;&#45;</option>-->
+                  <option value="livestock">Livestock</option>
+                  <option value="crop_farming">Crop Farming</option>
+                  <option value="chicken">Chicken Keeping</option>
+                  <option value="mixed">Mixed</option>
                 </select>
               </div>
               <div class="mb-3">
@@ -197,22 +220,35 @@ onMounted(()=>{
                 <label class="form-label">Phone Number</label>
                 <input type="text" v-model="phone" class="form-control">
               </div>
-              <div class="mb-3">
-                <label class="form-label">Full Name</label>
-                <input type="text" v-model="name" class="form-control" >
-              </div>
+
               <div class="mb-3">
                 <label class="form-label">Location</label>
                 <input type="text" v-model="location" class="form-control" >
               </div>
+              <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Create Manager</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <div class="modal fade" id="AssignManager" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Assign Manager</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form @submit.prevent="AssignManagerToFarm">
+
+
               <div class="mb-3">
-                <label class="form-label">Farm To Manage</label>
-                <select v-model="farm_id" class="form-control" required>
-                  <option disabled value="">Select farm</option>
-                  <option v-for="farm in farms" :key="farm.id" :value="farm.id">{{ farm.farm_name }}</option>
+                <label class="form-label">Farm Manager</label>
+                <select v-model="manager_id" class="form-control" required>
+                  <option disabled value="">Select Manager</option>
+                  <option v-for="newfarmer in managers" :key="newfarmer.id" :value="newfarmer.manager_id">{{ newfarmer.name }}</option>
                 </select>
-
-
               </div>
               <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Create Manager</button>
             </form>

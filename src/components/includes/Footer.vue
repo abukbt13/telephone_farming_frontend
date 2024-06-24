@@ -5,14 +5,15 @@
 <template>
   <div style="background-color: #e9eef2;" class="row py-4 footer px-4 d-flex justify-content-center ">
     <div class="col  col-12  col-sm-2 mt-2 mx-2">
-      <h4 class="text-uppercase text-decoration-underline">Latvia Resource company </h4>
-      <p>Latvia Resource company your farming partner </p>
-      <p>Trusted by 13 many members worldwide</p>
+      <h4 class="text-uppercase text-decoration-underline">Latia Resource company </h4>
+      <p>Latia Resource company your farming partner </p>
     </div>
     <div class="col col-12 col-sm-3 mt-2 mx-2">
       <h4  class="text-uppercase text-decoration-underline">Quick Links</h4>
       <li  class="list-unstyled fs-4">
         <router-link  class="text-decoration-none  link"  to="/auth/login">Login</router-link>
+      </li>
+      <li>
         <router-link  class="text-decoration-none  link"  to="/auth/register">Register</router-link>
       </li>
     </div>

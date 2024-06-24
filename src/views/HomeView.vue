@@ -26,20 +26,24 @@ import Footer from '@/components/includes/Footer.vue'
   <div class="row d-flex justify-content-around align-items-center">
     <div class="col col-sm-12 col-md-4 co-lg-4">
       <div class="card w-100"   style="w-100">
-        <img src="/pic.jpg" class="card-img-top" alt="...">
+        <img src="/img_4.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Johnson Kibet</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">
+            Thanks LRC your advices and the guide i found from you made my work to be more perfect long life LRC
+             </p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
     </div>
     <div class="col col-sm-12 col-md-4 co-lg-4">
       <div class="card w-100"   style="w-100">
-        <img src="/bike.jpg" class="card-img-top" alt="...">
+        <img src="/img_3.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Abraham Kibet</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">
+              I do really like LRC for their support I could have done much this
+              </p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>

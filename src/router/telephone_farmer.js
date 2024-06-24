@@ -1,4 +1,4 @@
-import ManagerHome from "@/views/Dashboard/FarmManager/Home.vue";
+import ManagerHome from "@/views/Dashboard/FarmManager/DashboardHome.vue";
 import Farms from "@/views/Dashboard/TelephoneFarmer/Farms.vue";
 import DashboardView from "@/views/Dashboard/DashboardView.vue";
 import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarmerHome.vue";

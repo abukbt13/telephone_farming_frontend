@@ -29,7 +29,7 @@ const login =async () => {
         await router.push('/telephone_farmer/dashboard')
       }
       else if(res.data.user.role ==='farm_manager'){
-        await router.push('/farm_manager/dashboard')
+        await router.push('/farm_manager')
       }
       else if(res.data.user.role ==='lrc'){
         await router.push('/lrc/dashboard')
