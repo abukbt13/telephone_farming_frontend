@@ -3,12 +3,14 @@ import HomeView from '@/views/HomeView.vue'
 import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
 import RequestReset from "@/views/auth/RequestReset.vue";
-import DashboardView from "@/views/Dashboard/DashboardView.vue";
+import DashboardView from "@/views/Dashboard/TelephoneFarmer/DashboardView.vue";
 import telephone_farmer from "@/router/telephone_farmer.js";
 import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarmerHome.vue";
 import About from "@/views/About.vue";
 import Contact from "@/views/Contact.vue";
 import farm_manager from "@/router/farm_manager.js";
+import Network from "@/views/Dashboard/Network.vue";
+import Chats from "@/views/Dashboard/Chats.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -38,7 +40,14 @@ const router = createRouter({
       path: '/contact',
       component: Contact,
     },
-
+    {
+      path: '/network',
+      component: Network
+    },
+    {
+      path: '/network/chats/:id',
+      component: Chats
+    },
 
   ]
 })

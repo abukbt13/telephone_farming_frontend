@@ -13,18 +13,31 @@
       <li  class="list-unstyled fs-4">
         <router-link  class="text-decoration-none  link"  to="/auth/login">Login</router-link>
       </li>
-      <li>
-        <router-link  class="text-decoration-none  link"  to="/auth/register">Register</router-link>
+      <li  class="list-unstyled fs-4">
+        <router-link  class="text-decoration-none  link"  to="/auth/login">Register</router-link>
+      </li>
+      <li  class="list-unstyled fs-4">
+        <router-link  class="text-decoration-none  link"  to="/auth/login">Profile</router-link>
+      </li>
+      <li  class="list-unstyled fs-4">
+        <router-link  class="text-decoration-none  link"  to="/auth/login">Dashboard</router-link>
       </li>
     </div>
 
     <div class="col col-12  col col-sm-3 mt-2">
       <h4 class="text-uppercase text-decoration-underline">Services</h4>
-
+      <li  class="list-unstyled fs-4">
+        <router-link  class="text-decoration-none  link"  to="/auth/login">Training </router-link>
+        <router-link  class="text-decoration-none  link"  to="/auth/login">Education</router-link>
+      </li>
     </div>
     <div class="col  col-12  col col-sm-3 mt-2 mx-2">
       <h4  class="text-uppercase text-decoration-underline">More</h4>
-
+        <ul>
+          <li class="list-unstyled"><router-link class="text-uppercase text-decoration-none" to="/about_us">About Us</router-link></li>
+          <li class="list-unstyled"><router-link class="text-uppercase text-decoration-none" to="/about_us">Contact Us</router-link></li>
+          <li class="list-unstyled"><router-link class="text-uppercase text-decoration-none" to="/about_us">About Us</router-link></li>
+        </ul>
     </div>
   </div>
 </template>

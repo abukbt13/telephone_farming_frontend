@@ -6,8 +6,7 @@
   <div   class="sidebar d-none d-md-block d-lg-block ps-2">
     <h2 class="text-uppercase">Dashboard</h2>
     <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
-    <router-link  class="text-decoration-none link" to="/telephone_farmer/farm"><li  class="fs-3 list-unstyled border-bottom ps-3">Farms</li></router-link>
-    <router-link  class="text-decoration-none link" to="/telephone_farmer/managers"><li  class="fs-3 list-unstyled border-bottom ps-3">FarmFarms</li></router-link>
+    <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
  </div>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="offcanvasExampleLabel">
@@ -16,10 +15,8 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <router-link     class="text-decoration-none link" to="/telephone_farmer/farm"><li data-bs-dismiss="offcanvas"   class="fs-3 list-unstyled border-bottom ps-3">Farms</li></router-link>
-      <router-link   class="text-decoration-none link" to="/user/loans" ><li data-bs-dismiss="offcanvas"   class="fs-3 list-unstyled border-bottom ps-3">Farm Managers</li></router-link>
-      <router-link   class="text-decoration-none link" to="/user/savings"><li data-bs-dismiss="offcanvas"  class="fs-3 list-unstyled border-bottom ps-3">Expenses</li></router-link>
-      <router-link   class="text-decoration-none link" to="/user/users"><li data-bs-dismiss="offcanvas"  class="fs-3 list-unstyled border-bottom ps-3">Market</li></router-link>
+      <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
+      <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
     </div>
   </div>
 
