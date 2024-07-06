@@ -38,7 +38,7 @@ onMounted(()=>{
           <div class="d-flex" v-if="currentUser.name">
             <div  class="" v-if="currentUser.role === 'telephone_farmer'">
               <li class="nav-item text-uppercase">
-                <router-link class="nav-link text-white" to="/telephone_farmer/home">Dashboard</router-link>
+                <router-link class="nav-link text-white" to="/telephone_farmer/dashboard">Dashboard</router-link>
               </li>
             </div>
             <div  class="" v-else-if="currentUser.role === 'farm_manager'">

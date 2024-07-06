@@ -11,6 +11,7 @@ import Contact from "@/views/Contact.vue";
 import farm_manager from "@/router/farm_manager.js";
 import Network from "@/views/Dashboard/Network.vue";
 import Chats from "@/views/Dashboard/Chats.vue";
+import ChatNow from "@/views/Dashboard/ChatNow.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -40,14 +41,19 @@ const router = createRouter({
       path: '/contact',
       component: Contact,
     },
+
     {
       path: '/network',
-      component: Network
+      component: Network,
+      children:
+          [
+            {
+              path: '/network',
+              component: ChatNow
+            },
+          ]
     },
-    {
-      path: '/network/chats/:id',
-      component: Chats
-    },
+
 
   ]
 })
