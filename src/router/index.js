@@ -51,6 +51,10 @@ const router = createRouter({
               path: '/network',
               component: ChatNow
             },
+            {
+              path: '/network/chats/:id',
+              component: Chats
+            },
           ]
     },
 

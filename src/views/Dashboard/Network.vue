@@ -12,6 +12,7 @@ const route = useRoute();
 const id = ref('');
 
 const chats = ref([]);
+const users = ref([]);
 // Set the id to the route parameter id
 id.value = route.params.id;
 const message = ref('')
@@ -23,8 +24,15 @@ const  getChats = async () => {
     chats.value = res.data.users
   }
 }
+const  getUsers = async () => {
+  const res = await axios.get(base_url.value + 'chat/users', authHeader)
+  if(res){
+    users.value = res.data.users
+  }
+}
 onMounted(()=> {
   getChats()
+  getUsers()
 })
 
 </script>
@@ -38,7 +46,8 @@ onMounted(()=> {
         <router-link class="text-decoration-none btn btn-sm" to="/network/messages">messages</router-link>
       </div>
       <div class="messages ms-2">
-        <h4 class="border-bottom">My Chats</h4>
+        <h4 class="border-bottom me-2">My Chats  <i class="bi bi-send-plus-fill float-end"data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+        </h4>
         <div v-if="chats.length>0" class="mymessages" v-for="chat in chats" :key="chat">
           <router-link :to="'/network/chats/'+chat.id" class="mymessages text-decoration-none">
             <p class="">{{ chat.name }}</p>
@@ -51,12 +60,35 @@ onMounted(()=> {
       </div>
     </div>
 
-           <div style="width: 85vw; border-right: 2px solid grey;height: 100vh;" class="d-flex justify-content-center align-items-center">
-              <router-view />
-           </div>
+   <div style="width: 85vw; border-right: 2px solid grey;height: 100vh;" class="d-flex justify-content-center align-items-center">
+      <router-view />
+   </div>
 
   </div>
+  <!-- Button trigger modal -->
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New chat</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div  class="mymessages" v-for="user in users" :key="user">
+            <router-link :to="'/network/chats/'+user.id"  class="mymessages text-decoration-none">
+             <div data-bs-dismiss="modal" class="">
+               <p class="">{{ user.name }}</p>
+               <p class="">{{ user.phone }}</p>
+             </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
