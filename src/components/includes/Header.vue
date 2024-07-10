@@ -42,8 +42,8 @@ onMounted(()=>{
               </li>
             </div>
             <div  class="" v-else-if="currentUser.role === 'farm_manager'">
-              <li class="nav-item text-uppercase">
-                <router-link class="nav-link text-white" to="/farm_manager/home">Dashboard</router-link>
+              <li   class="nav-item text-uppercase">
+                <router-link class="nav-link text-white"  to="/farm_manager">Dashboard</router-link>
               </li>
             </div>
             <div  class="" v-else="currentUser.role === 'lrc'">

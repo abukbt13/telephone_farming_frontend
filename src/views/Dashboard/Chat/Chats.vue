@@ -20,7 +20,6 @@ const  storemessage = async () => {
   if( message.value === ''){
     alert('Type a message')
     return
-
   }
   const formData = new FormData();
   formData.append('message', message.value)
@@ -49,41 +48,36 @@ onMounted(()=> {
 </script>
 
 <template>
-
-
-<!--       <div style="width: 85vw; border-right: 2px solid grey;height: 100vh;" class="d-flex justify-content-center align-items-center">-->
-<!--         <p>Select receipient to message with</p>-->
-<!--       </div> -->
-       <div style="width: 100vw; height: 100vh;position: static;" class="">
-          <div class="">
-
-<!--            {{messages}}-->
-            <div v-for="message in messages" :key="message.id" class="">
-              <div v-if="message.sender_id === 1" class="message sender">{{ message.message }}</div>
-              <div v-else class="message receiver">{{ message.message }}</div>
-            </div>
-
+      <div class="home">
+        <div class="chatarea">
+          <div  v-for="message in messages" :key="message.id" class="">
+            <p v-if="message.sender_id === 1" class="message sender">{{ message.message }}</p>
+            <p v-else class="message receiver">{{ message.message }}</p>
           </div>
-         <div class="" style="position: absolute; bottom: 0px;">
-           <textarea v-model="message" type="text" style="min-height: 1rem;max-height:16rem;width:80vw; margin-left: 4px;"></textarea><i @click="storemessage" style="font-size: 32px; margin-left: 2px" class="bi bi-telegram"></i>
-         </div>
-       </div>
+        </div>
+        <div class="d-flex px-2">
+          <textarea v-model="message" type="text" style="" class="form-control"></textarea>
+          <button class="btn btn-primary" @click="storemessage" style="font-size: 30px; margin-left: 10px;width: 6rem;"><i class="bi bi-send"></i>
+          </button>
+        </div>
+      </div>
+
 
 </template>
 
 <style scoped>
-
-.mymessages{
-  padding: 1rem;
-  text-transform: uppercase;
+.home{
+  height: 91vh;
 }
-.mymessages:hover{
+.chatarea{
+  height: 80vh;
+  overflow: scroll;
 
-  background: #CCCCFF;
-  color:blue;
 }
+
  .sender {
-   width: 50vw;
+   min-width: 50vw;
+   max-width: 80vw;
    background-color: #daf1da;
    float: right;
    padding: 10px;
@@ -97,6 +91,7 @@ onMounted(()=> {
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
-  width: 50vw;
+  min-width: 50vw;
+  max-width: 80vw;
 }
 </style>

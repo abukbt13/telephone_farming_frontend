@@ -39,37 +39,40 @@ onMounted(()=> {
 
 <template>
   <Header />
-  <div class="d-flex">
-    <div style="width: 15vw; border-right: 2px solid grey;height: 100vh;" class="border-bottom">
+  <div class="networking">
+    <div  class="recent-chats">
       <div class="m-2">
         <router-link class="text-decoration-none btn btn-sm bg-primary" to="/network">Chats</router-link>
-        <router-link class="text-decoration-none btn btn-sm" to="/network/messages">messages</router-link>
+        <router-link class="text-decoration-none btn btn-sm" to="/media">Media</router-link>
       </div>
       <div class="messages ms-2">
-        <h4 class="border-bottom me-2">My Chats  <i class="bi bi-send-plus-fill float-end"data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+        <h4 class="border-bottom me-2">
+          Chats
+          <span class="chat-plus">
+            <i class="bi bi-plus float-end" data-bs-toggle="modal" data-bs-target="#add-chat"></i>
+          </span>
         </h4>
-        <div v-if="chats.length>0" class="mymessages" v-for="chat in chats" :key="chat">
-          <router-link :to="'/network/chats/'+chat.id" class="mymessages text-decoration-none">
-            <p class="">{{ chat.name }}</p>
+        <div v-if="chats.length>0" class="user" v-for="chat in chats" :key="chat">
+          <a :href="'/network/chats/'+chat.id" class="mymessages text-decoration-none">
+            <h5 class="">{{ chat.name }}</h5>
             <p class="">{{ chat.phone }}</p>
-          </router-link>
+          </a>
         </div>
         <div class="" v-else>
-          <button class="btn btn-success">Start a new chat</button>
+          <button   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-chat">Start a new chat</button>
         </div>
       </div>
     </div>
 
-   <div style="width: 85vw; border-right: 2px solid grey;height: 100vh;" class="d-flex justify-content-center align-items-center">
+   <div class="chats">
       <router-view />
    </div>
-
   </div>
   <!-- Button trigger modal -->
 
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="add-chat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -92,14 +95,32 @@ onMounted(()=> {
 </template>
 
 <style scoped>
-
-router-link{
-  padding: 0.2rem;
-  text-transform: uppercase;
+.networking{
+  display: flex;
 }
-.mymessages:hover{
-
-  background: #CCCCFF;
-  color:blue;
+.recent-chats{
+  width: 20vw; border-right: 2px solid grey;height: 91vh;
 }
+.chats{
+  width: 80vw; border-right: 2px solid grey;height: 91vh;
+}
+.user{
+  margin-right: 1rem;
+  padding-left: 4px;
+}
+.user:hover{
+  background: #dddddd;
+}
+.chat-plus{
+  font-size: 37px
+}
+@media screen and (min-width: 300px) and (max-width: 500px) {
+  .recent-chats{
+    display: none;
+  }
+  .chats{
+    width: 100vw;
+  }
+}
+
 </style>

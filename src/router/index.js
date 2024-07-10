@@ -9,9 +9,12 @@ import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarm
 import About from "@/views/About.vue";
 import Contact from "@/views/Contact.vue";
 import farm_manager from "@/router/farm_manager.js";
-import Network from "@/views/Dashboard/Network.vue";
-import Chats from "@/views/Dashboard/Chats.vue";
-import ChatNow from "@/views/Dashboard/ChatNow.vue";
+import Network from "@/views/Dashboard/Chat/Network.vue";
+import Chats from "@/views/Dashboard/Chat/Chats.vue";
+import ChatNow from "@/views/Dashboard/Chat/ChatNow.vue";
+import Media from "@/views/Dashboard/Media/Index.vue";
+import Posts from "@/views/Dashboard/Media/Posts.vue";
+import Post from "@/views/Dashboard/Media/Post.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -57,7 +60,21 @@ const router = createRouter({
             },
           ]
     },
-
+    {
+      path: '/media',
+      component: Media,
+      children:
+          [
+            {
+              path: '/media',
+              component: Posts
+            },
+            {
+              path: '/media/post/:id',
+              component: Post
+            },
+          ]
+    },
 
   ]
 })
