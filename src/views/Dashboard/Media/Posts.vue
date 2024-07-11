@@ -14,6 +14,8 @@ const status = ref('');
 const videos = ref([]);
 const photos = ref([]);
 const posts = ref([]);
+const comment = ref('');
+const post_id = ref('');
 
 function uploadPictures(e) {
   const files = e.target.files;
@@ -62,6 +64,39 @@ const createPost = async () => {
   }
 };
 
+function getPost_id ($id){
+  post_id.value = $id
+  console.log(post_id)
+}
+const AddLike = async ($id)=>  {
+  post_id.value = $id
+  const res = await axios.get(base_url.value + 'v1/posts/'+post_id.value+'/likes', authHeader);
+  if (res.data.status === 'success') {
+    status.value = res.data.message;
+    getPosts();
+  } else {
+    status.value = 'Something went wrong';
+  }
+}
+const CommentPost = async () => {
+  if (comment.value === '') {
+    alert('Type a message');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('comment', comment.value);
+
+    const res = await axios.post(base_url.value + 'v1/posts/'+post_id.value+'/comments', formData, authHeader);
+    if (res.data.status === 'success') {
+      status.value = res.data.message;
+      getPosts();
+    } else {
+      status.value = 'Something went wrong';
+    }
+
+};
+
 const getPosts = async () => {
   try {
     const res = await axios.get(base_url.value + 'v1/posts/', authHeader);
@@ -81,26 +116,46 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="align-items-center d-flex justify-content-center">
-      <h1 class="modal-title" id="createpost">Create a post</h1>
-      <i style="font-size: 49px" class="fa bi-plus" data-bs-toggle="modal" data-bs-target="#create_post"></i>
-    </div>
-
-    <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
-    <hr>
-
-    <div v-for="post in posts" :key="post.id">
-      <p>{{ post.description }}</p>
-
-      <!-- Display photos if available -->
-      <div v-if="post.photos && post.photos.length > 0">
-        <div class="picture">
-          <div class="" v-for="(photo, index) in post.photos" :key="index">
-            <img :src="storage+'posts/photos/'+photo" alt="Image" style="width: 300px; height: 250px;" >
-          </div>
-        </div>
+    <div   class="align-items-center  sticky-top  d-flex justify-content-center">
+      <div class="mt-3 d-flex align-items-center">
+        <h2 class="modal-title" id="createpost">New post</h2>
+        <i style="font-size: 24px" class="fa bi-plus" data-bs-toggle="modal" data-bs-target="#create_post"></i>
+      </div>
       </div>
 
+    <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
+
+
+    <div class="posts" v-for="post in posts" :key="post.id">
+
+      <div class="d-flex ">
+        <img style="border-radius: 50%;" src="/bike.jpg" width="100px" height="100"  alt="">
+        <p class="d-flex flex-column justify-content-end fs-2">{{ post.description }}</p>
+      </div>
+      <!-- Display photos if available -->
+     <div class="row mb-1">
+       <div v-if="post.photos">
+         <div v-if="post.photos.length > 1" class="row">
+           <div class="col col-6 mb-1" v-for="(photo, index) in post.photos" :key="index">
+             <img :src="storage+'posts/photos/'+photo" alt="Image" class="img-fluid border-2" width="100%" >
+           </div>
+         </div>
+         <div v-else class="">
+           <div class="col col-12" v-for="(photo, index) in post.photos" :key="index">
+             <img :src="storage+'posts/photos/'+photo" alt="Image" class="img-fluid border-4"  >
+           </div>
+         </div>
+       </div>
+
+     </div>
+     <div class="d-flex justify-content-around align-items-center">
+       <div @click="getPost_id(post.id)"  data-bs-toggle="modal" data-bs-target="#comment">
+         <i style="font-size: 30px; color: blue;"  data-bs-toggle="modal" data-bs-target="#comment" class="bi bi-chat-right-text-fill"></i><span style="font-size: 30px;" class="m-3">{{post.comments}}</span>
+        </div>
+       <div @click="AddLike(post.id)" data-bs-toggle="modal" data-bs-target="#Like">
+         <i style="font-size: 30px;color: red" class="bi bi-heart"></i><span style="font-size: 30px;" class="m-3">{{post.likes}}</span>
+        </div>
+     </div>
     </div>
 
     <div class="modal fade" id="create_post" tabindex="-1" aria-labelledby="createpost" aria-hidden="true">
@@ -134,18 +189,31 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="comment" tabindex="-1" aria-labelledby="createpost" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Comment</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="m-3">
+            <form @submit.prevent="CommentPost">
+              <h3>Description</h3>
+              <textarea v-model="comment" cols="4" rows="4" class="form-control"></textarea>
+              <button type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-2 w-50">Comment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.picture {
-  justify-content: center;
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Alternatively, you can use grid-column-gap instead of gap */
-   grid-column-gap: 0px;
+.posts{
+  margin-bottom: 3px;
+  border: 1px solid pink;
 }
-
 /* Add your scoped styles here */
 </style>
