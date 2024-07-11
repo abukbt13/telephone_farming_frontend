@@ -3,7 +3,12 @@ import axios from "axios";
 const currentUser = ref([])
 export function auth(){
     const authHeader = { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } };
-
+    const multipartHeader = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, // If you use authentication
+        },
+    }
     // const base_url = ref('https://eagles.kwetunyumbani.store/api/')
     // const storage = ref('https://eagles.kwetunyumbani.store/backend/public/')
 
@@ -24,6 +29,6 @@ export function auth(){
 
 
     return {
-        authHeader,AuthenticatedUser,currentUser,authUser,base_url,storage
+        authHeader,AuthenticatedUser,currentUser,authUser,multipartHeader,base_url,storage
     }
 }
