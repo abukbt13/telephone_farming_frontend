@@ -75,7 +75,7 @@ const AddLike = async ($id)=>  {
     status.value = res.data.message;
     getPosts();
   } else {
-    status.value = 'Something went wrong';
+    status.value = res.data.message;
   }
 }
 const CommentPost = async () => {
@@ -126,14 +126,14 @@ onMounted(() => {
     <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
 
 
-    <div class="posts" v-for="post in posts" :key="post.id">
+    <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
       <div class="d-flex ">
         <img style="border-radius: 50%;" src="/bike.jpg" width="100px" height="100"  alt="">
         <p class="d-flex flex-column justify-content-end fs-2">{{ post.description }}</p>
       </div>
       <!-- Display photos if available -->
-     <div class="row mb-1">
+     <div  class="row mb-1">
        <div v-if="post.photos">
          <div v-if="post.photos.length > 1" class="row">
            <div class="col col-6 mb-1" v-for="(photo, index) in post.photos" :key="index">
@@ -148,6 +148,7 @@ onMounted(() => {
        </div>
 
      </div>
+
      <div class="d-flex justify-content-around align-items-center">
        <div @click="getPost_id(post.id)"  data-bs-toggle="modal" data-bs-target="#comment">
          <i style="font-size: 30px; color: blue;"  data-bs-toggle="modal" data-bs-target="#comment" class="bi bi-chat-right-text-fill"></i><span style="font-size: 30px;" class="m-3">{{post.comments}}</span>
@@ -156,6 +157,9 @@ onMounted(() => {
          <i style="font-size: 30px;color: red" class="bi bi-heart"></i><span style="font-size: 30px;" class="m-3">{{post.likes}}</span>
         </div>
      </div>
+      <a :href="'media/post/'+post.id" class="">
+        <button style="background: #f0dada" class="btn  w-100 ">more info</button>
+      </a>
     </div>
 
     <div class="modal fade" id="create_post" tabindex="-1" aria-labelledby="createpost" aria-hidden="true">

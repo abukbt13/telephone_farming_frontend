@@ -102,7 +102,7 @@ onMounted(()=> {
     <div class="related" id="related">
       <div class="related-contents">
         <h2>Inovation contents</h2>
-        <p>lorem100</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
       </div>
     </div>
   </div>
