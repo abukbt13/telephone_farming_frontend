@@ -30,7 +30,7 @@ onMounted(()=>{
             <router-link class="nav-link active  text-white text-uppercase" to="/">Home</router-link>
           </li>
           <li class="nav-item  text-primary">
-            <router-link class="nav-link active  text-white text-uppercase" to="/contact">Contact Us</router-link>
+            <router-link class="nav-link active  text-white text-uppercase" to="/media">Media</router-link>
           </li>
           <li class="nav-item  text-primary">
             <router-link class="nav-link active  text-white text-uppercase" to="/about">About us</router-link>
@@ -51,9 +51,8 @@ onMounted(()=>{
                 <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
               </li>
             </div>
-            <li   @click="LogOut()"  class="nav-item text-uppercase" >
+            <li style="background: red;color: white;"   @click="LogOut()"  class="nav-item p-2 text-uppercase" >
               Logout
-              <i style="font-size: 22px;" class="bi bi-box-arrow-right"></i>
             </li>
             </div>
 

@@ -49,6 +49,10 @@ onMounted(()=> {
 
 <template>
       <div class="home">
+        <router-link to="/network" class="back" href="">
+          <i  class="bi bi-arrow-left back"></i>
+        </router-link>
+
         <div class="chatarea">
           <div  v-for="message in messages" :key="message.id" class="">
             <p v-if="message.sender_id === 1" class="message sender">{{ message.message }}</p>
@@ -66,13 +70,17 @@ onMounted(()=> {
 </template>
 
 <style scoped>
+.back{
+  font-size: 32px;
+  color: blue;
+  display: none;
+}
 .home{
   height: 91vh;
 }
 .chatarea{
   height: 80vh;
   overflow: scroll;
-
 }
 
  .sender {
@@ -93,5 +101,14 @@ onMounted(()=> {
   border-radius: 10px;
   min-width: 50vw;
   max-width: 80vw;
+}
+@media screen and (min-width: 300px) and (max-width: 500px) {
+  .back{
+    display: block;
+  }
+  .chatarea{
+    height: 100vh;
+    overflow: scroll;
+  }
 }
 </style>
