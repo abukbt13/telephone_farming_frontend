@@ -7,7 +7,7 @@ import axios from "axios";
 import {auth} from "@/compossables/auth.js";
 import {useRoute} from "vue-router";
 
-const {base_url,authHeader,storage} = auth()
+const {base_url,authHeader,AuthenticatedUser,currentUser,storage} = auth()
 const route = useRoute();
 const id = ref('');
 
@@ -27,17 +27,6 @@ function showSection (id) {
     document.getElementById('related').style.display='none'
 
     document.getElementById(id).style.display='block'
-
-  // else if($id==='related'){
-  //   document.getElementById('related').classList.add('related')
-  //   document.getElementById('post').classList.add('none')
-  //   document.getElementById('group').classList.add('none')
-  // }
-  // else{
-  //   document.getElementById('post').classList.add('block')
-  //   document.getElementById('related').classList.add('none')
-  //   document.getElementById('group').classList.add('none')
-  // }
 }
 const  getChats = async () => {
   const res = await axios.get(base_url.value + 'chat', authHeader)
@@ -52,6 +41,7 @@ const  getUsers = async () => {
   }
 }
 onMounted(()=> {
+  AuthenticatedUser()
   getChats()
   getUsers()
 })
@@ -60,7 +50,6 @@ onMounted(()=> {
 
 <template>
   <Header />
-  <br>
  <div class="navigation">
    <div style="border: 2px solid black; position: fixed; top: 3rem; width: 100%; z-index: 10;" class="d-flex justify-content-between">
      <button @click="showSection('group')" class="w-100">Groups</button>
@@ -70,7 +59,7 @@ onMounted(()=> {
  </div>
 
 
-  <div class="media">
+  <div  class="media">
 
     <div   class="group" id="group">
      <div class="sidebar">
@@ -83,15 +72,61 @@ onMounted(()=> {
            </div>
          </a>
        </div>
-       <div class="">
-         <h4 class="me-2">
-           Groups
-           <span class="chat-plus">
-            <i class="bi bi-plus float-end" data-bs-toggle="modal" data-bs-target="#add-chat"></i>
-          </span>
-         </h4>
+      <div class="container ps-sm-5 ps-md-2 ps-lg-2">
+        <h2 class="d-flex justify-content-between align-items-center">
+          <img style="border-radius: 50%;"   v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" width="100" height="100" alt="">
 
-       </div>
+          <img v-else src="/pic.jpg" style="border-radius: 50%;" width="100" height="100" alt="">
+
+          {{ currentUser.name }}
+        </h2>
+
+        <router-link to="#" class="text-decoration-none d-flex fs-3 d-block">
+          <i class="bi bi-people-fill"></i>
+          <p class="ps-2 text-dark">Groups </p>
+        </router-link>
+
+        <router-link to="#" class="text-decoration-none d-flex fs-3 d-block">
+          <i class="bi bi-hearts"></i>
+          <p class="ps-2 text-dark">Friends</p>
+        </router-link>
+
+        <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+          <i style="color:yellow;" class="bi bi-signpost-2-fill"></i>
+
+            <p class="ps-2 text-dark">  Posts</p>
+        </router-link>
+
+        <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+          <i class="bi bi-calendar2-date-fill"></i>
+          <p class="ps-2 text-dark"> Events </p>
+        </router-link> <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+          <i style="color:yellow;" class="bi bi-signpost-2-fill"></i>
+
+            <p class="ps-2 text-dark">  Posts</p>
+        </router-link>
+
+
+         <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+          <i class="bi bi-database"></i>
+           <p class="ps-2 text-dark text-dark">Education resources</p>
+        </router-link>
+
+         <router-link to="#" class="text-decoration-none d-flex my-1 fs-3 d-block">
+          <i class="bi bi-camera-video-fill"></i>
+           <p class="ps-2 text-dark">Videos</p>
+        </router-link>
+
+      </div>
+<!--       <div class="">-->
+<!--         <h4 class="me-2">-->
+<!--          Group-->
+<!--           <span class="chat-plus">-->
+<!--            <i class="bi bi-plus float-end" data-bs-toggle="modal" data-bs-target="#add-chat">Group create</i>-->
+<!--          </span>-->
+<!--         </h4>-->
+
+<!--       </div>-->
      </div>
     </div>
 
@@ -102,6 +137,8 @@ onMounted(()=> {
     <div class="related" id="related">
       <div class="related-contents">
         <h2>Inovation contents</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
       </div>
     </div>
@@ -136,9 +173,15 @@ onMounted(()=> {
 .media{
   width: 100%;
   display: flex;
+  height:89vh;
 }
 .group{
   width: 20%;
+}
+.container{
+  min-height: 87vh;
+  max-height: 80vh;
+  overflow:scroll;
 }
 .post{
   width: 50%;
@@ -152,7 +195,10 @@ onMounted(()=> {
 }
 .related-contents{
   position: fixed;
-  width: 20%;
+  width: 30%;
+  min-height:87vh;
+  max-height:87vh;
+  overflow:scroll;
 }
 @media screen and (min-width: 300px) and (max-width: 500px) {
   .sidebar{
@@ -162,6 +208,12 @@ onMounted(()=> {
   }
   .navigation{
     display: block;
+  }
+  .container{
+    width: 100vw;
+    min-height: 87vh;
+    max-height: 80vh;
+    overflow:scroll;
   }
   .post{
     display: block;

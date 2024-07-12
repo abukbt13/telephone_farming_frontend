@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 import { auth } from '@/compossables/auth.js';
 
-const { base_url,storage, authHeader, multipartHeader } = auth();
+const { base_url,storage, authHeader, multipartHeader} = auth();
 const route = useRoute();
 const id = ref('');
 const description = ref('');
@@ -129,8 +129,11 @@ onMounted(() => {
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
       <div class="d-flex ">
-        <img style="border-radius: 50%;" src="/bike.jpg" width="100px" height="100"  alt="">
-        <p class="d-flex flex-column justify-content-end fs-2">{{ post.description }}</p>
+        <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+post.profile" width="100px" height="100"  alt="">
+        <div class="">
+          <h2>{{post.name}}</h2>
+          <p class="d-flex flex-column">{{ post.description }}</p>
+        </div>
       </div>
       <!-- Display photos if available -->
      <div  class="row mb-1">
@@ -157,7 +160,7 @@ onMounted(() => {
          <i style="font-size: 30px;color: red" class="bi bi-heart"></i><span style="font-size: 30px;" class="m-3">{{post.likes}}</span>
         </div>
      </div>
-      <a :href="'media/post/'+post.id" class="">
+      <a :href="'media/post/'+post.id">
         <button style="background: #f0dada" class="btn  w-100 ">more info</button>
       </a>
     </div>

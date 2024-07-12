@@ -19,7 +19,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <nav style="background-color: #d538fc;" class="navbar sticky-top navbar-expand-lg">
+  <nav style="background-color: #d538fc;" class="navbar   navbar-expand-lg">
     <div class="container-fluid m-auto">
       <router-link class="navbar-brand text-white" to="/">LRC</router-link>
       <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,8 +51,9 @@ onMounted(()=>{
                 <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
               </li>
             </div>
-            <li style="background: red;color: white;"   @click="LogOut()"  class="nav-item p-2 text-uppercase" >
-              Logout
+<!--            @click="LogOut()"-->
+            <li style="background: red;color: white;"    class="nav-item text-uppercase" >
+            <router-link to="/auth/user"><img src="/user.png" height="50" width="50" alt=""></router-link>
             </li>
             </div>
 

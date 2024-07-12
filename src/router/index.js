@@ -15,6 +15,7 @@ import ChatNow from "@/views/Dashboard/Chat/ChatNow.vue";
 import Media from "@/views/Dashboard/Media/Index.vue";
 import Posts from "@/views/Dashboard/Media/Posts.vue";
 import Post from "@/views/Dashboard/Media/Post.vue";
+import User from "@/views/auth/User.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -31,6 +32,10 @@ const router = createRouter({
     {
       path: '/auth/register',
       component: Register
+    },
+    {
+      path: '/auth/user',
+      component: User
     },
     {
       path: '/auth/reset',

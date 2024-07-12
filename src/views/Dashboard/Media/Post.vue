@@ -30,6 +30,10 @@ onMounted(() => {
 <!--    {{post}}-->
   </div>
   <div  class="row mb-1">
+    <a style="font-size: 32px;" href="/media">
+      <i class="bi bi-arrow-left"></i>
+    </a>
+
     <p class="fs-3">{{ post.description }}</p>
     <div v-if="post.photos">
       <div v-if="post.photos.length > 1" class="row">
@@ -44,7 +48,11 @@ onMounted(() => {
       </div>
     </div>
 <!--    {{comments}}-->
-    <p v-if="comments.length>0" class="fs-4" v-for="comment in comments" :key="comment">{{comment.comment}}</p>
+    <p  v-if="comments.length>0" class="fs-4 ps-4" v-for="comment in comments" :key="comment">
+      <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+comment.profile" width="40px" height="40"  alt="">
+
+      {{comment.comment}}.
+    </p>
   </div>
 
 </template>
