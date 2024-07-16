@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 import { auth } from '@/compossables/auth.js';
 
-const { base_url,storage, authHeader, multipartHeader} = auth();
+const { base_url,storage,authUser, authHeader, multipartHeader} = auth();
 const route = useRoute();
 const id = ref('');
 const description = ref('');
@@ -50,7 +50,6 @@ const createPost = async () => {
     formData.append('videos[]', videos.value[i]);
   }
 
-  try {
     const res = await axios.post(base_url.value + 'v1/posts/', formData, multipartHeader);
     if (res.data.status === 'success') {
       status.value = res.data.message;
@@ -58,10 +57,6 @@ const createPost = async () => {
     } else {
       status.value = 'Something went wrong';
     }
-  } catch (error) {
-    console.error('Error creating post:', error);
-    status.value = 'Failed to create post';
-  }
 };
 
 function getPost_id ($id){
@@ -106,6 +101,7 @@ const getPosts = async () => {
 
 onMounted(() => {
   getPosts();
+  authUser();
 });
 </script>
 
@@ -124,7 +120,7 @@ onMounted(() => {
 
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
-      <div class="d-flex ">
+      <div class="d-flex p-2">
         <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+post.profile" width="40px" height="40"  alt="">
         <div class="">
           <h2>{{post.name}}</h2>
@@ -132,7 +128,7 @@ onMounted(() => {
         </div>
       </div>
       <!-- Display photos if available -->
-     <div  class="row mb-1">
+     <div  class="row mb-1 px-3">
        <div v-if="post.photos">
          <div v-if="post.photos.length > 1" class="row">
            <div class="col col-6 mb-1" v-for="(photo, index) in post.photos" :key="index">

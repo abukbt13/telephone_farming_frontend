@@ -81,9 +81,9 @@ onMounted(()=> {
        </div>
       <div class="container ps-sm-5 ps-md-2 ps-lg-2">
         <h2 class="d-flex justify-content-between align-items-center">
-          <img style="border-radius: 50%;"   v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" width="100" height="100" alt="">
+          <img style="border-radius: 50%;"   v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" width="60" height="60" alt="">
 
-          <img v-else src="/pic.jpg" style="border-radius: 50%;" width="100" height="100" alt="">
+          <img v-else src="/user.png" style="border-radius: 50%;" width="60" height="60" alt="">
 
           {{ currentUser.name }}
         </h2>
