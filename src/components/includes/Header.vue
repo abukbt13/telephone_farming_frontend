@@ -19,7 +19,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <nav style="background-color: #d538fc;" class="navbar   navbar-expand-lg">
+  <nav style="background-color: green;" class="navbar   sticky-top navbar-expand-lg">
     <div class="container-fluid m-auto">
       <router-link class="navbar-brand text-white" to="/">LRC</router-link>
       <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,8 @@ onMounted(()=>{
               </li>
             </div>
 <!--            @click="LogOut()"-->
-            <li style="background: red;color: white;"    class="nav-item text-uppercase" >
-            <router-link to="/auth/user"><img src="/user.png" height="50" width="50" alt=""></router-link>
+            <li    class="nav-item text-uppercase" >
+            <router-link to="/auth/user"><img style="border-radius:50%; " src="/user.png" height="50" width="50" alt=""></router-link>
             </li>
             </div>
 
@@ -74,19 +74,7 @@ onMounted(()=>{
 </template>
 
 <style scoped>
-.showProfile{
-  border-radius: 8px;
-  background-color: ghostwhite;
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-  height: 18rem;
-  width: 14rem;
-}
-.profile{
-  height: 13rem;
-  width: 10rem
-}
+
 li:hover{
   background: rgb(146, 159, 222);
   color: white;

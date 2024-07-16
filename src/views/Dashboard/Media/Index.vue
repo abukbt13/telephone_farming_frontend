@@ -49,14 +49,21 @@ onMounted(()=> {
 </script>
 
 <template>
-  <Header />
- <div class="navigation">
-   <div style="border: 2px solid black; position: fixed; top: 3rem; width: 100%; z-index: 10;" class="d-flex justify-content-between">
-     <button @click="showSection('group')" class="w-100">Groups</button>
-     <button @click="showSection('post')"  class="w-100">Posts</button>
-     <button @click="showSection('related')"  class="w-100" :class="{ 'link-active': activeSection === 'Trending' }">Related</button>
-   </div>
- </div>
+<div class="position-static">
+  <div class="sticky-top"> <Header /></div>
+
+
+
+  <div class="navigation">
+    <div  class="d-flex ps-3 justify-content-between align-items-center">
+      <section @click="showSection('group')" class="w-100 navigate p-2">Groups<i class="bi bi-person-fill-add"></i>
+      </section>
+      <section @click="showSection('post')"  class="w-100 navigate p-2">Posts</section>
+      <section @click="showSection('related')"  class="w-100 navigate p-2">Related</section>
+    </div>
+  </div>
+</div>
+
 
 
   <div  class="media">
@@ -169,6 +176,11 @@ onMounted(()=> {
 <style scoped>
 .navigation{
   display: none;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
+  bottom:0px;
+  background:#fdaa;
 }
 .media{
   width: 100%;
@@ -185,6 +197,10 @@ onMounted(()=> {
 }
 .post{
   width: 50%;
+  min-height: 85vh;
+  max-height:89vh;
+  overflow: scroll;
+  margin-bottom: 2rem;
 }
 .related{
   width: 30%;
@@ -200,6 +216,13 @@ onMounted(()=> {
   max-height:87vh;
   overflow:scroll;
 }
+.navigate{
+  color:green;
+
+}
+.navigate:hover{
+  background: white;
+}
 @media screen and (min-width: 300px) and (max-width: 500px) {
   .sidebar{
     width: 100%;
@@ -207,6 +230,7 @@ onMounted(()=> {
     width: 100%;
   }
   .navigation{
+    bottom:0px;
     display: block;
   }
   .container{

@@ -3,6 +3,7 @@
 </script>
 
 <template>
+
   <div   class="sidebar d-none d-md-block d-lg-block ps-2">
     <h2 class="text-uppercase">Dashboard</h2>
     <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
@@ -15,7 +16,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
+      <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li data-bs-dismiss="offcanvas"   class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
       <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
     </div>
   </div>

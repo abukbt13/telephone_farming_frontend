@@ -17,7 +17,12 @@ onMounted(()=>{
 </script>
 <template>
   <Header />
-  <div style="" class="d-block bg-light d-md-none d-lg-none d-flex align-items-center flex-row justify-content-between py-1"><div class=""><i data-bs-toggle="offcanvas" data-bs-target="#sidebar" style="font-size: 26px;" class="bi-list"></i></div><div class="me-2">This is Mobile View</div></div>
+  <div style="" class="d-block bg-light d-md-none d-lg-none d-flex align-items-center flex-row justify-content-between py-1">
+    <div class="">
+      <i data-bs-toggle="offcanvas" data-bs-target="#sidebar" style="font-size: 26px;" class="bi-list"></i></div><div class="me-2">
+        This is Mobile View
+    </div>
+  </div>
 
       <div class="main">
         <TelephoneFarmer />
@@ -25,6 +30,7 @@ onMounted(()=>{
           <RouterView />
           </div>
       </div>
+
 </template>
 
 <style scoped>

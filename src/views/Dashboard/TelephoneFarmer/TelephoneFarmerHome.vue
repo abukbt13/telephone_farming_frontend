@@ -102,64 +102,73 @@ onMounted(()=>{
 <template>
   <div class="row m-1">
     <div class="col col-sm-12  col-md-6 col-lg-6">
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th colspan="5">
-            <h2>My Farms
-              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Farm</button>
-            </h2>
-          </th>
-        </tr>
-        <tr>
-          <th>#</th>
-          <th>Farm Name</th>
-          <th>Type of farm</th>
-          <th colspan="2">Operation</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="farm in farms" :key="farm">
-          <td class="border">{{farm.id}}</td>
-          <td class="border">{{farm.farm_name}}</td>
-          <td class="border">{{farm.type_of_farming}}</td>
-          <td>
-            <router-link :to="/telephone_farmer/+farm.id" class="btn-sm mx-2 btn btn-primary">Visit</router-link>
-            <button class="btn btn-danger btn-sm"  @click="getFarmID(farm.id)"  data-bs-toggle="modal" data-bs-target="#AssignManager">Assign manager</button></td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th colspan="5">
+              <h2>My Farms
+                <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Farm</button>
+              </h2>
+            </th>
+          </tr>
+          <tr>
+            <th>Farm Name</th>
+            <th>Type of farm</th>
+            <th colspan="3">Operation</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="farm in farms" :key="farm">
+            <td class="border align-items-center">{{farm.id}}</td>
+            <td class="border">{{farm.farm_name}}</td>
+            <td class="border">{{farm.type_of_farming}}</td>
+              <td>
+                <router-link :to="/telephone_farmer/+farm.id" class="btn-sm mx-2 btn btn-primary">Visit</router-link>
+
+              </td>
+            <td>
+              <button class="btn btn-danger btn-sm"  @click="getFarmID(farm.id)"  data-bs-toggle="modal" data-bs-target="#AssignManager">Assign manager</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col col-sm-12 col-md-6 col-lg-6">
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th colspan="5">
-            <h2>
-              Farm managers
-              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFarmManager">New Manager</button>
-            </h2>
-          </th>
-        </tr>
-        <tr>
-          <th>Manager Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>peration</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="manager in managers" :key="manager">
-          <td class="border">{{manager.name}}</td>
-          <td class="border">{{manager.email}}</td>
-          <td class="border">{{manager.phone}}</td>
-          <td>
-            <button class="btn btn-sm  btn-success">View</button>
-            <button class="btn btn-sm btn-danger">Edit</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th colspan="5">
+              <h2>
+                Farm managers
+                <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFarmManager">New Manager</button>
+              </h2>
+            </th>
+          </tr>
+          <tr>
+            <th>Manager Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th colspan="2">Operation</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="manager in managers" :key="manager">
+            <td class="border">{{manager.name}}</td>
+            <td class="border">{{manager.email}}</td>
+            <td class="border">{{manager.phone}}</td>
+            <td>
+              <button class="btn btn-sm  btn-success">View</button>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger">Edit</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
     <!-- Modal -->

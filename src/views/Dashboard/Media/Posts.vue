@@ -116,11 +116,12 @@ onMounted(() => {
 
 <template>
   <div>
-    <div   class="align-items-center  sticky-top  d-flex justify-content-center">
-      <div class="mt-3 d-flex align-items-center">
-        <h2 class="modal-title" id="createpost">New post</h2>
-        <i style="font-size: 24px" class="fa bi-plus" data-bs-toggle="modal" data-bs-target="#create_post"></i>
-      </div>
+    <div  style="background: #dddddd;"  class="p-1 sticky-top  d-flex justify-content-between align-items-center">
+        <p class="modal-title" id="createpost">What is on your mind</p>
+        <button  data-bs-toggle="modal" data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">
+          <i class="fa bi-plus" ></i>
+          Create post
+        </button>
       </div>
 
     <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
@@ -129,7 +130,7 @@ onMounted(() => {
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
       <div class="d-flex ">
-        <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+post.profile" width="100px" height="100"  alt="">
+        <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+post.profile" width="40px" height="40"  alt="">
         <div class="">
           <h2>{{post.name}}</h2>
           <p class="d-flex flex-column">{{ post.description }}</p>
@@ -183,11 +184,11 @@ onMounted(() => {
                   <i class="bi bi-images"></i><br>
                   <input @change="uploadPictures" multiple type="file">
                 </p>
-                <p>
-                  Add Videos <br>
-                  <i class="bi bi-camera-video"></i><br>
-                  <input @change="uploadVideos" multiple type="file">
-                </p>
+<!--                <p>-->
+<!--                  Add Videos <br>-->
+<!--                  <i class="bi bi-camera-video"></i><br>-->
+<!--                  <input @change="uploadVideos" multiple type="file">-->
+<!--                </p>-->
               </div>
 
               <button type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-2 w-50">Create Post</button>

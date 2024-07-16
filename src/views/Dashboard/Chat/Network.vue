@@ -21,7 +21,9 @@ onMounted(()=> {
 </script>
 
 <template>
-  <Header />
+    <div class="sticky-top">
+      <Header />
+    </div>
   <div class="networking">
     <div  class="recent-chats">
       <RecentChats />
