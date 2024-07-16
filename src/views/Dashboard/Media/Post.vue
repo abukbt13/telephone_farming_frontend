@@ -12,7 +12,7 @@ const post = ref([]);
 const comments = ref([]);
 
 const getPost = async () => {
-    const res = await axios.get(base_url.value + 'v1/post/'+post_id, authHeader);
+    const res = await axios.get(base_url.value + 'v1/retrieve/post/'+post_id, authHeader);
     if (res.status === 200) {
       post.value = res.data.post;
       comments.value=res.data.comments
