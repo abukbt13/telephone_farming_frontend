@@ -98,15 +98,10 @@ const CommentPost = async () => {
 };
 
 const getPosts = async () => {
-  try {
     const res = await axios.get(base_url.value + 'v1/posts/', authHeader);
     if (res.status === 200) {
       posts.value = res.data.posts;
     }
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    status.value = 'Failed to fetch posts';
-  }
 };
 
 onMounted(() => {
