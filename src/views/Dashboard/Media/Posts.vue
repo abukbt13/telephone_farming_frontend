@@ -50,7 +50,7 @@ const createPost = async () => {
     formData.append('videos[]', videos.value[i]);
   }
 
-    const res = await axios.post(base_url.value + 'v1/posts/', formData, multipartHeader);
+    const res = await axios.post(base_url.value + 'v1/new/post', formData, multipartHeader);
     if (res.data.status === 'success') {
       status.value = res.data.message;
       getPosts();
@@ -93,7 +93,7 @@ const CommentPost = async () => {
 };
 
 const getPosts = async () => {
-    const res = await axios.get(base_url.value + 'v1/all/posts/', authHeader);
+    const res = await axios.get(base_url.value + 'v1/posts', authHeader);
     if (res.status === 200) {
       posts.value = res.data.posts;
     }
@@ -124,7 +124,7 @@ onMounted(() => {
         <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+post.profile" width="40px" height="40"  alt="">
         <div class="">
           <h2>{{post.name}}</h2>
-          <p class="d-flex flex-column">{{ post.description }}</p>
+          <p class="">{{ post.description }}</p>
         </div>
       </div>
       <!-- Display photos if available -->
