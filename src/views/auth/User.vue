@@ -57,8 +57,8 @@ onBeforeMount(()=> {
   <div class="d-flex justify-content-center align-items-center">
 
     <div class="profile border m-2">
-      <div class="d-flex justify-content-center">
-        <img v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" height="100" width="100" alt="">
+      <div class="d-flex justify-content-center pt-4">
+        <img v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" height="300" width="300" alt="">
         <img v-else src="/user.png" height="100" width="100" alt="">
       </div>
       <div class="d-flex justify-content-center my-2"><button data-bs-toggle="modal" @click="PopulateUser(currentUser)" data-bs-target="#user" class="btn btn-primary">Edit Profile</button></div>
@@ -68,9 +68,6 @@ onBeforeMount(()=> {
       </div> <div class="border p-3">
       <h2>Phone</h2>
       <p>{{currentUser.phone}}</p>
-    </div> <div class="border p-3">
-      <h2>Profile Picture</h2>
-      <p>{{currentUser.profile}}</p>
     </div>
     </div>
   </div>
@@ -100,7 +97,7 @@ onBeforeMount(()=> {
             </div>
 
             <div class="">
-              <button type="submit" class="w-100 btn btn-primary btn-block">Register</button>
+              <button type="submit"  data-bs-dismiss="modal"  class="w-100 btn btn-primary btn-block">Update Profile</button>
             </div>
             <br>
 

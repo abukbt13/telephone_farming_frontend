@@ -36,24 +36,27 @@ onMounted(()=>{
             <router-link class="nav-link active  text-white text-uppercase" to="/about">About us</router-link>
           </li>
           <div class="d-flex" v-if="currentUser.name">
-            <div  class="" v-if="currentUser.role === 'telephone_farmer'">
-              <li class="nav-item text-uppercase">
-                <router-link class="nav-link text-white" to="/telephone_farmer/dashboard">Dashboard</router-link>
-              </li>
-            </div>
-            <div  class="" v-else-if="currentUser.role === 'farm_manager'">
-              <li   class="nav-item text-uppercase">
-                <router-link class="nav-link text-white"  to="/farm_manager">Dashboard</router-link>
-              </li>
-            </div>
-            <div  class="" v-else="currentUser.role === 'lrc'">
-              <li class="nav-item text-uppercase">
-                <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
-              </li>
-            </div>
-<!--            @click="LogOut()"-->
-            <li    class="nav-item text-uppercase" >
-            <router-link to="/auth/user"><img style="border-radius:50%; " src="/user.png" height="50" width="50" alt=""></router-link>
+                <div  class="" v-if="currentUser.role === 'telephone_farmer'">
+                  <li class="nav-item text-uppercase">
+                    <router-link class="nav-link text-white" to="/telephone_farmer/dashboard">Dashboard</router-link>
+                  </li>
+                </div>
+                <div  class="" v-else-if="currentUser.role === 'farm_manager'">
+                  <li   class="nav-item text-uppercase">
+                    <router-link class="nav-link text-white"  to="/farm_manager">Dashboard</router-link>
+                  </li>
+                </div>
+                <div  class="" v-else="currentUser.role === 'lrc'">
+                  <li class="nav-item text-uppercase">
+                    <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
+                  </li>
+                </div>
+    <!--            @click="LogOut()"-->
+                <li    class="nav-item text-uppercase" >
+                <router-link to="/auth/user"><img style="border-radius:50%; " src="/user.png" height="50" width="50" alt=""></router-link>
+                </li>
+            <li class="nav-item">
+              <router-link style="background:red;"  @click="LogOut()" class="nav-link m-2 active  text-white text-uppercase" to="#">Logout</router-link>
             </li>
             </div>
 
