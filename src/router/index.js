@@ -16,6 +16,8 @@ import Media from "@/views/Dashboard/Media/Index.vue";
 import Posts from "@/views/Dashboard/Media/Posts.vue";
 import Post from "@/views/Dashboard/Media/Post.vue";
 import User from "@/views/auth/User.vue";
+import Groups from "@/views/Dashboard/Media/Groups.vue";
+import Group from "@/views/Dashboard/Media/Group.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -77,6 +79,14 @@ const router = createRouter({
             {
               path: '/media/post/:id',
               component: Post
+            },
+            {
+              path: '/media/groups',
+              component: Groups
+            },
+            {
+              path: '/media/group/:id',
+              component: Group
             },
           ]
     },

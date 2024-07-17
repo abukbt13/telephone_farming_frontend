@@ -88,7 +88,7 @@ onMounted(()=> {
           {{ currentUser.name }}
         </h2>
 
-        <router-link to="#" class="text-decoration-none d-flex fs-3 d-block">
+        <router-link to="/media/groups" class="text-decoration-none d-flex fs-3 d-block">
           <i class="bi bi-people-fill"></i>
           <p class="ps-2 text-dark">Groups </p>
         </router-link>
@@ -142,12 +142,10 @@ onMounted(()=> {
     </div>
 
     <div class="related" id="related">
-      <div class="related-contents">
-        <h2>Inovation contents</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at atque deleniti fugiat maxime molestiae necessitatibus reprehenderit similique suscipit voluptatibus. Autem, dolore doloremque illum minus optio perferendis sequi vero? Ab cumque cupiditate dolor dolorem doloremque dolores dolorum error et eveniet fuga hic id ipsam laboriosam laborum modi mollitia natus nihil, officia optio perferendis quae quia quibusdam quidem quis repudiandae rerum sed similique suscipit temporibus veritatis. Aliquid animi aspernatur aut enim ipsum, labore maiores, nobis quidem repudiandae suscipit veritatis voluptatum. Autem debitis delectus dolore dolores, eligendi illo incidunt maiores minus, molestias nobis odit officia quas quia repellendus repudiandae sint voluptatem voluptates!</p>
-      </div>
+      <div class="related-contents p-2">
+        <h2>Trending</h2>
+         <p class="me-5">Modern Farming <span class="float-end"><img src="/pic.jpg" height="40" width="40" alt=""></span></p>
+       </div>
     </div>
   </div>
 
@@ -197,7 +195,7 @@ onMounted(()=> {
 }
 .post{
   width: 50%;
-  min-height: 85vh;
+  min-height: 89vh;
   max-height:89vh;
   overflow: scroll;
   margin-bottom: 2rem;

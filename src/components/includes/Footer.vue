@@ -3,13 +3,13 @@
 </script>
 
 <template>
-  <div style="background-color: #e9eef2;" class="row py-4 footer px-4 d-flex justify-content-center ">
+  <div style="background-color: green;" class="row py-4 footer px-4 d-flex justify-content-center ">
     <div class="col  col-12  col-sm-2 mt-2 mx-2">
-      <h4 class="text-uppercase text-decoration-underline">Latia Resource company </h4>
-      <p>Latia Resource company your farming partner </p>
+      <h4 class="text-uppercase ">LRC company </h4>
+      <p style="color: black" class="">Latia Resource company your farming partner </p>
     </div>
     <div class="col col-12 col-sm-3 mt-2 mx-2">
-      <h4  class="text-uppercase text-decoration-underline">Quick Links</h4>
+      <h4  class="text-uppercase ">Quick Links</h4>
       <li  class="list-unstyled fs-4">
         <router-link  class="text-decoration-none  link"  to="/auth/login">Login</router-link>
       </li>
@@ -25,19 +25,21 @@
     </div>
 
     <div class="col col-12  col col-sm-3 mt-2">
-      <h4 class="text-uppercase text-decoration-underline">Services</h4>
+      <h4 class="text-uppercase ">Services</h4>
       <li  class="list-unstyled fs-4">
         <router-link  class="text-decoration-none  link"  to="/auth/login">Training </router-link>
         <router-link  class="text-decoration-none  link"  to="/auth/login">Education</router-link>
       </li>
     </div>
     <div class="col  col-12  col col-sm-3 mt-2 mx-2">
-      <h4  class="text-uppercase text-decoration-underline">More</h4>
-        <ul>
-          <li class="list-unstyled"><router-link class="text-uppercase text-decoration-none" to="/about_us">About Us</router-link></li>
-          <li class="list-unstyled"><router-link class="text-uppercase text-decoration-none" to="/about_us">Contact Us</router-link></li>
-          <li class="list-unstyled"><router-link class="text-uppercase text-decoration-none" to="/about_us">About Us</router-link></li>
-        </ul>
+      <h4  class="text-uppercase ">More</h4>
+      <li  class="list-unstyled fs-4">
+        <router-link  class="text-decoration-none  link"  to="/auth/login">About US </router-link>
+        <router-link  class="text-decoration-none  link"  to="/auth/login">About US </router-link>
+        <router-link  class="text-decoration-none  link"  to="/auth/login">About US </router-link>
+        <router-link  class="text-decoration-none  link"  to="/auth/login">latest</router-link>
+      </li>
+
     </div>
   </div>
 </template>

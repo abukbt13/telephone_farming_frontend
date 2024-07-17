@@ -49,8 +49,7 @@ const createPost = async () => {
   for (let i = 0; i < videos.value.length; i++) {
     formData.append('videos[]', videos.value[i]);
   }
-
-    const res = await axios.post(base_url.value + 'v1/new/post', formData, multipartHeader);
+    const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
     if (res.data.status === 'success') {
       status.value = res.data.message;
       getPosts();
