@@ -24,7 +24,7 @@ onMounted(()=>{
   <div class="" v-for="farm in farms" :key="farm">
 
     <router-link class="text-decoration-none" :to="'/farm_manager/progress/'+farm.id">
-      <div class="border p-4 w-25">
+      <div class="border p-4 w-50">
         <h2 class="text-dark">Farm</h2>
         <p class="fs-3">{{ farm.farm_name }}</p>
         <h3 class="text-dark">Location</h3>

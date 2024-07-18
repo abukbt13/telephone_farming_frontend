@@ -22,20 +22,53 @@ const status = ref('')
 const farms = ref([])
 const managers = ref([])
 const Addfarm = async () => {
+  if ('farm_name' ==='' || type_of_farming.value ==='' || location.value ===''){
+    status.value = 'All fields are required'
+  }
   const formData = new FormData();
+
   formData.append('farm_name', farm_name.value);
   formData.append('type_of_farming', type_of_farming.value);
   formData.append('location', location.value);
 
-  const res = await axios.post(base_url.value + 'tf/farm', formData,authHeader);
 
-  if (res.data.status === 'success') {
-    await  Swal.fire(
-        'Success!',
-        'Farm created Successfully',
-        'success'
-    )
-    await getFarms()
+
+  try {
+    const res = await axios.post(base_url.value + 'tf/farm', formData,authHeader);
+    if (res.data.status === 'success') {
+      await  Swal.fire(
+          'Success!',
+          'Farm created Successfully',
+          'success'
+      )
+      await getFarms()
+    }
+    else if (res.data.status === 'failed') {
+      await Swal.fire(
+          'Danger!',
+          'something went wrong try again',
+          'error'
+      );
+      await getFarms()
+    }
+    else {
+      status.value='network error'
+    }
+  } catch (error) {
+    // Handle the error and show an error message
+    let firstErrorMessage = 'An unknown error occurred.';
+    if (error.response && error.response.data && error.response.data.errors) {
+      const errors = error.response.data.errors;
+      const firstErrorKey = Object.keys(errors)[0];
+      firstErrorMessage = errors[firstErrorKey][0];
+    }
+
+    // Handle the error and show an error message
+    await Swal.fire(
+        'Danger!',
+        `An error occurred: ${firstErrorMessage}`,
+        'error'
+    );
   }
 }
 
@@ -83,6 +116,20 @@ const AssignManagerToFarm = async () => {
     )
     await getFarmManagers()
   }
+  else if(res.data.status === 'failed'){
+    await Swal.fire(
+        'Danger!',
+        'Manager already assigned',
+        'error'
+    );
+  }
+else {
+    await Swal.fire(
+        'Danger!',
+        'something went wrong',
+        'error'
+    );
+  }
 }
 
 const  getFarmManagers= async () => {
@@ -100,6 +147,7 @@ onMounted(()=>{
 </script>
 
 <template>
+  <div v-if="status" class="bg-danger p-1 text-uppercase text-white">{{status}}</div>
   <div class="row m-1">
     <div class="col col-sm-12  col-md-6 col-lg-6">
       <div class="table-responsive">
@@ -187,7 +235,7 @@ onMounted(()=>{
               </div>
               <div class="mb-3">
                 <label class="form-label">Type Of farming</label>
-                <select required v-model="type_of_farming" class="form-control" name="">
+                <select  v-model="type_of_farming" class="form-control" name="">
 <!--                  <option disabled selected>&#45;&#45;Select type of farm&#45;&#45;</option>-->
                   <option value="livestock">Livestock</option>
                   <option value="crop_farming">Crop Farming</option>

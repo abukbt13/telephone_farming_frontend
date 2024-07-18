@@ -97,7 +97,7 @@ onMounted(() => {
               <option value="bee keeping">Bee Keeping</option>
               <option value="vegetable farming">CRop Farming</option>
               <option value="fish farming">Fish Farming</option>
-              <option value="poultry">Fish Farming</option>
+              <option value="poultry">Poultry Farming</option>
             </select>
 
             <button type="submit" data-bs-dismiss="modal" class="btn mt-2 btn-primary mt-2 w-100">Create Post</button>

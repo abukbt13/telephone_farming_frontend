@@ -5,7 +5,7 @@
 <template>
 
   <div   class="sidebar d-none d-md-block d-lg-block ps-2">
-    <h2 class="text-uppercase">Dashboard</h2>
+    <p class="text-uppercase fs-4 ms-3">Dashboard</p>
     <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
     <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
  </div>
@@ -28,7 +28,6 @@
 .sidebar{
   border-top: 1px solid grey;
   width: 20vw;
-  background-color: #CCCCFF;
   height: 87vh;
 }
 li:hover{
