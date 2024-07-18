@@ -33,20 +33,20 @@ onMounted(()=> {
 
     <div class="navigation">
 
-      <div style="border: 2px solid black; position: relative; width: 100%; " class="d-flex">
-        <a style="background: #d538fc;" class="text-decoration-none nav-link  w-100   border text-center" href="/network">
-          <div >Chats </div>
+      <div style=" position: relative; width: 100%; " class="mt-2 px-1 d-flex">
+        <a style="background: green;" class="text-decoration-none p-1 nav-link  w-100   border text-center" href="/network">
+          <div >CHATS</div>
         </a>
-        <a  class="text-decoration-none  w-100 border text-center" href="/media">
-          Media
+        <a  class="text-decoration-none  w-100 p-1 border text-center" href="/media">
+          MEDIA
         </a>
       </div>
     </div>
 
     <div class="messages">
       <div class="border-bottom d-flex justify-content-between align-items-center">
-        <h1 class="mt-1">CHATS</h1>
-        <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#add-chat">
+        <h1 class="mt-4">CHATS</h1>
+        <button class="btn btn-secondary float-end" data-bs-toggle="modal" data-bs-target="#add-chat">
           New Chat
         </button>
 
@@ -58,7 +58,8 @@ onMounted(()=> {
         </a>
       </div>
       <div class="" v-else>
-        <button   class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-chat">Start a new chat</button>
+        <p>You dont have any chats yet start now</p>
+        <button   class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-chat">Start a new chat</button>
       </div>
     </div>
 

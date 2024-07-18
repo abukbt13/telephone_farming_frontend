@@ -9,11 +9,11 @@ export function auth(){
             'Authorization': `Bearer ${localStorage.getItem('token')}`, // If you use authentication
         },
     }
-    const base_url = ref('https://farm.kwetunyumbani.store/api/')
-    const storage = ref('https://farm.kwetunyumbani.store/backend/public/')
+    // const base_url = ref('https://farm.kwetunyumbani.store/api/')
+    // const storage = ref('https://farm.kwetunyumbani.store/backend/public/')
 
-    // const base_url = ref('http://127.0.0.1:8000/api/')
-    // const storage = ref('http://127.0.0.1:8000/')
+    const base_url = ref('http://127.0.0.1:8000/api/')
+    const storage = ref('http://127.0.0.1:8000/')
 
     const   authUser = async () => {
         try {

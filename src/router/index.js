@@ -18,6 +18,9 @@ import Post from "@/views/Dashboard/Media/Post.vue";
 import User from "@/views/auth/User.vue";
 import Groups from "@/views/Dashboard/Media/Groups.vue";
 import Group from "@/views/Dashboard/Media/Group.vue";
+import GroupHome from "@/views/Dashboard/Media/Group/GroupHome.vue";
+import TestTwo from "@/views/Dashboard/Media/Group/Test/TestTwo.vue";
+import Test from "@/views/Dashboard/Media/Group/Test/Test.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -80,17 +83,31 @@ const router = createRouter({
               path: '/media/post/:id',
               component: Post
             },
-            {
-              path: '/media/groups',
-              component: Groups
-            },
-            {
-              path: '/media/group/:id',
-              component: Group
-            },
           ]
     },
-
+      {
+          path: '/media/groups',
+          component: GroupHome,
+          children:
+              [
+                  {
+                      path: '/media/groups',
+                      component: Groups
+                  },
+                  {
+                      path: '/media/group/:id',
+                      component: Group
+                  },
+                  {
+                      path: '/media/test',
+                      component: Test
+                  },
+                  {
+                      path: '/media/testtwo',
+                      component: TestTwo
+                  },
+              ]
+      },
   ]
 })
 

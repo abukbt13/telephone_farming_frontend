@@ -70,11 +70,11 @@ onMounted(()=> {
 
     <div   class="group" id="group">
      <div class="sidebar">
-       <div style="border: 2px solid black; position: relative; width: 100%; z-index: 10;" class="d-flex">
+       <div style=" position: relative; width: 100%; z-index: 10;" class="mt-2 d-flex">
          <a class="text-decoration-none w-100 me-1  border text-center" href="/network">
-           <div >Chats </div>
+           <div >CHATS </div>
          </a>
-         <a style="background: #d538fc;" class="text-decoration-none nav-link  w-100 border text-center" href="/media">Media
+         <a style="background: green; color:white;" class="text-decoration-none nav-link  w-100  text-center" href="/media">MEDIA
            <div class="w-100">
            </div>
          </a>
@@ -88,52 +88,34 @@ onMounted(()=> {
           {{ currentUser.name }}
         </h2>
 
-        <router-link to="/media/groups" class="text-decoration-none d-flex fs-3 d-block">
+        <a href='/media/groups' class="link text-decoration-none d-flex fs-3 d-block">
           <i class="bi bi-people-fill"></i>
-          <p class="ps-2 text-dark">Groups </p>
-        </router-link>
+          <p class="ps-3  text-dark">Groups </p>
+        </a>
 
-        <router-link to="#" class="text-decoration-none d-flex fs-3 d-block">
-          <i class="bi bi-hearts"></i>
-          <p class="ps-2 text-dark">Friends</p>
-        </router-link>
 
-        <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+        <router-link to="#" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i style="color:yellow;" class="bi bi-signpost-2-fill"></i>
-
             <p class="ps-2 text-dark">  Posts</p>
         </router-link>
 
-        <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+        <router-link to="#" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i class="bi bi-calendar2-date-fill"></i>
           <p class="ps-2 text-dark"> Events </p>
-        </router-link> <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
-          <i style="color:yellow;" class="bi bi-signpost-2-fill"></i>
-
-            <p class="ps-2 text-dark">  Posts</p>
         </router-link>
 
-
-         <router-link to="#" class="text-decoration-none my-1 d-flex fs-3 d-block">
+         <router-link to="#" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i class="bi bi-database"></i>
            <p class="ps-2 text-dark text-dark">Education resources</p>
         </router-link>
 
-         <router-link to="#" class="text-decoration-none d-flex my-1 fs-3 d-block">
+         <router-link to="#" class="link text-decoration-none d-flex my-1 fs-3 d-block">
           <i class="bi bi-camera-video-fill"></i>
            <p class="ps-2 text-dark">Videos</p>
         </router-link>
 
       </div>
-<!--       <div class="">-->
-<!--         <h4 class="me-2">-->
-<!--          Group-->
-<!--           <span class="chat-plus">-->
-<!--            <i class="bi bi-plus float-end" data-bs-toggle="modal" data-bs-target="#add-chat">Group create</i>-->
-<!--          </span>-->
-<!--         </h4>-->
 
-<!--       </div>-->
      </div>
     </div>
 
@@ -220,6 +202,9 @@ onMounted(()=> {
 }
 .navigate:hover{
   background: white;
+}
+.link:hover{
+  background: green;
 }
 @media screen and (min-width: 300px) and (max-width: 500px) {
   .sidebar{

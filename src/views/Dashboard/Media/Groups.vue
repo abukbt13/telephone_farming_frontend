@@ -11,15 +11,21 @@ const group_name = ref('')
 const description = ref('')
 const category = ref('')
 const groups = ref([])
+const profile = ref([])
+
+function imageUpload(e){
+  profile.value = e.target.files[0];
+  }
 const createGroup= async () => {
-  if (description.value === '' && name.value ==='') {
-    alert('All fields are required');
+  if (description.value === '' && group_name.value ==='') {
+    alert('Ensure you ave valid name and description names');
     return;
   }
 
   const formData = new FormData();
   formData.append('description', description.value);
   formData.append('name', group_name.value);
+  formData.append('profile', profile.value);
   formData.append('category', category.value);
 
 
@@ -87,11 +93,11 @@ onMounted(() => {
         <div class="m-3">
 
           <form @submit.prevent="createGroup">
-            <h5>Group Name</h5>
+            <label>Group Name</label>
             <input type="text" v-model="group_name" class="form-control">
-            <h5>Group Description</h5>
+            <label>Group Description</label>
             <textarea v-model="description" cols="4" rows="4" class="form-control"></textarea>
-            <h5>Category</h5>
+            <label>Category</label>
             <select v-model="category" class="form-control">
               <option value="livestock keeeping">Livestock Farming</option>
               <option value="bee keeping">Bee Keeping</option>
@@ -99,6 +105,11 @@ onMounted(() => {
               <option value="fish farming">Fish Farming</option>
               <option value="poultry">Poultry Farming</option>
             </select>
+            <label for="">
+              Group image
+            </label>
+            <input type="file" @change="imageUpload" placeholder="upload image">
+
 
             <button type="submit" data-bs-dismiss="modal" class="btn mt-2 btn-primary mt-2 w-100">Create Post</button>
           </form>
