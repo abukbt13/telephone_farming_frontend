@@ -76,7 +76,7 @@ onMounted(() => {
         </button>
       </div>
 <!--    create a new post-->
-<CreatenewPost :new_group_id=new_group_id />
+<CreatenewPost :new_group_id=new_group_id   @postCreated="getPost" />
 <!--  end create a new post  -->
 
     <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>

@@ -90,14 +90,19 @@ onMounted(() => {
   </div>
 
   <div class="">
-    <div  style="background: #dddddd;"  class="p-1 sticky-top  d-flex justify-content-between align-items-center">
-      <p class="modal-title" id="createpost">What is on your mind</p>
-      <button  data-bs-toggle="modal" data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">
-        <i class="fa bi-plus" ></i>
-        Create post
-      </button>
+    <div  style="background: #dddddd;"  class="p-1 sticky-top">
+     <div class="p-2 m">
+       <p class="modal-title" id="createpost">What is new or interesting</p>
+       <p class="modal-title" id="createpost">Share something today
+         <button  data-bs-toggle="modal" data-bs-target="#create_post" style="background:#0dcaf0;" class="btn float-end btn-sm">
+           <i class="fa bi-plus" ></i>
+           Create post
+          </button>
+       </p>
+     </div>
+
     </div>
-     <CreatenewPost :new_group_id=new_group_id />
+     <CreatenewPost :new_group_id=new_group_id @postCreated="getPosts" />
 
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 

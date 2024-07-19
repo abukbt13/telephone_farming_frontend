@@ -14,6 +14,7 @@
     const videos = ref([]);
     const photos = ref([]);
 
+    const emit = defineEmits(['postCreated', 'postFailed']);
     const new_group_id=defineProps({new_group_id:String})
 
     function uploadPictures(e) {
@@ -50,9 +51,11 @@
       }
       const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
       if (res.data.status === 'success') {
-        status.value = res.data.message;
+        // status.value = res.data.message;
+        emit('postCreated');
         // getPosts();
       } else {
+        emit('postFailed', res.data.message);
         status.value = 'Something went wrong';
       }
     };
