@@ -94,7 +94,7 @@ onMounted(()=> {
         </a>
 
 
-        <router-link to="#" class="link text-decoration-none my-1 d-flex fs-3 d-block">
+        <router-link to="/media/me/posts" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i style="color:yellow;" class="bi bi-signpost-2-fill"></i>
             <p class="ps-2 text-dark">  Posts</p>
         </router-link>

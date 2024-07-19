@@ -54,20 +54,27 @@ onMounted(() => {
 
 <template>
 <div v-if="status" class="ms-2"> {{status}}</div>
-
+  <router-link to="/media"> <h3 class="mx-2 mt-3 d-flex">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+    </svg>Home
+  </h3>
+  </router-link>
   <div class="groups border m-1">
-    <div class="border-bottom text-uppercase d-flex justify-content-between align-items-center ms-2">my groups
+
+    <div class="border-bottom p-2 text-uppercase d-flex justify-content-between align-items-center ms-2">
+      <div><i class="bi bi-people"></i>my groups</div>
       <button  data-bs-toggle="modal" data-bs-target="#create_group" style="background:#0dcaf0;" class="btn btn-sm">
       <i class="fa bi-plus" ></i>
       New Group
     </button>
     </div>
-<!--    {{groups}}-->
-    <div class="border">
 
-     <div v-if="groups" v-for="group in groups" :key="group" class="">
-       <div class=" border p-1 mt-1 ms-1">
-         <h3 class="d-flex flex-row align-items-center justify-content-between">{{ group.name}}</h3>
+<!--    {{groups}}-->
+
+     <div v-if="groups" v-for="group in groups" :key="group" class="mb-2">
+       <div class="single-group p-1 mt-1 ms-1">
+         <h3 class="d-flex flex-row align-items-center justify-content-between">{{ group.name}} <router-link :to="'/media/me/group/'+group.id"><i class="bi bi-gear"></i></router-link></h3>
          <p>{{ group.description}}.  <router-link :to="'/media/group/'+group.id" class="btn btn-primary text-decoration-none float-end">view</router-link>
          </p>
        </div>
@@ -78,9 +85,6 @@ onMounted(() => {
         </p>
       </div>
     </div>
-
-
-  </div>
 
 <!--  modal for creating group-->
   <div class="modal fade" id="create_group" tabindex="-1" aria-labelledby="create_group" aria-hidden="true">
@@ -121,5 +125,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
+.single-group:hover{
+  background: #0dcaf0;
+}
 </style>

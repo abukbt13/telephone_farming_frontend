@@ -16,14 +16,20 @@ const videos = ref([]);
 const photos = ref([]);
 const posts = ref([]);
 const comment = ref('');
-const post_id = ref('');
+const post_id = ref(null);
 const new_group_id = ref(null);
 
 
 function getPost_id ($id){
   post_id.value = $id
-  console.log(post_id)
+  // console.log(post_id)
 }
+
+const propsData = {
+  'post_id': post_id,
+  'group_id': new_group_id
+};
+
 const AddLike = async ($id)=>  {
   post_id.value = $id
   const res = await axios.get(base_url.value + 'v1/posts/'+post_id.value+'/likes', authHeader);
@@ -34,24 +40,6 @@ const AddLike = async ($id)=>  {
     status.value = res.data.message;
   }
 }
-const CommentPost = async () => {
-  if (comment.value === '') {
-    alert('Type a message');
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append('comment', comment.value);
-
-    const res = await axios.post(base_url.value + 'v1/posts/'+post_id.value+'/comments', formData, authHeader);
-    if (res.data.status === 'success') {
-      status.value = res.data.message;
-      getPosts();
-    } else {
-      status.value = 'Something went wrong';
-    }
-
-};
 
 const getPosts = async () => {
     const res = await axios.get(base_url.value + 'v1/posts', authHeader);
@@ -76,12 +64,13 @@ onMounted(() => {
         </button>
       </div>
 <!--    create a new post-->
-<CreatenewPost :new_group_id=new_group_id   @postCreated="getPost" />
+<!--    :current_post_id=post_id @postCreated="getPost"-->
+<CreatenewPost :newdata=propsData   />
 <!--  end create a new post  -->
 
     <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
 
-
+<!--{{posts}}-->
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
       <div class="d-flex p-2">
@@ -116,60 +105,13 @@ onMounted(() => {
          <i style="font-size: 30px;color: red" class="bi bi-heart"></i><span style="font-size: 30px;" class="m-3">{{post.likes}}</span>
         </div>
      </div>
-      <a :href="'media/post/'+post.id">
+      <router-link :to="'/media/post/'+post.id">
         <button style="background: #f0dada" class="btn  w-100 ">more info</button>
-      </a>
+      </router-link>
     </div>
 
-<!--    <div class="modal fade" id="create_post" tabindex="-1" aria-labelledby="createpost" aria-hidden="true">-->
-<!--      <div class="modal-dialog">-->
-<!--        <div class="modal-content">-->
-<!--          <div class="modal-header">-->
-<!--            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Post</h1>-->
-<!--            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--          </div>-->
-<!--          <div class="m-3">-->
-<!--            <form @submit.prevent="createPost">-->
-<!--              <h3>Description</h3>-->
-<!--              <textarea v-model="description" cols="4" rows="4" class="form-control"></textarea>-->
 
-<!--              <div class="d-flex mt-2">-->
-<!--                <p>-->
-<!--                  Add photos <br>-->
-<!--                  <i class="bi bi-images"></i><br>-->
-<!--                  <input @change="uploadPictures" multiple type="file">-->
-<!--                </p>-->
-<!--&lt;!&ndash;                <p>&ndash;&gt;-->
-<!--&lt;!&ndash;                  Add Videos <br>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <i class="bi bi-camera-video"></i><br>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <input @change="uploadVideos" multiple type="file">&ndash;&gt;-->
-<!--&lt;!&ndash;                </p>&ndash;&gt;-->
-<!--              </div>-->
 
-<!--              <button type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-2 w-50">Create Post</button>-->
-<!--            </form>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-    <div class="modal fade" id="comment" tabindex="-1" aria-labelledby="createpost" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Comment</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="m-3">
-            <form @submit.prevent="CommentPost">
-              <h3>Description</h3>
-              <textarea v-model="comment" cols="4" rows="4" class="form-control"></textarea>
-              <button type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-2 w-50">Comment</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 

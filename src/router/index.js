@@ -3,9 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
 import RequestReset from "@/views/auth/RequestReset.vue";
-import DashboardView from "@/views/Dashboard/TelephoneFarmer/DashboardView.vue";
 import telephone_farmer from "@/router/telephone_farmer.js";
-import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarmerHome.vue";
 import About from "@/views/About.vue";
 import Contact from "@/views/Contact.vue";
 import farm_manager from "@/router/farm_manager.js";
@@ -13,12 +11,14 @@ import Network from "@/views/Dashboard/Chat/Network.vue";
 import Chats from "@/views/Dashboard/Chat/Chats.vue";
 import ChatNow from "@/views/Dashboard/Chat/ChatNow.vue";
 import Media from "@/views/Dashboard/Media/Index.vue";
-import Posts from "@/views/Dashboard/Media/Posts.vue";
-import Post from "@/views/Dashboard/Media/Post.vue";
+import Posts from "@/views/Dashboard/Media/Post/Posts.vue";
+import Post from "@/views/Dashboard/Media/Post/Post.vue";
 import User from "@/views/auth/User.vue";
-import Groups from "@/views/Dashboard/Media/Groups.vue";
-import Group from "@/views/Dashboard/Media/Group.vue";
+import Groups from "@/views/Dashboard/Media/Group/Groups.vue";
+import Group from "@/views/Dashboard/Media/Group/Group.vue";
 import GroupHome from "@/views/Dashboard/Media/Group/GroupHome.vue";
+import Settings from "@/views/Dashboard/Media/Group/Settings.vue";
+import MyPosts from "@/views/Dashboard/Media/Post/MyPosts.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -81,6 +81,10 @@ const router = createRouter({
               path: '/media/post/:id',
               component: Post
             },
+            {
+              path: '/media/me/posts',
+              component: MyPosts
+            },
           ]
     },
       {
@@ -95,6 +99,10 @@ const router = createRouter({
                   {
                       path: '/media/group/:id',
                       component: Group
+                  },
+                  {
+                      path: '/media/me/group/:id',
+                      component: Settings
                   },
               ]
       },

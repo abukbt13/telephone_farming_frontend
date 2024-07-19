@@ -1,6 +1,6 @@
 <script setup>
 import {auth} from "@/compossables/auth.js";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {comment} from "postcss";
@@ -14,6 +14,12 @@ const comments = ref([]);
 const newcomment = ref('')
 const username = ref('')
 const profile = ref('')
+
+const router = useRouter()
+const goBack = () => {
+  router.back();
+};
+
 const AddLike = async ()=>  {
 
   const res = await axios.get(base_url.value + 'v1/posts/'+post_id+'/likes', authHeader);
@@ -63,9 +69,9 @@ onMounted(() => {
 <!--    {{post}}-->
   </div>
   <div  class="row mb-1 px-2">
-    <a style="font-size: 32px;" href="/media">
-      <i class="bi bi-arrow-left"></i>
-    </a>
+
+      <i @click="goBack" style="font-size: 23px;" class="bi bi-arrow-left"></i>
+
 
     <div class="d-flex p-2">
       <img style="border-radius: 50%;" :src="storage+'Profile/picture/'+profile" width="40px" height="40"  alt="">

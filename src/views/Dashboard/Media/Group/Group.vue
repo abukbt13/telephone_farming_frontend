@@ -60,6 +60,10 @@ const getPosts = async () => {
     posts.value = res.data.posts;
   }
 };
+function handleResponse(msg){
+  status.value = msg
+  getPosts()
+}
 
 onMounted(() => {
   getPosts();
@@ -70,6 +74,10 @@ onMounted(() => {
 </script>
 
 <template>
+  <div v-if="status" style="position: fixed; width:50%; bottom:0rem;" class="p-1 fs-3 d-flex justify-content-between align-items-center text-white bg-danger">{{status}}
+    <button type="button" class="btn-close" @click="status = ''" aria-label="Close"></button>
+  </div>
+
   <div class=" d-flex flex-column align-items-center">
     <div class="card">
 <!--      <img src="/img_2.png" class="card-img-top" alt="...">-->
@@ -80,7 +88,7 @@ onMounted(() => {
           <img v-else src="/pic.jpg" class="rounded-circle" width="200" height="200" alt="">
         </div>
         <div class="ms-3">
-          <h5 class="card-title">{{ group.name }}</h5>
+          <h5 class="card-title">{{ group.name }}  <router-link :to="'/media/me/group/'+group.id" class="float-end"><i class="bi bi-gear"></i></router-link></h5>
           <p class="card-text">
             {{group.description}}
           </p>
@@ -102,7 +110,7 @@ onMounted(() => {
      </div>
 
     </div>
-     <CreatenewPost :new_group_id=new_group_id @postCreated="getPosts" />
+     <CreatenewPost :new_group_id=new_group_id @postCreated="handleResponse" @postFailed="handlePostFailed" />
 
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
