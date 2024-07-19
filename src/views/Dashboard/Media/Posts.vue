@@ -17,47 +17,8 @@ const photos = ref([]);
 const posts = ref([]);
 const comment = ref('');
 const post_id = ref('');
+const new_group_id = ref(null);
 
-function uploadPictures(e) {
-  const files = e.target.files;
-  photos.value = []; // Clear the array before adding new files
-  for (let i = 0; i < files.length; i++) {
-    photos.value.push(files[i]);
-  }
-}
-
-function uploadVideos(e) {
-  const files = e.target.files;
-  videos.value = []; // Clear the array before adding new files
-  for (let i = 0; i < files.length; i++) {
-    videos.value.push(files[i]);
-  }
-}
-
-const createPost = async () => {
-  if (description.value === '') {
-    alert('Type a message');
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append('description', description.value);
-
-  for (let i = 0; i < photos.value.length; i++) {
-    formData.append('photos[]', photos.value[i]);
-  }
-
-  for (let i = 0; i < videos.value.length; i++) {
-    formData.append('videos[]', videos.value[i]);
-  }
-    const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
-    if (res.data.status === 'success') {
-      status.value = res.data.message;
-      getPosts();
-    } else {
-      status.value = 'Something went wrong';
-    }
-};
 
 function getPost_id ($id){
   post_id.value = $id
@@ -109,12 +70,15 @@ onMounted(() => {
   <div>
     <div  style="background: #dddddd;"  class="p-1 sticky-top  d-flex justify-content-between align-items-center">
         <p class="modal-title" id="createpost">What is on your mind</p>
-        <button  data-bs-toggle="modal"  @click="test(6)" data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">
+        <button  data-bs-toggle="modal"  data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">
           <i class="fa bi-plus" ></i>
           Create post
         </button>
       </div>
-<CreatenewPost />
+<!--    create a new post-->
+<CreatenewPost :new_group_id=new_group_id />
+<!--  end create a new post  -->
+
     <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
 
 

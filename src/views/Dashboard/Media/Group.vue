@@ -4,6 +4,7 @@ import {useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
 import {comment} from "postcss";
+import CreatenewPost from "@/components/CreatenewPost.vue";
 
 const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
 const route = useRoute();
@@ -16,34 +17,35 @@ const comments = ref([]);
 const newcomment = ref('')
 const username = ref('')
 const profile = ref('')
-// const AddLike = async ()=>  {
-//
-//   const res = await axios.get(base_url.value + 'v1/posts/'+post_id+'/likes', authHeader);
-//   if (res.data.status === 'success') {
-//     status.value = res.data.message;
-//     getPost();
-//   } else {
-//     status.value = res.data.message;
-//   }
-// }
-// const CommentPost = async () => {
-//   if (newcomment.value === '') {
-//     alert('Type a message');
-//     return;
-//   }
-//
-//   const formData = new FormData();
-//   formData.append('comment', newcomment.value);
-//
-//   const res = await axios.post(base_url.value + 'v1/posts/'+post_id+'/comments', formData, authHeader);
-//   if (res.data.status === 'success') {
-//     status.value = res.data.message;
-//     getPost();
-//   } else {
-//     status.value = 'Something went wrong';
-//   }
-//
-// };
+ const new_group_id = ref(group_id)
+const AddLike = async ()=>  {
+
+  const res = await axios.get(base_url.value + 'v1/posts/'+post_id+'/likes', authHeader);
+  if (res.data.status === 'success') {
+    status.value = res.data.message;
+    getPost();
+  } else {
+    status.value = res.data.message;
+  }
+}
+const CommentPost = async () => {
+  if (newcomment.value === '') {
+    alert('Type a message');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('comment', newcomment.value);
+
+  const res = await axios.post(base_url.value + 'v1/posts/'+post_id+'/comments', formData, authHeader);
+  if (res.data.status === 'success') {
+    status.value = res.data.message;
+    getPost();
+  } else {
+    status.value = 'Something went wrong';
+  }
+
+};
 const getGroup = async () => {
   const res = await axios.get(base_url.value + 'v1/groups/'+group_id, authHeader);
   if (res.status === 200) {
@@ -68,7 +70,6 @@ onMounted(() => {
 </script>
 
 <template>
-<!--  {{group}}-->
   <div class=" d-flex flex-column align-items-center">
     <div class="card">
 <!--      <img src="/img_2.png" class="card-img-top" alt="...">-->
@@ -96,6 +97,7 @@ onMounted(() => {
         Create post
       </button>
     </div>
+     <CreatenewPost :new_group_id=new_group_id />
 
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 

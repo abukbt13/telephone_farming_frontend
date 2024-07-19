@@ -1,58 +1,66 @@
 <script setup>
 
-import axios from "axios";
-import {onMounted, ref} from "vue";
-import {useRoute} from "vue-router";
-import {auth} from "@/compossables/auth.js";
+    import axios from "axios";
+    import {onMounted, ref} from "vue";
+    import {useRoute} from "vue-router";
+    import {auth} from "@/compossables/auth.js";
 
-const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
-const route = useRoute();
-const group_id =ref(null)
+    const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
+    const route = useRoute();
 
-const description = ref('');
-const status = ref('');
-const videos = ref([]);
-const photos = ref([]);
+    const description = ref('');
+    const status = ref('');
+    const group_id = ref('');
+    const videos = ref([]);
+    const photos = ref([]);
 
-alert()
-const createPost = async () => {
-  alert()
-  //
-  // console.log(group_id)
-  // alert(group_id.value)
-  // return
-  // if (description.value === '') {
-  //   alert('Type a message');
-  //   return;
-  // }
-  //
-  // const formData = new FormData();
-  // formData.append('description', description.value);
-  //
-  // for (let i = 0; i < photos.value.length; i++) {
-  //   formData.append('photos[]', photos.value[i]);
-  // }
-  //
-  // for (let i = 0; i < videos.value.length; i++) {
-  //   formData.append('videos[]', videos.value[i]);
-  // }
-  // const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
-  // if (res.data.status === 'success') {
-  //   status.value = res.data.message;
-  //   getPosts();
-  // } else {
-  //   status.value = 'Something went wrong';
-  // }
-};
-onMounted(() => {
-  alert()
-  if (route.params.id != null) {
-    group_id.value = route.params.id;
-  }
-});
+    const new_group_id=defineProps({new_group_id:String})
+
+    function uploadPictures(e) {
+      const files = e.target.files;
+      photos.value = []; // Clear the array before adding new files
+      for (let i = 0; i < files.length; i++) {
+        photos.value.push(files[i]);
+      }
+    }
+
+    function uploadVideos(e) {
+      const files = e.target.files;
+      videos.value = []; // Clear the array before adding new files
+      for (let i = 0; i < files.length; i++) {
+        videos.value.push(files[i]);
+      }
+    }
+
+    const createPost = async () => {
+
+
+      const formData = new FormData();
+      formData.append('description', description.value);
+      if(new_group_id.new_group_id != null) {
+        formData.append('group_id', new_group_id.new_group_id);
+      };
+
+      for (let i = 0; i < photos.value.length; i++) {
+        formData.append('photos[]', photos.value[i]);
+      }
+
+      for (let i = 0; i < videos.value.length; i++) {
+        formData.append('videos[]', videos.value[i]);
+      }
+      const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
+      if (res.data.status === 'success') {
+        status.value = res.data.message;
+        // getPosts();
+      } else {
+        status.value = 'Something went wrong';
+      }
+    };
+
 </script>
 
 <template>
+<!--  {{new_group_id}}-->
 <!--  <button  data-bs-toggle="modal" data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">-->
 <!--    <i class="fa bi-plus" ></i>-->
 <!--    Create post-->
