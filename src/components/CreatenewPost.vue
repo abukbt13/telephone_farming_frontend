@@ -38,11 +38,11 @@
     }
 
     const createPost = async () => {
-
+// alert('')
 
       const formData = new FormData();
       formData.append('description', description.value);
-      if(new_group_id.new_group_id != null) {
+      if(userdata.post_id != null) {
         formData.append('group_id', new_group_id.new_group_id);
       };
 
@@ -56,10 +56,10 @@
       const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
       if (res.data.status === 'success') {
         // status.value = res.data.message;
-        emit('postCreated',res.data.message);
+        // emit('postCreated',res.data.message);
         // getPosts();
       } else {
-        emit('postFailed', res.data.message);
+        // emit('postFailed', res.data.message);
       }
     };
 
