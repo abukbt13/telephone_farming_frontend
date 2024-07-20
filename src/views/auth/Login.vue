@@ -52,7 +52,7 @@ const login =async () => {
 </script>
 
 <template>
-  <Header />
+<!--  <Header />-->
   <section class="vh-100">
     <div class="row px-3 d-flex justify-content-center align-items-center h-100">
 
@@ -61,7 +61,7 @@ const login =async () => {
 
         <div class="error text-center bg-danger text-white text-uppercase">{{unique_id}}</div>
         <h2 class="text-center text-uppercase">Login</h2>
-        <p>Don't have an account? <router-link to="/auth/register">Register</router-link></p>
+        <p>Don't have an account? <router-link to="/auth/register">Register Again </router-link></p>
         <form @submit.prevent="login">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>

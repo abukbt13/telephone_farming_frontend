@@ -12,8 +12,8 @@ export function auth(){
     // const base_url = ref('https://farm.kwetunyumbani.store/api/')
     // const storage = ref('https://farm.kwetunyumbani.store/backend/public/')
 
-    const base_url = ref('http://127.0.0.1:8000/api/')
-    const storage = ref('http://127.0.0.1:8000/')
+    const base_url = ref(import.meta.env.VITE_APP_API_URL)
+    const storage = ref(import.meta.env.VITE_APP_API_URL)
 
     const   authUser = async () => {
         try {
