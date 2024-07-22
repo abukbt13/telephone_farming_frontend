@@ -39,7 +39,7 @@ const propsData = {
 function postResponse(msg){
    Swal.fire(
       'Success!',
-      'Post created Successfully',
+       msg,
       'success'
   )
   getPosts()
@@ -108,9 +108,9 @@ onMounted(() => {
 
      </div>
 
+      <p @click="likeStatuses.id =''" v-if="likeStatuses.id == post.id" style="background: orange;" class="d-flex align-items-center justify-content-between fs-2">{{likeStatuses.message}} <button class="btn btn-primary ">Close</button> </p>
 
-      <p v-if="likeStatuses.id == post.id">{{likeStatuses.message}}</p>
-     <div class="d-flex justify-content-around align-items-center">
+      <div class="d-flex justify-content-around align-items-center">
        <div @click="getPost_id(post.id)"  data-bs-toggle="modal" data-bs-target="#comment">
          <i style="font-size: 30px; color: blue;"  data-bs-toggle="modal" data-bs-target="#comment" class="bi bi-chat-right-text-fill"></i><span style="font-size: 30px;" class="m-3">{{post.comments}}</span>
         </div>

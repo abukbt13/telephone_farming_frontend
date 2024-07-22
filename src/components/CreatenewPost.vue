@@ -6,6 +6,7 @@
     import {auth} from "@/compossables/auth.js";
     import { Modal } from 'bootstrap';
     import {commons} from "@/compossables/commons.js";
+    import Swal from "sweetalert2";
 
     const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
 
@@ -70,7 +71,12 @@
       const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
       if (res.data.status === 'success') {
         clearform();
-        emit('postResponse', res.data.message);
+       // await Swal.fire(
+       //      'Success!',
+       //      'Post created Successfully',
+       //      'success'
+       //  )
+        emit('postResponse');
         const modalElement = document.getElementById('create_post');
         const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
         bootstrapModal.hide();
@@ -80,7 +86,7 @@
     };
 
 //     create comment
-    const CommentPost = async () => {
+  const CommentPost = async () => {
       if (comment.value === '') {
         alert('Type a message');
         return;
@@ -89,12 +95,12 @@
       const formData = new FormData();
       formData.append('comment', comment.value);
 
-      const res = await axios.post(base_url.value + 'v1/posts/'+post_id+'/comments', formData, authHeader);
+      const res = await axios.post(base_url.value + 'v1/posts/'+userData.value.post_id+'/comments', formData, authHeader);
       if (res.data.status === 'success') {
-        status.value = res.data.message;
-        getPosts();
+       emit("postResponse",res.data.message)
+
       } else {
-        status.value = 'Something went wrong';
+        emit('postResponse', res.data.message);
       }
 
     };
@@ -114,8 +120,6 @@
         <div class="m-3">
           <form @submit.prevent="createPost">
             <h3>Description</h3>
-
-      {{userdata}}
 
             <div class="">
               <div v-if="post_status"  style="background: red;" class="p-1  text-white">{{post_status}}</div>

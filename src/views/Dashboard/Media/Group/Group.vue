@@ -6,6 +6,7 @@ import axios from "axios";
 import {comment} from "postcss";
 import CreatenewPost from "@/components/CreatenewPost.vue";
 import Swal from "sweetalert2";
+import {commons} from "@/compossables/commons.js";
 
 const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
 const route = useRoute();
@@ -20,38 +21,15 @@ const newcomment = ref('')
 const username = ref('')
 const profile = ref('')
  const new_group_id = ref(group_id)
-const AddLike = async ()=>  {
 
-  const res = await axios.get(base_url.value + 'v1/posts/'+post_id+'/likes', authHeader);
-  if (res.data.status === 'success') {
-    status.value = res.data.message;
-    getPost();
-  } else {
-    status.value = res.data.message;
-  }
+const {AddLike,likeStatuses} =commons()
+function getPost_id ($id){
+  post_id.value = $id
+  likeStatuses.value = ''
 }
-
 const propsData = {
   'post_id': post_id,
   'group_id': new_group_id
-};
-const CommentPost = async () => {
-  if (newcomment.value === '') {
-    alert('Type a message');
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append('comment', newcomment.value);
-
-  const res = await axios.post(base_url.value + 'v1/posts/'+post_id+'/comments', formData, authHeader);
-  if (res.data.status === 'success') {
-    status.value = res.data.message;
-    getPost();
-  } else {
-    status.value = 'Something went wrong';
-  }
-
 };
 const getGroup = async () => {
   const res = await axios.get(base_url.value + 'v1/groups/'+group_id, authHeader);
@@ -70,7 +48,7 @@ const getPosts = async () => {
 function postResponse(msg){
   Swal.fire(
       'Success!',
-      'Post created Successfully',
+      msg,
       'success'
   )
   getPosts()
@@ -101,7 +79,7 @@ onMounted(() => {
         <div class="">
           <img v-if="group.profile" style="border-radius: 50%;" :src="storage+'Groups/profiles/'+group.profile"  width="200" height="200"  alt="">
 
-          <img v-else src="/pic.jpg" class="rounded-circle" width="200" height="200" alt="">
+          <img v-else src="/ss.png" class="rounded-circle" width="200" height="200" alt="">
         </div>
         <div class="ms-3">
           <h5 class="card-title">{{ group.name }}  <router-link :to="'/media/me/group/'+group.id" class="float-end"><i class="bi bi-gear"></i></router-link></h5>
@@ -152,6 +130,7 @@ onMounted(() => {
         </div>
 
       </div>
+      <p @click="likeStatuses.id =''" v-if="likeStatuses.id == post.id" style="background: orange;" class="d-flex align-items-center justify-content-between fs-2">{{likeStatuses.message}} <button class="btn btn-primary ">Close</button> </p>
 
       <div class="d-flex justify-content-around align-items-center">
         <div @click="getPost_id(post.id)"  data-bs-toggle="modal" data-bs-target="#comment">
@@ -161,45 +140,11 @@ onMounted(() => {
           <i style="font-size: 30px;color: red" class="bi bi-heart"></i><span style="font-size: 30px;" class="m-3">{{post.likes}}</span>
         </div>
       </div>
-      <a :href="'media/post/'+post.id">
+      <a :href="'/media/post/'+post.id">
         <button style="background: #f0dada" class="btn  w-100 ">more info</button>
       </a>
     </div>
 
-  </div>
-
-
-<!--  //create a post-->
-  <div class="modal fade" id="create_post" tabindex="-1" aria-labelledby="createpost" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Post</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="m-3">
-          <form @submit.prevent="createPost">
-            <h3>Description</h3>
-            <textarea v-model="description" cols="4" rows="4" class="form-control"></textarea>
-
-            <div class="d-flex mt-2">
-              <p>
-                Add photos <br>
-                <i class="bi bi-images"></i><br>
-                <input @change="uploadPictures" multiple type="file">
-              </p>
-              <!--                <p>-->
-              <!--                  Add Videos <br>-->
-              <!--                  <i class="bi bi-camera-video"></i><br>-->
-              <!--                  <input @change="uploadVideos" multiple type="file">-->
-              <!--                </p>-->
-            </div>
-
-            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-2 w-50">Create Post</button>
-          </form>
-        </div>
-      </div>
-    </div>
   </div>
 
 </template>
