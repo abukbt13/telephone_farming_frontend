@@ -4,14 +4,20 @@ import { useRoute } from 'vue-router';
 import axios from 'axios';
 import { auth } from '@/compossables/auth.js';
 import CreatenewPost from "@/components/CreatenewPost.vue";
+import {commons} from "@/compossables/commons.js";
+import Swal from "sweetalert2";
 
 const { base_url,storage,authUser, authHeader, multipartHeader} = auth();
+
 const route = useRoute();
 const id = ref('');
+const {AddLike,likeStatuses} =commons()
+
+const status = ref('');
+
 const description = ref('');
 const messages = ref([]);
 const message = ref('');
-const status = ref('');
 const videos = ref([]);
 const photos = ref([]);
 const posts = ref([]);
@@ -22,7 +28,7 @@ const new_group_id = ref(null);
 
 function getPost_id ($id){
   post_id.value = $id
-  // console.log(post_id)
+  likeStatuses.value = ''
 }
 
 const propsData = {
@@ -30,21 +36,22 @@ const propsData = {
   'group_id': new_group_id
 };
 
-const AddLike = async ($id)=>  {
-  post_id.value = $id
-  const res = await axios.get(base_url.value + 'v1/posts/'+post_id.value+'/likes', authHeader);
-  if (res.data.status === 'success') {
-    status.value = res.data.message;
-    getPosts();
-  } else {
-    status.value = res.data.message;
-  }
+function postResponse(msg){
+   Swal.fire(
+      'Success!',
+      'Post created Successfully',
+      'success'
+  )
+  getPosts()
 }
 
 const getPosts = async () => {
     const res = await axios.get(base_url.value + 'v1/posts', authHeader);
     if (res.status === 200) {
       posts.value = res.data.posts;
+    }
+    else {
+      // status.value =
     }
 };
 
@@ -55,7 +62,15 @@ onMounted(() => {
 </script>
 
 <template>
+
+  <!--    create a new post-->
+  <!--    :current_post_id=post_id @postCreated="getPost"-->
+  <CreatenewPost :newdata=propsData  @postResponse="postResponse" />
+  <!--  end create a new post  -->
+
+
   <div>
+
     <div  style="background: #dddddd;"  class="p-1 sticky-top  d-flex justify-content-between align-items-center">
         <p class="modal-title" id="createpost">What is on your mind</p>
         <button  data-bs-toggle="modal"  data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">
@@ -63,14 +78,10 @@ onMounted(() => {
           Create post
         </button>
       </div>
-<!--    create a new post-->
-<!--    :current_post_id=post_id @postCreated="getPost"-->
-<CreatenewPost :newdata=propsData   />
-<!--  end create a new post  -->
+
 
     <div v-if="status" class="bg-danger text-white text-center text-uppercase p-2 fs-3">{{ status }}</div>
 
-<!--{{posts}}-->
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 
       <div class="d-flex p-2">
@@ -97,6 +108,8 @@ onMounted(() => {
 
      </div>
 
+
+      <p v-if="likeStatuses.id == post.id">{{likeStatuses.message}}</p>
      <div class="d-flex justify-content-around align-items-center">
        <div @click="getPost_id(post.id)"  data-bs-toggle="modal" data-bs-target="#comment">
          <i style="font-size: 30px; color: blue;"  data-bs-toggle="modal" data-bs-target="#comment" class="bi bi-chat-right-text-fill"></i><span style="font-size: 30px;" class="m-3">{{post.comments}}</span>

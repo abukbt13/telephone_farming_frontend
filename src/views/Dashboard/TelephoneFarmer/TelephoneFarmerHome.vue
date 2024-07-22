@@ -247,7 +247,7 @@ onMounted(()=>{
                 <label class="form-label">Location</label>
                 <input type="text" v-model="location" class="form-control" >
               </div>
-              <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Add Farm</button>
+              <button type="submit"  class="btn btn-primary">Add Farm</button>
             </form>
           </div>
 

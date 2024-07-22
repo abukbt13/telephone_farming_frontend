@@ -5,14 +5,16 @@ import {onMounted, ref} from "vue";
 import axios from "axios";
 import {comment} from "postcss";
 import CreatenewPost from "@/components/CreatenewPost.vue";
+import Swal from "sweetalert2";
 
 const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
 const route = useRoute();
 const group_id = route.params.id
+
 const group = ref([]);
 const posts = ref([]);
 const status = ref('');
-
+const post_id = ref(null);
 const comments = ref([]);
 const newcomment = ref('')
 const username = ref('')
@@ -28,6 +30,11 @@ const AddLike = async ()=>  {
     status.value = res.data.message;
   }
 }
+
+const propsData = {
+  'post_id': post_id,
+  'group_id': new_group_id
+};
 const CommentPost = async () => {
   if (newcomment.value === '') {
     alert('Type a message');
@@ -60,8 +67,12 @@ const getPosts = async () => {
     posts.value = res.data.posts;
   }
 };
-function handleResponse(msg){
-  status.value = msg
+function postResponse(msg){
+  Swal.fire(
+      'Success!',
+      'Post created Successfully',
+      'success'
+  )
   getPosts()
 }
 
@@ -74,6 +85,11 @@ onMounted(() => {
 </script>
 
 <template>
+
+
+  <CreatenewPost :newdata=propsData  @postResponse="postResponse" />
+
+
   <div v-if="status" style="position: fixed; width:50%; bottom:0rem;" class="p-1 fs-3 d-flex justify-content-between align-items-center text-white bg-danger">{{status}}
     <button type="button" class="btn-close" @click="status = ''" aria-label="Close"></button>
   </div>
@@ -110,7 +126,6 @@ onMounted(() => {
      </div>
 
     </div>
-     <CreatenewPost :new_group_id=new_group_id @postCreated="handleResponse" @postFailed="handlePostFailed" />
 
     <div  class="posts text-decoration-none" v-for="post in posts" :key="post.id">
 

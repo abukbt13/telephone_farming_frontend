@@ -4,23 +4,33 @@
     import {onMounted, ref} from "vue";
     import {useRoute} from "vue-router";
     import {auth} from "@/compossables/auth.js";
+    import { Modal } from 'bootstrap';
+    import {commons} from "@/compossables/commons.js";
 
     const { base_url,storage, authUser, authHeader, multipartHeader } = auth();
+
     const route = useRoute();
 
     const description = ref('');
     const status = ref('');
     const group_id = ref('');
     const comment = ref('');
+    const post_status = ref('');
     const videos = ref([]);
     const photos = ref([]);
 
-    const emit = defineEmits(['postCreated']);
+    const emit = defineEmits(['postResponse']);
 
-    const userdata = defineProps({
+    const props = defineProps({
       newdata:Object
     });
-    const post_id = userdata.post_id
+
+    const userData = ref(props.newdata)
+    function clearform() {
+      description.value = '';
+      photos.value = '';
+      videos.value = '';
+    }
     function uploadPictures(e) {
       const files = e.target.files;
       photos.value = []; // Clear the array before adding new files
@@ -38,13 +48,17 @@
     }
 
     const createPost = async () => {
-// alert('')
+
+      if(description.value ===''){
+        post_status.value = "Description is required"
+      }
 
       const formData = new FormData();
       formData.append('description', description.value);
-      if(userdata.post_id != null) {
-        formData.append('group_id', new_group_id.new_group_id);
-      };
+      if(userData.value.group_id != null) {
+        formData.append('group_id', userData.value.group_id);
+      }
+
 
       for (let i = 0; i < photos.value.length; i++) {
         formData.append('photos[]', photos.value[i]);
@@ -55,11 +69,13 @@
       }
       const res = await axios.post(base_url.value + 'v1/post', formData, multipartHeader);
       if (res.data.status === 'success') {
-        // status.value = res.data.message;
-        // emit('postCreated',res.data.message);
-        // getPosts();
+        clearform();
+        emit('postResponse', res.data.message);
+        const modalElement = document.getElementById('create_post');
+        const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+        bootstrapModal.hide();
       } else {
-        // emit('postFailed', res.data.message);
+        emit('postResponse', res.data.message);
       }
     };
 
@@ -98,18 +114,24 @@
         <div class="m-3">
           <form @submit.prevent="createPost">
             <h3>Description</h3>
-            {{userdata}}
-            <textarea v-model="description" cols="4" rows="4" class="form-control"></textarea>
 
-            <div class="d-flex mt-2">
-              <p>
-                Add photos <br>
-                <i class="bi bi-images"></i><br>
-                <input @change="uploadPictures" multiple type="file">
-              </p>
+      {{userdata}}
+
+            <div class="">
+              <div v-if="post_status"  style="background: red;" class="p-1  text-white">{{post_status}}</div>
+              <textarea v-model="description" cols="4" rows="4" class="form-control"></textarea>
+
+              <div class="d-flex mt-2">
+                <p>
+                  Add photos <br>
+                  <i class="bi bi-images"></i><br>
+                  <input @change="uploadPictures" multiple type="file">
+                </p>
+              </div>
+
+              <button type="submit" class="btn btn-primary mt-2 w-50">Create Post</button>
+
             </div>
-
-            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-2 w-50">Create Post</button>
           </form>
         </div>
       </div>
