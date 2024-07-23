@@ -4,10 +4,11 @@ import {auth} from "@/compossables/auth.js";
 import {onBeforeMount, onMounted, ref} from "vue";
 import Header from "@/components/includes/Header.vue";
 import axios from "axios";
+import {useRouter} from "vue-router";
 
 const {base_url,authHeader,AuthenticatedUser,currentUser,storage} = auth()
 
-
+const router = useRouter()
 const phone = ref('')
 const name = ref('')
 const status = ref('')
