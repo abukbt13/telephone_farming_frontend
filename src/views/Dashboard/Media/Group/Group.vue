@@ -40,7 +40,7 @@ const getGroup = async () => {
 };
 
 const getPosts = async () => {
-  const res = await axios.get(base_url.value + 'v1/posts', authHeader);
+  const res = await axios.get(base_url.value + 'v1/group/'+group_id+'/posts', authHeader);
   if (res.status === 200) {
     posts.value = res.data.posts;
   }
@@ -73,7 +73,7 @@ onMounted(() => {
   </div>
 
   <div class=" d-flex flex-column align-items-center">
-    <div class="card">
+    <div class="card w-100">
 <!--      <img src="/img_2.png" class="card-img-top" alt="...">-->
       <div  class="card-body d-flex align-items-center">
         <div class="">

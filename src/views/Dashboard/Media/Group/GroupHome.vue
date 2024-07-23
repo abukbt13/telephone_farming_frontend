@@ -48,7 +48,7 @@ onMounted(() => {
               <p class="text-center">Groups involved <span class="float-end">See All</span></p>
               <router-link v-for="group in allgroups" :key="group" :to="'/media/group/'+group.id"  class="m-2 text-decoration-none d-flex">
                   <img v-if="group.profile" :src="storage+'Groups/profiles/'+group.profile" height="50" width="50" alt="Image" class="img-fluid border-4"  >
-                   <img v-else src="/pic.jpg" width="50" height="50" alt="">
+                   <img v-else src="/ss.png" width="50" height="50" alt="">
                   <div class="ms-2">
                     <div class=" text-dark">{{ group.name }}</div>
                     <div>22/02/2024</div>
@@ -69,7 +69,7 @@ onMounted(() => {
            <h2>Latest posts</h2>
            <router-link v-for="group in allgroups" :key="group" :to="'/media/group/'+group.id"  class="m-2 text-decoration-none d-flex">
              <img v-if="group.profile" :src="storage+'Groups/profiles/'+group.profile" height="50" width="50" alt="Image" class="rounded-circle"  >
-             <img  v-else src="/pic.jpg" width="50" height="50" class="rounded-circle"  >
+             <img  v-else src="/ss.png" width="50" height="50" class="rounded-circle"  >
              <div class="ms-2">
                <div class=" text-dark">{{ group.name }}</div>
                <div>{{group.description}}</div>

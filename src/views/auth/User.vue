@@ -60,6 +60,7 @@ onBeforeMount(()=> {
       <div class="d-flex justify-content-center pt-4">
         <img v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" height="300" width="300" alt="">
         <img v-else src="/user.png" height="100" width="100" alt="">
+
       </div>
       <div class="d-flex justify-content-center my-2"><button data-bs-toggle="modal" @click="PopulateUser(currentUser)" data-bs-target="#user" class="btn btn-primary">Edit Profile</button></div>
       <div class="border p-3">
@@ -68,6 +69,9 @@ onBeforeMount(()=> {
       </div> <div class="border p-3">
       <h2>Phone</h2>
       <p>{{currentUser.phone}}</p>
+    </div><div class="border">
+      <button class="btn btn-danger float-end my-2 w-100">Logout</button>
+
     </div>
     </div>
   </div>
