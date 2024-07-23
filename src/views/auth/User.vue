@@ -13,7 +13,10 @@ const name = ref('')
 const status = ref('')
 const profile = ref('')
 const user_id = ref('')
-
+function LogOut(){
+  localStorage.removeItem('token')
+  router.push('/auth/login/');
+}
 function PopulateUser(PopulateUser){
   profile.value=PopulateUser.profile
   name.value=PopulateUser.name
@@ -70,7 +73,7 @@ onBeforeMount(()=> {
       <h2>Phone</h2>
       <p>{{currentUser.phone}}</p>
     </div><div class="border">
-      <button class="btn btn-danger float-end my-2 w-100">Logout</button>
+      <button @click="LogOut()" class="btn btn-danger float-end my-2 w-100">Logout</button>
 
     </div>
     </div>
