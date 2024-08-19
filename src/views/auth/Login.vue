@@ -32,7 +32,7 @@ const login =async () => {
         await router.push('/farm_manager')
       }
       else if(res.data.user.role ==='lrc'){
-        await router.push('/lrc/dashboard')
+        await router.push('/lrc')
       }
       else {
         await router.push('/not_found')

@@ -9,6 +9,7 @@ export function auth(){
             'Authorization': `Bearer ${localStorage.getItem('token')}`, // If you use authentication
         },
     }
+
     // const base_url = ref('https://farm.kwetunyumbani.store/api/')
     // const storage = ref('https://farm.kwetunyumbani.store/backend/public/')
 

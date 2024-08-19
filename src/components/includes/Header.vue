@@ -48,7 +48,7 @@ onMounted(()=>{
                 </div>
                 <div  class="" v-else="currentUser.role === 'lrc'">
                   <li class="nav-item text-uppercase">
-                    <router-link class="nav-link text-white" to="/lrc/home">Dashboard</router-link>
+                    <router-link class="nav-link text-white" to="/lrc">Dashboard</router-link>
                   </li>
                 </div>
     <!--            @click="LogOut()"-->

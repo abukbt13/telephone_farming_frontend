@@ -19,11 +19,15 @@ import Group from "@/views/Dashboard/Media/Group/Group.vue";
 import GroupHome from "@/views/Dashboard/Media/Group/GroupHome.vue";
 import Settings from "@/views/Dashboard/Media/Group/Settings.vue";
 import MyPosts from "@/views/Dashboard/Media/Post/MyPosts.vue";
+import Training from "@/views/Core/Training.vue";
+import EducationResource from "@/views/Core/EducationResource.vue";
+import lrc from "@/router/lrc.js";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
       ...telephone_farmer,
       ...farm_manager,
+      ...lrc,
     {
       path: '/',
       component: HomeView
@@ -51,6 +55,14 @@ const router = createRouter({
     {
       path: '/contact',
       component: Contact,
+    },
+      {
+      path: '/training',
+      component: Training,
+    },
+    {
+      path: '/education',
+      component: EducationResource,
     },
 
     {

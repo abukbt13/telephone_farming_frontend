@@ -8,6 +8,7 @@
     <p class="text-uppercase fs-4 ms-3">Dashboard</p>
     <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
     <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
+    <router-link  class="text-decoration-none link" to="/education"><li  class="fs-3 list-unstyled border-bottom ps-3">Education</li></router-link>
  </div>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="offcanvasExampleLabel">
@@ -18,6 +19,7 @@
     <div class="offcanvas-body">
       <router-link  class="text-decoration-none link" to="/telephone_farmer/dashboard"><li data-bs-dismiss="offcanvas"   class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
       <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
+      <router-link  class="text-decoration-none link" to="/education"><li  class="fs-3 list-unstyled border-bottom ps-3">Education resource</li></router-link>
     </div>
   </div>
 

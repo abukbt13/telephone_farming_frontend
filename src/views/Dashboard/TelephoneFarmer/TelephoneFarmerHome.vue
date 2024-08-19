@@ -5,7 +5,9 @@ import Header from "@/components/includes/Header.vue";
 import axios from "axios";
 import {auth} from "@/compossables/auth.js";
 import {onMounted, ref} from "vue";
+import {useInactivityLogout} from "@/compossables/useInactivityLogout.js";
 
+const {resetTimer} = useInactivityLogout
 const {base_url,authHeader} = auth()
 const location = ref('')
 const farm_name = ref('')

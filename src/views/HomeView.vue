@@ -34,23 +34,30 @@ import Footer from '@/components/includes/Footer.vue'
                 <img src="/home3.jpeg" height="300" width="360"  class="card-img-top" alt="...">
                 <div class="card-body">
                   <p class="card-text">
-                    I do really like LRC for their support I could have done much this
+                    <h3>Alex Juma</h3>
+                    I do really like LRC for their support I could not  have done much like this during this harvest season.
                   </p>
                 </div>
               </div>
             </div>
             <div class="m-2">
             <div class="card" style="width: 18rem;">
-              <img src="/img_4.png" height="300" width="360"  class="card-img-top" alt="...">
+              <img src="/cabagefarm.jpeg" height="300" width="360"  class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h3>Immaculate Daisy</h3>
+                <p class="card-text">
+                  LRC has been a game-changer for my farming. Their innovative solutions have made managing my crops easier and more productive than ever.
+                  I couldn't be more satisfied with the results!                </p>
               </div>
             </div>
           </div>  <div class="m-2">
             <div class="card" style="width: 18rem;">
               <img src="/img_4.png" height="300" width="360"  class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h3>Freemano Kibet</h3>
+                <p class="card-text">
+                  I’m incredibly grateful to LRC for revolutionizing my farming experience. Their tools and support have significantly boosted my crop yields, making the entire process smoother and more efficient.
+                  Highly recommended for any farmer looking to elevate their operations                </p>
               </div>
             </div>
           </div>
