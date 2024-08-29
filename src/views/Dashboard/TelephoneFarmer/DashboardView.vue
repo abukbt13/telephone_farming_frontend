@@ -9,7 +9,7 @@ import LRC from "@/components/dashboard/LRC.vue";
 import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarmerHome.vue";
 import {useInactivityLogout} from "@/compossables/useInactivityLogout.js";
 const {authUser,AuthenticatedUser,currentUser,} = auth()
-const {resetTimer,advertise} = useInactivityLogout
+// const {resetTimer,advertise} = useInactivityLogout
 const showSidebar = ref(false);
 onMounted(()=>{
   authUser()
@@ -17,10 +17,7 @@ onMounted(()=>{
 })
 </script>
 <template>
-  <p>bjhkjhbbnjkbn</p>
-
-  {{advertise}}
-
+<!--  {{advertise}}-->
   <Header />
   <div style="" class="d-block bg-light d-md-none d-lg-none d-flex align-items-center flex-row justify-content-between py-1">
     <div class="">

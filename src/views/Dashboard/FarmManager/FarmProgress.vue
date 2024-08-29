@@ -23,7 +23,6 @@ const  getProgress = async () => {
   const res = await axios.get(base_url.value + 'fm/farm/'+farm_id.value, authHeader)
   if(res){
     Allprogress.value = res.data.progresses
-   await getProgress()
   }
 }
 
