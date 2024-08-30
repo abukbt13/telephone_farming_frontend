@@ -66,21 +66,24 @@ onMounted(()=> {
         </tr>
         <tr>
           <th>#</th>
-          <th>Picture</th>
+          <th>Title/activity</th>
           <th>Description</th>
-          <th>Photo</th>
-          <th>Date</th>
+          <th>Picture</th>
+          <th>Picture</th>
         </tr>
         </thead>
-        <tbody>
+
         <tr v-for="All in Allprogress" :key="All">
-          <td class="border"></td>
-          <td class="border"><img :src="storage+'Farm/Photos/'+All.photos" alt=""></td>
-          <td class="border">{{All.activity_name}}</td>
-          <td class="border">{{All.description}}</td>
-          <td class="border">{{All.date}}</td>
-         </tr>
-        </tbody>
+          <td class=" ">{{ All.id }}</td>
+
+          <td class="border ">{{ All.activity_name }}</td>
+          <td class="border ">{{ All.description }}</td>
+          <td class="">
+            <img :src="storage + 'Farm/Photos/' + All.photos" alt="">
+          </td>
+          <td class="border "><button class="btn bg-secondary">More Info</button></td>
+        </tr>
+
       </table>
     </div>
   </div>
@@ -116,7 +119,7 @@ onMounted(()=> {
   </div>
 
 </template>
-
+<!---->
 <style scoped>
 
 </style>

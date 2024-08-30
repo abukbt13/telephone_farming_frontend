@@ -22,6 +22,7 @@ import MyPosts from "@/views/Dashboard/Media/Post/MyPosts.vue";
 import Training from "@/views/Core/Training.vue";
 import EducationResource from "@/views/Core/EducationResource.vue";
 import lrc from "@/router/lrc.js";
+import ReadDocument from "@/views/Dashboard/ReadDocument.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -63,6 +64,10 @@ const router = createRouter({
     {
       path: '/education',
       component: EducationResource,
+    },
+      {
+      path: '/education/:id',
+      component: ReadDocument,
     },
 
     {

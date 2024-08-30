@@ -4,9 +4,11 @@ import Header from "@/components/includes/Header.vue";
 import axios from "axios";
 import {onMounted, ref} from "vue";
 import {auth} from "@/compossables/auth.js";
+import {useRoute, useRouter} from "vue-router";
 
 const documents = ref([]);
-
+const route = useRoute()
+const router = useRouter()
 const {base_url,storage,authHeader} = auth()
 const  getDocument = async () => {
   const res = await axios.get(base_url.value + 'v1/education', authHeader)
@@ -15,6 +17,10 @@ const  getDocument = async () => {
   }
 }
 
+  function  goBack() {
+      router.back();
+    }
+
 onMounted(()=> {
   getDocument()
 })
@@ -22,21 +28,71 @@ onMounted(()=> {
 
 <template>
 <Header />
-  <div class="m-2" v-for="document in documents" :key="document">
-    <div class="card" style="width: 18rem;">
+  <i @click="goBack"
+     style="opacity: 1; z-index: 1; font-size: 24px; font-weight: 900; position: absolute; left: 1rem; top: 3.2rem;
+          text-shadow: 1px 1px 2px white, -1px -1px 2px black;color: white; background-color: grey; padding: 0px 0.5rem"
+     class="bi bi-arrow-90deg-left">
+  </i>
+  <div class="m-2 document grid-container" >
+    <div class="card grid-item" v-for="document in documents" :key="document">
       <div class="card-body">
-        <h2 class="card-title">Title</h2>
+      <div class="">
+        <h2 class="">Title</h2>
         <p>{{document.title}}</p>
-        <h5 class="card-title">Description</h5>
+        <h5 class="d-flex justify-content-between">Description<i class="bi bi-file-earmark-word"></i>
+          <i class="bi bi-file-earmark-pdf"></i>
+
+        </h5>
         <p class="card-text">
           {{document.description}}
         </p>
-        <router-link style="text-decoration: none;border: none;background: #3f1be1; padding: 10px;font-size: 20px;color: white;font-family: FreeMono;font-weight: 1000;" to="#"  class="">View</router-link>
+      </div>
+
+          <router-link  :to="'/education/'+document.id" class="btn-link text-decoration-none">View</router-link>
+
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.btn-link{
+  text-decoration: none;
+  padding: 7px;
+  background: slateblue;
+  color: white;
+  width: 20%;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  float: right;
+  transition: 0.4s ease-in-out;
+}
+.btn-link:hover{
+  color: white;
+  transform: translateX(-30%);
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  gap: 1rem;
+}
 
+.grid-item {
+  min-width:22vw;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 800px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

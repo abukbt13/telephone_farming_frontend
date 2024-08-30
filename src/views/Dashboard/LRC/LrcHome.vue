@@ -17,49 +17,124 @@ function uploadFile(e) {
 const saveDocument = async () => {
   const formData = new FormData();
   formData.append('description', description.value);
-  formData.append('document', new_document.value);
+  formData.append('document_file', new_document.value);
   formData.append('title', title.value);
 
-  const res = axios.post(base_url.value + 'v1/education', formData, authHeader);
-
-  if (res.data.status === 'success') {
-    await Swal.fire(
+  const res = await axios.post(base_url.value + 'v1/education', formData, authHeader);
+  if (res) {
+    await  Swal.fire(
         'Success!',
-        'Document created Successfully',
+        'Farm created Successfully',
         'success'
-    );
+    )
   }
 }
-
 </script>
 
 <template>
 <Header />
-  {{documents}}
- <div style="width: 25%;" class="">
-   <form  @submit.prevent="saveDocument" class="m-2">
-     <div class="">
-       <label for="">
-         Title
-       </label>
-       <input type="text" class="form-control"  v-model="title">
-     </div>
-     <div class="">
-       <label for="">
-         Description
-       </label>
-       <input type="text" class="form-control" v-model="description">
-     </div>
+  <div class="main">
+    <div class="sidebar p-2">
+      <h2>Dashboard</h2>
+      <span>Education</span>
+      <ul class="list-unstyled ps-2">
+        <router-link class="text-decoration-none " to="/document" ><li>Documents</li></router-link>
+        <router-link class="text-decoration-none" to="/training" ><li>Trainings</li></router-link>
+        <router-link class="text-decoration-none" to="/workshops" ><li>Workshops</li></router-link>
+      </ul>
 
-     <div class="mt-2">
-       <input @change="uploadFile" style="display: block;" type="file" placeholder="Upload education material ...">
-       <button  type="submit" class="btn btn-primary mt-2">Upload</button>
+      <span>Market</span>
+      <ul class="list-unstyled ps-2">
+        <router-link class="text-decoration-none" to="/market" ><li>Markets</li></router-link>
+        <router-link class="text-decoration-none" to="/agrovet" ><li>Agrovets</li></router-link>
+      </ul>
+      <span>Support</span>
+      <ul class="list-unstyled ps-2">
+        <router-link class="text-decoration-none" to="/transport" ><li>Transport</li></router-link>
+        <router-link class="text-decoration-none" to="/irrigation" ><li>Irrigation</li></router-link>
+        <router-link class="text-decoration-none" to="/trainees" ><li>Trainees</li></router-link>
+      </ul>
+      <span>Settings</span>
+      <ul class="list-unstyled ps-2">
+        <router-link class="text-decoration-none" to="/registration" ><li>Registraton </li></router-link>
+        <router-link class="text-decoration-none" to="/subscription" ><li>Subscription</li></router-link>
+        <router-link class="text-decoration-none" to="/payment" ><li>Payments</li></router-link>
+      </ul>
 
-     </div>
-   </form>
- </div>
+    </div>
+    <div class="contents d-flex gap-1">
+      <div style="height: 13rem; width: 20rem" class="border p-4">
+        <h2>Education resources</h2>
+        <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#uploaddocument">Upload document</button><router-link to="/education/upload" class="btn btn-primary">View</router-link>
+      </div>
+      <div style="height: 13rem; width: 20rem"  class="border p-4">
+        <h2>Trainings</h2>
+        <router-link to="/education/upload" class="btn btn-primary">View</router-link>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="uploaddocument" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Document</h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form  @submit.prevent="saveDocument" class="m-2">
+              <div class="">
+                <label for="">
+                  Title
+                </label>
+                <input type="text" class="form-control"  v-model="title">
+              </div>
+              <div class="">
+                <label for="">
+                  Description
+                </label>
+                <input type="text" class="form-control" v-model="description">
+              </div>
+
+              <div class="mt-2">
+                <input @change="uploadFile" style="display: block;" type="file" placeholder="Upload education material ...">
+                <button  type="submit" class="btn btn-primary mt-2 w-25 float-end">Upload</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
 </template>
 
 <style scoped>
-
+.main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0.3rem 1rem;
+}
+.sidebar{
+  width: 20vw;
+}
+.contents{
+  width: 80vw;
+}
+ul {
+  pst-style: none;
+}
+li{
+  color: #333;
+  font-size: 1.2rem;
+}
+router-link{
+  background-color: yellow;
+}
+.sidebar span {
+  font-size: 25px; color: black
+}
 </style>
