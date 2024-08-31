@@ -52,41 +52,41 @@ onMounted(()=> {
 
 <template>
 <!--  {{Allprogress}}-->
-  <div class="row m-1">
-    <div class="col col-sm-11 ">
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th colspan="5">
-            <h2>
-              Farm Progresses
-              <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#progress">Add Progress</button>
-            </h2>
-          </th>
-        </tr>
-        <tr>
-          <th>#</th>
-          <th>Title/activity</th>
-          <th>Description</th>
-          <th>Picture</th>
-          <th>Picture</th>
-        </tr>
-        </thead>
 
-        <tr v-for="All in Allprogress" :key="All">
-          <td class=" ">{{ All.id }}</td>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th colspan="5">
+              <h2>
+                Farm Progresses
+                <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#progress">Add Progress</button>
+              </h2>
+            </th>
+          </tr>
+          <tr>
+            <th>#</th>
+            <th>Title/activity</th>
+            <th>Description</th>
+            <th>Picture</th>
+            <th>Picture</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="All in Allprogress" :key="All">
+            <td class=" ">{{ All.id }}</td>
+            <td class="border ">{{ All.activity_name }}</td>
+            <td class="border ">{{ All.description }}</td>
+            <td class="">
+              <img :src="storage + 'Farm/Photos/' + All.photos" class="img img-fluid">
+            </td>
+            <td class="border "><button class="btn bg-secondary">More Info</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
-          <td class="border ">{{ All.activity_name }}</td>
-          <td class="border ">{{ All.description }}</td>
-          <td class="">
-            <img :src="storage + 'Farm/Photos/' + All.photos" alt="">
-          </td>
-          <td class="border "><button class="btn bg-secondary">More Info</button></td>
-        </tr>
 
-      </table>
-    </div>
-  </div>
 
 
   <div class="modal fade" id="progress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,7 +100,7 @@ onMounted(()=> {
           <form @submit.prevent="addProgress">
             <div class="mb-3">
               <label class="form-label">Activity name</label>
-              <textarea cols="4"  v-model="activity_name" class="form-control"></textarea>
+              <input type="text" class="form-control" v-model="activity_name">
             </div>
             <div class="mb-3">
               <label class="form-label">Description</label>

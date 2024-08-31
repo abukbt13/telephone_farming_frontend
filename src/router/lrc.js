@@ -8,17 +8,17 @@ const routes =[
     {
         path: '/lrc',
         component: LrcHome,
-        // children:
-        //     [
-        //         {
-        //             path: '/farm_manager',
-        //             component: LRC,
-        //         },
-        //         {
-        //             path: '/education', // This will be /farm_manager/progress
-        //             component: Education,
-        //         },
-        //     ]
+        children:
+            [
+                {
+                    path: '',
+                    component: LRC,
+                },
+                // {
+                //     path: '/education', // This will be /farm_manager/progress
+                //     component: Education,
+                // },
+            ]
     }
 ]
 
