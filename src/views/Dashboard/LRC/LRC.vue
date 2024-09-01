@@ -27,7 +27,7 @@ const saveDocument = async () => {
   if (res) {
     await  Swal.fire(
         'Success!',
-        'Farm created Successfully',
+        'Document saved Successfully',
         'success'
     )
   }
@@ -46,7 +46,7 @@ const scheduleEvent = async () => {
   if (res) {
     await  Swal.fire(
         'Success!',
-        'Farm created Successfully',
+        'Scheduled Successfully',
         'success'
     )
   }
@@ -110,7 +110,7 @@ const scheduleEvent = async () => {
               <label for="">
                 Title/About
               </label>
-              <input type="text" class="form-control"  v-model="title">
+              <input type="text" class="form-control"  v-model="title" placeholder="Nairobi">
             </div>
             <div class="">
               <label for="">
@@ -149,13 +149,12 @@ const scheduleEvent = async () => {
             </div>
             <div class="">
               <label for="">
-                Category
+                Description
               </label>
             <textarea class="form-control" v-model="description"></textarea>
             </div>
-
             <div class="mt-2">
-              <button  type="submit" class="btn btn-primary mt-2 w-25 float-end">Schedule</button>
+              <button data-bs-dismiss="modal"  type="submit" class="btn btn-primary mt-2 w-25 float-end">Schedule</button>
             </div>
           </form>
         </div>

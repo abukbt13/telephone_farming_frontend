@@ -5,7 +5,7 @@ import {onBeforeUnmount, onMounted, ref} from "vue";
 import {auth} from "@/compossables/auth.js";
 import FarmManager from "@/components/dashboard/FarmManager.vue";
 import TelephoneFarmer from "@/components/dashboard/TelephoneFarmer.vue";
-import LRC from "@/components/dashboard/LRC.vue";
+import LRC from "@/views/Dashboard/LRC/LRC.vue";
 import TelephoneFarmerHome from "@/views/Dashboard/TelephoneFarmer/TelephoneFarmerHome.vue";
 import {useInactivityLogout} from "@/compossables/useInactivityLogout.js";
 const {authUser,AuthenticatedUser,currentUser,} = auth()

@@ -1,11 +1,6 @@
 <script setup>
 
 import Header from "@/components/includes/Header.vue";
-import {onMounted, ref} from "vue";
-import axios from "axios";
-import Swal from "sweetalert2";
-import {auth} from "@/compossables/auth.js";
-
 
 </script>
 
@@ -13,31 +8,40 @@ import {auth} from "@/compossables/auth.js";
 <Header />
     <div class="row">
         <div class="col col-3 border-end">
-          <div class="p-2">
-            <h2>Dashboard</h2>
-            <span>Education</span>
+          <div class="ms-4 ps-4 sidebar">
+            <h1 class="">Dashboard</h1>
+
             <ul class="list-unstyled ps-2">
-              <router-link class="text-decoration-none " to="/document" ><li>Documents</li></router-link>
-              <router-link class="text-decoration-none" to="/training" ><li>Trainings</li></router-link>
+              <h5>Education</h5>
+              <router-link class="text-decoration-none " to="/education/documents" ><li>Documents</li></router-link>
+              <router-link class="text-decoration-none" to="/education/training" ><li>Trainings</li></router-link>
               <router-link class="text-decoration-none" to="/workshops" ><li>Workshops</li></router-link>
             </ul>
 
-            <span>Market</span>
+
             <ul class="list-unstyled ps-2">
+              <h5>Market</h5>
               <router-link class="text-decoration-none" to="/market" ><li>Markets</li></router-link>
               <router-link class="text-decoration-none" to="/agrovet" ><li>Agrovets</li></router-link>
             </ul>
-            <span>Support</span>
+
             <ul class="list-unstyled ps-2">
+              <h5>Support</h5>
               <router-link class="text-decoration-none" to="/transport" ><li>Transport</li></router-link>
               <router-link class="text-decoration-none" to="/irrigation" ><li>Irrigation</li></router-link>
               <router-link class="text-decoration-none" to="/trainees" ><li>Trainees</li></router-link>
             </ul>
-            <span>Settings</span>
+
             <ul class="list-unstyled ps-2">
+              <h5>Settings</h5>
               <router-link class="text-decoration-none" to="/registration" ><li>Registraton </li></router-link>
               <router-link class="text-decoration-none" to="/subscription" ><li>Subscription</li></router-link>
               <router-link class="text-decoration-none" to="/payment" ><li>Payments</li></router-link>
+            </ul>
+
+            <ul class="list-unstyled ps-2">
+              <h5>Media</h5>
+              <router-link class="text-decoration-none " to="/network" ><li>Networking</li></router-link>
             </ul>
 
           </div>
@@ -52,19 +56,25 @@ import {auth} from "@/compossables/auth.js";
 </template>
 
 <style scoped>
-
-
-ul {
-  pst-style: none;
-}
-li{
+.sidebar li{
   color: #333;
   font-size: 1.2rem;
 }
 router-link{
   background-color: yellow;
 }
-.sidebar span {
-  font-size: 25px; color: black
+.sidebar{
+  min-height: 80vh;
+  max-height: 90vh;
+  overflow: scroll;
+}
+.sidebar ul li{
+  padding: 0.2rem 1rem;
+
+  font-size: 20px;
+}
+.sidebar ul li:hover{
+  background-color: green;
+  color: white;
 }
 </style>
