@@ -37,7 +37,7 @@ onMounted(()=> {
        class="bi bi-arrow-90deg-left">
     </i>
 
-    <embed :src="storage + 'documents/' + document.document" type="application/pdf" class="img-fluid" width="100%" height="700px" />
+    <embed :src="storage + 'documents/' + document.document" type="application/pdf" class="img-fluid" style="width:100vw; height:100vh;" />
 
 </template>
 

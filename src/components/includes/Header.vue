@@ -21,7 +21,7 @@ onMounted(()=>{
 <template>
   <nav  style="background-color: green;height: 3rem;" class="navbar   sticky-top navbar-expand-lg">
     <div class="container-fluid">
-      <router-link class="navbar-brand text-white" to="/">LRC</router-link>
+      <router-link class="navbar-brand text-white" to="/">Telefarming</router-link>
       <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       </i>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">

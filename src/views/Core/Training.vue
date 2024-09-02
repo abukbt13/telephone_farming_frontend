@@ -39,16 +39,14 @@ onMounted(()=> {
         <div class="">
           <h2 class="">Title</h2>
           <p>{{schedule.title}}</p>
-          <h5 class="d-flex justify-content-between">Description<i class="bi bi-file-earmark-word"></i>
-            <i class="bi bi-file-earmark-pdf"></i>
-
+          <h5 class="d-flex justify-content-between">Description
           </h5>
           <p class="card-text">
             {{schedule.description}}
           </p>
         </div>
 
-        <router-link  :to="'/training/'+schedule.id" class="btn-link text-decoration-none">View</router-link>
+        <router-link  :to="'/training/'+schedule.id" class="btn-link text-decoration-none">More details</router-link>
 
       </div>
     </div>
@@ -61,7 +59,6 @@ onMounted(()=> {
   padding: 7px;
   background: slateblue;
   color: white;
-  width: 20%;
   text-align: center;
   text-transform: uppercase;
   display: block;

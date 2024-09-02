@@ -23,6 +23,7 @@ import Training from "@/views/Core/Training.vue";
 import EducationResource from "@/views/Core/EducationResource.vue";
 import lrc from "@/router/lrc.js";
 import ReadDocument from "@/views/Dashboard/ReadDocument.vue";
+import TrainingDetails from "@/views/Dashboard/TrainingDetails.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -60,6 +61,10 @@ const router = createRouter({
       {
       path: '/training',
       component: Training,
+    },
+      {
+      path: '/training/:id',
+      component: TrainingDetails,
     },
     {
       path: '/education',

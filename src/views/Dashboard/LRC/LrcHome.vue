@@ -10,7 +10,7 @@ import Header from "@/components/includes/Header.vue";
         <div class="col col-3 border-end">
           <div class="ms-4 ps-4 sidebar">
             <h1 class="">Dashboard</h1>
-
+             <router-link to="/lrc" class="text-decoration-none"> <h5 class="ps-2"><i class="bi bi-house"></i>Home</h5></router-link>
             <ul class="list-unstyled ps-2">
               <h5>Education</h5>
               <router-link class="text-decoration-none " to="/education/documents" ><li>Documents</li></router-link>

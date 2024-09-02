@@ -58,12 +58,13 @@ const scheduleEvent = async () => {
   <div class="d-flex">
     <div style="height: 13rem; width: 20rem" class="border p-4">
       <h2>Education resources</h2>
-      <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#uploaddocument">Upload document</button><router-link to="/education/upload" class="btn btn-primary">View</router-link>
+      <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#uploaddocument">Upload document</button>
+      <router-link to="/education/documents" class="btn btn-primary">View</router-link>
     </div>
     <div style="height: 13rem; width: 20rem"  class="border p-4">
       <h2>Trainings</h2>
       <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#training">Schedule Training</button>
-      <router-link to="/education/upload" class="btn btn-primary">View</router-link>
+      <router-link to="/education/training" class="btn btn-primary">View</router-link>
     </div>
   </div>
   <!-- Modal -->
@@ -110,7 +111,7 @@ const scheduleEvent = async () => {
               <label for="">
                 Title/About
               </label>
-              <input type="text" class="form-control"  v-model="title" placeholder="Nairobi">
+              <input type="text" class="form-control"  v-model="title" >
             </div>
             <div class="">
               <label for="">

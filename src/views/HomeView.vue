@@ -9,7 +9,7 @@ import Footer from '@/components/includes/Footer.vue'
     <div style="height: 400px;" class="row mx-3 intro my-2 py-2">
       <div class="col d-flex justify-content-center align-items-center col-md-6 col-lg-6">
         <div class="">
-          <h1>Latia Resource company</h1>
+          <h1>Telefarming,<br> Your caring PartNer</h1>
           <p>Your Loving Farming Partner revolutionizes agriculture with sustainable and innovative solutions, partnering with local farmers to nurture high-quality crops and foster a community of growth and prosperity.r</p>
           <router-link to="/auth/register" style="background-color: #3f1be0;font-size: 23px;color: white;" class="btn">
             Get started
