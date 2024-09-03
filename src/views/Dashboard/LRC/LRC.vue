@@ -86,7 +86,7 @@ const scheduleEvent = async () => {
               <label for="">
                 Description
               </label>
-              <input type="text" class="form-control" v-model="description">
+              <textarea class="form-control" rows="5" v-model="description"></textarea>
             </div>
 
             <div class="mt-2">
