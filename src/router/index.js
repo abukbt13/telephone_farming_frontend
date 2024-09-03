@@ -24,6 +24,8 @@ import EducationResource from "@/views/Core/EducationResource.vue";
 import lrc from "@/router/lrc.js";
 import ReadDocument from "@/views/Dashboard/ReadDocument.vue";
 import TrainingDetails from "@/views/Dashboard/TrainingDetails.vue";
+import YouTube from "@/views/Dashboard/YouTube.vue";
+import WatchVideo from "@/views/Dashboard/WatchVideo.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -73,6 +75,16 @@ const router = createRouter({
       {
       path: '/education/:id',
       component: ReadDocument,
+    }
+    ,
+      {
+      path: '/youtube',
+      component: YouTube,
+    }
+    ,
+      {
+      path: '/youtube/:id',
+      component: WatchVideo,
     },
 
     {

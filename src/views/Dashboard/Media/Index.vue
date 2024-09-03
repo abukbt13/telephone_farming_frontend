@@ -99,17 +99,17 @@ onMounted(()=> {
             <p class="ps-2 text-dark">  Posts</p>
         </router-link>
 
-        <router-link to="#" class="link text-decoration-none my-1 d-flex fs-3 d-block">
+        <router-link to="training" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i class="bi bi-calendar2-date-fill"></i>
           <p class="ps-2 text-dark"> Events </p>
         </router-link>
 
-         <router-link to="#" class="link text-decoration-none my-1 d-flex fs-3 d-block">
+         <router-link to="/education" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i class="bi bi-database"></i>
            <p class="ps-2 text-dark text-dark">Education resources</p>
         </router-link>
 
-         <router-link to="#" class="link text-decoration-none d-flex my-1 fs-3 d-block">
+         <router-link to="youtube" class="link text-decoration-none d-flex my-1 fs-3 d-block">
           <i class="bi bi-camera-video-fill"></i>
            <p class="ps-2 text-dark">Videos</p>
         </router-link>

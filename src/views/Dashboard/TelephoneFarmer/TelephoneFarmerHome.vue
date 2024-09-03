@@ -247,7 +247,31 @@ onMounted(()=>{
               </div>
               <div class="mb-3">
                 <label class="form-label">Location</label>
-                <input type="text" v-model="location" class="form-control" >
+                <select  v-model="location" class="form-control" name="">
+                  <!--                  <option disabled selected>&#45;&#45;Select type of farm&#45;&#45;</option>-->
+                  <option value="Elgeiyo Marakwet">Elgeiyo Marakwet</option>
+                  <option value="Uasin Ngishu">Uasin Ngishu</option>
+                  <option value="Nakuru">Nakuru</option>
+                  <option value="Baringo">Baringo</option>
+                  <option value="Kiambu">Kiambu</option>
+                  <option value="Meru">Meru</option>
+                  <option value="Isiolo">Isiolo</option>
+                  <option value="Mombasa">Mombasa</option>
+                  <option value="Makueni">Makueni</option>
+                  <option value="Kitui">Kitui</option>
+                  <option value="West Pokot">West Pokot</option>
+                  <option value="Elgeiyo Marakwet">Elgeiyo Marakwet</option>
+                  <option value="Uasin Ngishu">Uasin Ngishu</option>
+                  <option value="Nakuru">Nakuru</option>
+                  <option value="Baringo">Baringo</option>
+                  <option value="Kiambu">Kiambu</option>
+                  <option value="Meru">Meru</option>
+                  <option value="Isiolo">Isiolo</option>
+                  <option value="Mombasa">Mombasa</option>
+                  <option value="Makueni">Makueni</option>
+                  <option value="Kitui">Kitui</option>
+                  <option value="West Pokot">West Pokot</option>
+                </select>
               </div>
               <button type="submit"  class="btn btn-primary">Add Farm</button>
             </form>
