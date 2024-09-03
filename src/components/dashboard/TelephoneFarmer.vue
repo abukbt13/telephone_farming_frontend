@@ -10,7 +10,7 @@
     <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
     <router-link  class="text-decoration-none link" to="/education"><li  class="fs-3 list-unstyled border-bottom ps-3">Education Resource</li></router-link>
     <router-link  class="text-decoration-none link" to="/training"><li  class="fs-3 list-unstyled border-bottom ps-3">Training</li></router-link>
-    <router-link  class="text-decoration-none link" to="/videos"><li  class="fs-3 list-unstyled border-bottom ps-3">Videos</li></router-link>
+    <router-link  class="text-decoration-none link" to="/youtube"><li  class="fs-3 list-unstyled border-bottom ps-3">Videos</li></router-link>
  </div>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="offcanvasExampleLabel">
@@ -23,7 +23,7 @@
       <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
       <router-link  class="text-decoration-none link" to="/education"><li  class="fs-3 list-unstyled border-bottom ps-3">Education Resource</li></router-link>
       <router-link  class="text-decoration-none link" to="/training"><li  class="fs-3 list-unstyled border-bottom ps-3">Training</li></router-link>
-      <router-link  class="text-decoration-none link" to="/videos"><li  class="fs-3 list-unstyled border-bottom ps-3">Videos</li></router-link>
+      <router-link  class="text-decoration-none link" to="/youtube"><li  class="fs-3 list-unstyled border-bottom ps-3">Videos</li></router-link>
     </div>
   </div>
 
