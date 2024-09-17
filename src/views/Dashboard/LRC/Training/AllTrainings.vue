@@ -23,8 +23,8 @@ onMounted(() => {
 <template>
   <!--{{schedules}}-->
 <DocumentModal />
-
-  <table class="table table-bordered">
+  <div class="table-responsive">
+      <table class="table table-bordered">
     <thead>
     <tr>
       <td colspan="8" class="">
@@ -55,6 +55,7 @@ onMounted(() => {
     </tr>
     </tbody>
   </table>
+  </div>
 </template>
 
 <style scoped>

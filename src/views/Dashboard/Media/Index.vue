@@ -54,7 +54,7 @@ onMounted(()=> {
 
   <div class="navigation">
     <div  class="d-flex ps-3 justify-content-between align-items-center">
-      <section @click="showSection('group')" class="w-100 navigate p-2">Groupsgh<i class="bi bi-person-fill-add"></i>
+      <section @click="showSection('group')" class="w-100 navigate p-2">Groups<i class="bi bi-person-fill-add"></i>
       </section>
       <section @click="showSection('post')"  class="w-100 navigate p-2">Posts</section>
       <section @click="showSection('related')"  class="w-100 navigate p-2">Related</section>
@@ -69,13 +69,13 @@ onMounted(()=> {
     <div   class="group" id="group">
      <div class="sidebar">
        <div style=" position: relative; width: 100%; z-index: 10;" class="mt-2 d-flex">
-         <a class="text-decoration-none w-100 me-1  border text-center" href="/network">
+         <router-link class="text-decoration-none w-100 me-1  border text-center" to="/network">
            <div >CHATS </div>
-         </a>
-         <a style="background: green; color:white;" class="text-decoration-none nav-link  w-100  text-center" href="/media">MEDIA
+         </router-link>
+         <router-link style="background: green; color:white;" class="text-decoration-none nav-link  w-100  text-center" to="/media">MEDIA
            <div class="w-100">
            </div>
-         </a>
+         </router-link>
        </div>
       <div class="container ps-sm-5 ps-md-2 ps-lg-2">
         <h2 class="d-flex justify-content-between align-items-center">

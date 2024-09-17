@@ -17,6 +17,7 @@ const  getDocument = async () => {
   }
 }
 const downloadDocument = async (id) => {
+
   try {
     const response = await axios.get(base_url.value + 'v1/education/download/' + id, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
@@ -61,9 +62,9 @@ onMounted(()=> {
 <template>
 <Header />
   <i @click="goBack"
-     style="opacity: 1; z-index: 1; font-size: 24px; font-weight: 900; position: absolute; left: 1rem; top: 3.2rem;
-          text-shadow: 1px 1px 2px white, -1px -1px 2px black;color: white; background-color: grey; padding: 0px 0.5rem"
-     class="bi bi-arrow-90deg-left">
+     style="opacity: 1; z-index: 1; font-size: 44px; font-weight: 900; position: absolute; left: 1rem; top: 2rem;
+          color: #0d0dcf; background: transparent;"
+     class="bi bi-arrow-left">
   </i>
   <div class="m-2 document grid-container" >
     <div class="card grid-item" v-for="document in documents" :key="document">
@@ -72,8 +73,6 @@ onMounted(()=> {
         <h2 class="">Title</h2>
         <p>{{document.title}}</p>
         <h5 class="d-flex justify-content-between">Description<i class="bi bi-file-earmark-word"></i>
-          <i class="bi bi-file-earmark-pdf"></i>
-
         </h5>
         <p class="card-text pb-4">
           {{document.description}}
@@ -81,7 +80,7 @@ onMounted(()=> {
       </div>
         <div class="d-flex fixed-bottom position-absolute justify-content-evenly">
           <router-link  :to="'/education/'+document.id" class="btn-link bg-success text-decoration-none">Read</router-link>
-          <button @click="downloadDocument(document.id)"  class="btn-link text-decoration-none bg-primary">Download</button>
+          <button @click="downloadDocument(document.id)"  class="btn-link text-decoration-none bg-primary" onclick="returnConfirm('are you sure you need to download ')">Download</button>
         </div>
        </div>
     </div>
@@ -92,16 +91,17 @@ onMounted(()=> {
 .btn-link{
   text-decoration: none;
   padding: 7px;
+  border: none;
   color: white;
   text-align: center;
-  text-transform: uppercase;
   display: block;
   transition: 0.4s ease-in-out;
 }
 .btn-link:hover{
   color: white;
-  transform: translateX(-30%);
+  text-transform: uppercase;
 }
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr ;

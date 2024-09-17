@@ -31,9 +31,9 @@ onMounted(()=> {
 
   <Header />
   <i @click="goBack"
-     style="font-size: 24px; font-weight: 900; position: absolute; left: 1rem; top: 3rem;
-          text-shadow: 1px 1px 2px white, -1px -1px 2px black;color: white; background-color: grey; padding: 0px 0.5rem"
-     class="bi bi-arrow-90deg-left">
+     style="opacity: 1; z-index: 1; font-size: 44px; font-weight: 900; position: absolute; left: 1rem; top: 2rem;
+          color: #0d0dcf; background: transparent;"
+     class="bi bi-arrow-left">
   </i>
   <div class="m-4 p-2">
     <h2>Shedule details</h2>
