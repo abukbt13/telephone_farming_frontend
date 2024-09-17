@@ -52,11 +52,9 @@ onMounted(()=> {
 <div class="position-static">
   <div class="sticky-top"> <Header /></div>
 
-
-
   <div class="navigation">
     <div  class="d-flex ps-3 justify-content-between align-items-center">
-      <section @click="showSection('group')" class="w-100 navigate p-2">Groups<i class="bi bi-person-fill-add"></i>
+      <section @click="showSection('group')" class="w-100 navigate p-2">Groupsgh<i class="bi bi-person-fill-add"></i>
       </section>
       <section @click="showSection('post')"  class="w-100 navigate p-2">Posts</section>
       <section @click="showSection('related')"  class="w-100 navigate p-2">Related</section>

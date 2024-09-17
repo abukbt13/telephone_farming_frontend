@@ -3,6 +3,7 @@
 import axios from "axios";
 import {onMounted, ref} from "vue";
 import {auth} from "@/compossables/auth.js";
+import DocumentModal from "@/views/Dashboard/LRC/Modals/DocumentModal.vue";
 
 const { base_url,storage,authUser, authHeader, multipartHeader} = auth();
 
@@ -21,9 +22,16 @@ onMounted(() => {
 
 <template>
 <!--{{documents}}-->
-
+<DocumentModal />
   <table class="table table-bordered">
     <thead>
+    <tr>
+      <td colspan="8" class="">
+        <div class="d-flex justify-content-between">
+          <h2>All Documents </h2> <button class="btn btn-sm btn-secondary">Add Document</button>
+        </div>
+      </td>
+    </tr>
     <tr>
       <th>ID</th>
       <th>Title</th>
@@ -44,7 +52,8 @@ onMounted(() => {
       </td>
       <td>{{ new Date(document.created_at).toLocaleString() }}</td>
       <td>{{ new Date(document.updated_at).toLocaleString() }}</td>
-      <td><button class="btn btn-primary">View</button></td>
+      <td><router-link to="/education" class="btn btn-primary">View</router-link></td>
+      <td><button data-bs-toggle="modal" data-bs-target="#uploaddocument" class="btn btn-secondary">edit</button></td>
     </tr>
     </tbody>
   </table>

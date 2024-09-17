@@ -17,8 +17,7 @@ import Footer from '@/components/includes/Footer.vue'
           </router-link>
         </div>
       </div>
-      <div style="background-image: url('img.png'); background-size: cover;" class="col d-none d-lg-block d-lg-block">
-<!--        <img class="img-fluid" src="/pic.jpg" width="300"  height="300" alt="">-->
+      <div style="background-image: url('img.png'); background-size: cover;" class="col d-none d-md-block d-lg-block">
       </div>
     </div>
       
@@ -28,7 +27,7 @@ import Footer from '@/components/includes/Footer.vue'
         </h2>
         <div class="px-3">
 
-          <div class="d-flex justify-content-around my-4 farmers">
+          <div class="d-flex justify-content-around farmers">
             <div class="m-2">
               <div class="card" style="width: 18rem;">
                 <img src="/home3.jpeg" height="300" width="360"  class="card-img-top" alt="...">

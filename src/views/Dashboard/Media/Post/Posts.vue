@@ -71,9 +71,9 @@ onMounted(() => {
 
   <div>
 
-    <div  style="background: #dddddd;"  class="p-1 sticky-top  d-flex justify-content-between align-items-center">
-        <p class="modal-title" id="createpost">What is on your mind</p>
-        <button  data-bs-toggle="modal"  data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm">
+    <div  style="background: #dddddd;"  class="p-1 sticky-top ">
+
+        <button  data-bs-toggle="modal"  data-bs-target="#create_post" style="background:#0dcaf0;" class="btn btn-sm float-end">
           <i class="fa bi-plus" ></i>
           Create post
         </button>

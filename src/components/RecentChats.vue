@@ -34,12 +34,12 @@ onMounted(()=> {
     <div class="navigation">
 
       <div style=" position: relative; width: 100%; " class="mt-2 px-1 d-flex">
-        <a style="background: green;" class="text-decoration-none p-1 nav-link  w-100   border text-center" href="/network">
+        <router-link style="background: green;" class="text-decoration-none p-1 nav-link  w-100   border text-center" to="/network">
           <div >CHATS</div>
-        </a>
-        <a  class="text-decoration-none  w-100 p-1 border text-center" href="/media">
+        </router-link>
+        <router-link   class="text-decoration-none  w-100 p-1 border text-center" to="/media">
           MEDIA
-        </a>
+        </router-link>
       </div>
     </div>
 
@@ -52,10 +52,10 @@ onMounted(()=> {
 
       </div>
       <div v-if="chats.length>0" class="user" v-for="chat in chats" :key="chat">
-        <a :href="'/network/chats/'+chat.id" class="mymessages text-decoration-none">
+        <router-link :to="'/network/chats/'+chat.id" class="mymessages text-decoration-none">
           <h5 class="">{{ chat.name }}</h5>
           <p class="">{{ chat.phone }}</p>
-        </a>
+        </router-link>
       </div>
       <div class="" v-else>
         <p>You dont have any chats yet start now</p>

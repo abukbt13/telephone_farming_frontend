@@ -24,7 +24,7 @@ onMounted(()=>{
       <router-link class="navbar-brand text-white" to="/">Telefarming</router-link>
       <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       </i>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div style="" class="collapse  navbar-collapse bg-secondary z-3 justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item  text-primary">
             <router-link class="nav-link active  text-white text-uppercase" to="/">Home</router-link>
@@ -61,12 +61,7 @@ onMounted(()=>{
             <li  class="nav-item text-primary">
               <router-link class="nav-link active  text-white text-uppercase" to="/auth/login">Login</router-link>
             </li>
-
           </div>
-
-
-
-
         </ul>
       </div>
     </div>
