@@ -1,8 +1,14 @@
 <script setup>
 
+import YoutubeModal from "@/views/Dashboard/LRC/Modals/YoutubeModal.vue";
+import DocumentModal from "@/views/Dashboard/LRC/Modals/DocumentModal.vue";
+import ScheduleModal from "@/views/Dashboard/LRC/Modals/ScheduleModal.vue";
 </script>
 
 <template>
+  <YoutubeModal />
+  <DocumentModal />
+  <ScheduleModal />
   <div class="d-flex">
     <div style="height: 13rem; width: 20rem" class="border p-4">
       <h2>Education resources</h2>

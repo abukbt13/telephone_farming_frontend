@@ -50,7 +50,7 @@ onMounted(() => {
       <td>{{ new Date(video.created_at).toLocaleString() }}</td>
       <td>{{ new Date(video.updated_at).toLocaleString() }}</td>
       <td><button data-bs-toggle="modal" data-bs-target="#youtube" class="btn btn-secondary">Edit</button></td>
-      <td><router-link to="/youtube" class="btn btn-primary">View</router-link></td>
+      <td><router-link to="/youtube/videos" class="btn btn-primary">View</router-link></td>
     </tr>
     </tbody>
   </table>

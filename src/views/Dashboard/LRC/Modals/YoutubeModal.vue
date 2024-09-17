@@ -1,35 +1,43 @@
 <script setup>
 import axios from "axios";
 import Swal from "sweetalert2";
-import {ref} from "vue";
-import {auth} from "@/compossables/auth.js";
+import { ref } from "vue";
+import { auth } from "@/compossables/auth.js";
+const { base_url, authHeader } = auth();
 
-const {base_url,storage,authHeader} = auth()
-
-
-
-const title = ref('')
-const new_document = ref('');
-const description = ref('')
-const link = ref('')
-
+const title = ref('');
+const description = ref('');
+const link = ref('');
+const status = ref('');
 
 const saveYoutubeVideo = async () => {
   const formData = new FormData();
   formData.append('description', description.value);
   formData.append('title', title.value);
   formData.append('link', link.value);
-
-  const res = await axios.post(base_url.value + 'v1/youtube', formData, authHeader);
-  if (res) {
-    await  Swal.fire(
-        'Success!',
-        'Video saved Successfully',
-        'success'
-    )
+  function clearForm(){
+    description.value = ''
+    title.value = ''
+    link.value = ''
   }
-}
-
+  try {
+    const res = await axios.post(base_url.value + 'v1/youtube', formData, authHeader);
+    if (res.data.status === 'success') {
+      clearForm()
+      // Display the success message
+      await Swal.fire(
+          'Success!',
+          'Video saved Successfully',
+          'success'
+      );
+    } else {
+      status.value = res.data.message; // Handle failure case
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    status.value = "An error occurred. Please try again.";
+  }
+};
 </script>
 
 <template>
@@ -37,11 +45,13 @@ const saveYoutubeVideo = async () => {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Shedule Training</h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Training </h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <div class="" v-if="status">
+            <p class="p-2 bg-danger text-uppercase text-white">{{status}}</p>
+          </div>
           <form  @submit.prevent="saveYoutubeVideo" class="m-2">
-
             <div class="">
               <label for="">
                 Title
@@ -62,7 +72,7 @@ const saveYoutubeVideo = async () => {
             </div>
 
             <div class="mt-2">
-              <button data-bs-dismiss="modal"  type="submit" class="btn btn-primary mt-2 w-25 float-end">Schedule</button>
+              <button  type="submit" class="btn btn-primary mt-2 w-25 float-end">Schedule</button>
             </div>
           </form>
         </div>

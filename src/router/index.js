@@ -78,14 +78,14 @@ const router = createRouter({
     }
     ,
       {
-      path: '/youtube',
+      path: '/youtube/videos',
       component: YouTube,
+    },
+      {
+      path: '/youtube/videos/:id',
+      component: WatchVideo,
     }
     ,
-      {
-      path: '/youtube/:id',
-      component: WatchVideo,
-    },
 
     {
       path: '/network',
