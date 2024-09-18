@@ -29,7 +29,7 @@ onMounted(() => {
     <tr>
       <td colspan="8" class="">
         <div class="d-flex justify-content-between">
-          <h2>All youtube Videos </h2> <button class="btn btn-sm btn-secondary">Add Video</button>
+          <h2>All youtube Videos </h2> <button data-bs-toggle="modal" data-bs-target="#youtube" class="btn btn-sm btn-secondary">Add Video</button>
         </div>
       </td>
     </tr>

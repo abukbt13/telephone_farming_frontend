@@ -4,6 +4,7 @@ import axios from "axios";
 import {onMounted, ref} from "vue";
 import {auth} from "@/compossables/auth.js";
 import DocumentModal from "@/views/Dashboard/LRC/Modals/DocumentModal.vue";
+import ScheduleModal from "@/views/Dashboard/LRC/Modals/ScheduleModal.vue";
 
 const { base_url,storage,authUser, authHeader, multipartHeader} = auth();
 
@@ -22,14 +23,14 @@ onMounted(() => {
 
 <template>
   <!--{{schedules}}-->
-<DocumentModal />
+<ScheduleModal />
   <div class="table-responsive">
       <table class="table table-bordered">
     <thead>
     <tr>
       <td colspan="8" class="">
         <div class="d-flex justify-content-between">
-          <h2>All Training </h2> <button class="btn btn-sm btn-secondary">Schedule Training</button>
+          <h2>All Training </h2> <button data-bs-toggle="modal" data-bs-target="#training" class="btn btn-sm btn-secondary">Schedule Training</button>
         </div>
       </td>
     </tr>

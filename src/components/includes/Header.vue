@@ -19,18 +19,21 @@ onMounted(()=>{
 </script>
 
 <template>
-  <nav  style="background-color: green;height: 3rem;" class="navbar   sticky-top navbar-expand-lg">
+  <nav  style="height: 3rem;background: green;" class="navbar   sticky-top navbar-expand-lg">
     <div class="container-fluid">
-      <router-link class="navbar-brand text-white" to="/">Telefarming</router-link>
+      <router-link class="navbar-brand " to="/">Telefarming</router-link>
       <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       </i>
-      <div style="" class="collapse  navbar-collapse bg-secondary z-3 justify-content-end" id="navbarNav">
+      <div style="" class="collapse  navbar-collapse  z-3 justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item  text-primary">
             <router-link class="nav-link active  text-white text-uppercase" to="/">Home</router-link>
           </li>
           <li class="nav-item  text-primary">
             <router-link class="nav-link active  text-white text-uppercase" to="/media">Media</router-link>
+          </li>
+          <li class="nav-item  text-primary">
+            <router-link class="nav-link active  text-white text-uppercase" to="/youtube/videos">Youtube</router-link>
           </li>
           <li class="nav-item  text-primary">
             <router-link class="nav-link active  text-white text-uppercase" to="/about">About us</router-link>

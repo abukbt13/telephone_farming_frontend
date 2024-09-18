@@ -29,7 +29,7 @@ onMounted(() => {
      <tr>
        <td colspan="8" class="">
          <div class="d-flex justify-content-between">
-           <h2>All Documents </h2> <button class="btn btn-sm btn-secondary">Add Document</button>
+           <h2>All Documents </h2> <button data-bs-toggle="modal" data-bs-target="#uploaddocument"   class="btn btn-sm btn-secondary">Add Document</button>
          </div>
        </td>
      </tr>

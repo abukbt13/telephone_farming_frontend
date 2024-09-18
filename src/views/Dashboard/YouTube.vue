@@ -4,6 +4,7 @@ import axios from "axios";
 import {onMounted, ref} from "vue";
 import {auth} from "@/compossables/auth.js";
 import YoutubeModal from "@/views/Dashboard/LRC/Modals/YoutubeModal.vue";
+import Header from "@/components/includes/Header.vue";
 
 const { base_url,storage,authUser, authHeader, multipartHeader} = auth();
 
@@ -21,7 +22,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <h2 class="border p-2 text-center bg-primary text-uppercase">YouTube Videos Here</h2>
+  <Header />
+  <YoutubeModal />
+  <h2 class="border p-2 text-uppercase d-flex justify-content-around">YouTube Videos Here <button data-bs-toggle="modal" data-bs-target="#youtube" class="btn btn-success">Upload link</button></h2>
   <div  class="videos">
     <div  v-for="video in videos" :key="video" class="card mb-1">
       <h5 class="card-header">{{ video.title }}</h5>

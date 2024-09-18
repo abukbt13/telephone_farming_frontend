@@ -18,7 +18,7 @@ import Header from "@/components/includes/Header.vue";
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <div class="sidebar">
+        <div data-bs-dismiss="offcanvas" class="sidebar">
           <router-link to="/lrc" class="text-decoration-none"> <h5 class="fs-2"><i class="bi bi-house"></i>Home</h5></router-link>
           <h2>Education <i class="bi bi-mortarboard"></i>
           </h2>
@@ -29,12 +29,10 @@ import Header from "@/components/includes/Header.vue";
             <div class=""><i style="color:red; font-size: 30px"  class="bi bi-calendar-check"></i>
               Trainings</div>
           </router-link>
-          <router-link class="text-decoration-none fs-4 text-dark" to="/lrc/youtube">
+          <router-link  class="text-decoration-none fs-4 text-dark" to="/lrc/youtube">
             <div class=""><i style="color:red; font-size: 30px"  class="bi bi-youtube"></i>
               Videos</div>
           </router-link>
-
-
 
           <ul class="list-unstyled ps-2">
             <h5>Market</h5>

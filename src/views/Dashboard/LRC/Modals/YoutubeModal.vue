@@ -9,12 +9,14 @@ const title = ref('');
 const description = ref('');
 const link = ref('');
 const status = ref('');
+const category = ref('others');
 
 const saveYoutubeVideo = async () => {
   const formData = new FormData();
   formData.append('description', description.value);
   formData.append('title', title.value);
   formData.append('link', link.value);
+  formData.append('category', category.value);
   function clearForm(){
     description.value = ''
     title.value = ''
@@ -45,7 +47,7 @@ const saveYoutubeVideo = async () => {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Schedule Training </h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Upload YouTube Link </h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="" v-if="status">
@@ -70,9 +72,23 @@ const saveYoutubeVideo = async () => {
               </label>
               <input type="text" class="form-control"  v-model="link" >
             </div>
+            <div class="">
+              <label for="">
+                Category
+              </label>
+              <select  v-model="category" class="form-control">
+              <option value="others">Others</option>
+                <option value="farming">Farming</option>
+                <option value="motivation">motivation</option>
+                <option value="website">website</option>
+                <option value="Entertaintmen">Entertaintmen</option>
+                <option value="Sports">Sports</option>
+                <option value="Religion">Religion</option>
+              </select>
+            </div>
 
             <div class="mt-2">
-              <button  type="submit" class="btn btn-primary mt-2 w-25 float-end">Schedule</button>
+              <button  type="submit" class="btn btn-primary mt-2 w-25 float-end">Save Link</button>
             </div>
           </form>
         </div>
