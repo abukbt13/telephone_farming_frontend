@@ -86,10 +86,10 @@ onMounted(()=> {
           {{ currentUser.name }}
         </h2>
 
-        <a href='/media/groups' class="link text-decoration-none d-flex fs-3 d-block">
+        <router-link to='/media/groups' class="link text-decoration-none d-flex fs-3 d-block">
           <i class="bi bi-people-fill"></i>
           <p class="ps-3  text-dark">Groups </p>
-        </a>
+        </router-link>
 
 
         <router-link to="/media/me/posts" class="link text-decoration-none my-1 d-flex fs-3 d-block">
@@ -97,7 +97,7 @@ onMounted(()=> {
             <p class="ps-2 text-dark">  Posts</p>
         </router-link>
 
-        <router-link to="training" class="link text-decoration-none my-1 d-flex fs-3 d-block">
+        <router-link to="/training" class="link text-decoration-none my-1 d-flex fs-3 d-block">
           <i class="bi bi-calendar2-date-fill"></i>
           <p class="ps-2 text-dark"> Events </p>
         </router-link>
@@ -107,7 +107,7 @@ onMounted(()=> {
            <p class="ps-2 text-dark text-dark">Education resources</p>
         </router-link>
 
-         <router-link to="youtube" class="link text-decoration-none d-flex my-1 fs-3 d-block">
+         <router-link to="youtube/videos" class="link text-decoration-none d-flex my-1 fs-3 d-block">
           <i class="bi bi-camera-video-fill"></i>
            <p class="ps-2 text-dark">Videos</p>
         </router-link>
