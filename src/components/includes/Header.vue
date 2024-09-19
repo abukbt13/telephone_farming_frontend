@@ -19,7 +19,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <nav  style="height: 3rem;background: green;" class="navbar   sticky-top navbar-expand-lg">
+  <nav  style="height: 3rem;" class="navbar  bg-secondary  sticky-top navbar-expand-lg">
     <div class="container-fluid">
       <router-link class="navbar-brand " to="/">Telefarming</router-link>
       <i style="font-size: 25px" class="d-block  d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
