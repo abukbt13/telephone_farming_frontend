@@ -3,10 +3,14 @@
 import YoutubeModal from "@/views/Dashboard/LRC/Modals/YoutubeModal.vue";
 import DocumentModal from "@/views/Dashboard/LRC/Modals/DocumentModal.vue";
 import ScheduleModal from "@/views/Dashboard/LRC/Modals/ScheduleModal.vue";
+
+function feedback(e){
+  alert(e)
+}
 </script>
 
 <template>
-  <YoutubeModal />
+  <YoutubeModal @response="feedback"/>
   <DocumentModal />
   <ScheduleModal />
   <div class="d-flex">

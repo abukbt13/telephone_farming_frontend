@@ -2,8 +2,8 @@
 import axios from "axios";
 import { onMounted, ref, computed } from "vue";
 import { auth } from "@/compossables/auth.js";
-import {useRoute} from "vue-router";
-
+import {useRoute, useRouter} from "vue-router";
+const router = useRouter()
 const {base_url, authHeader} = auth();
 const route = useRoute();
 const id = route.params.id;
@@ -27,6 +27,19 @@ const videoId = computed(() => {
   return null;
 });
 
+function copyLink(link) {
+  navigator.clipboard.writeText(link)
+      .then(() => {
+        alert('Link copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+}
+function  goBack() {
+  router.back();
+}
+
 // Fetch video data on component mount
 onMounted(() => {
   getYoutubeVideos();
@@ -36,9 +49,26 @@ onMounted(() => {
 
 <template>
   <div v-if="video">
-    <h2>{{ video.title }}</h2>
-    <p v-if="video.description">{{ video.description }}</p>
-    <p v-else>{{ video.title }}</p>
+    <div  class="m-2 d-block d-md-flex align-items-center gap-4">
+      <div class="">
+        <button  @click="goBack" class="btn btn-primary"><i class="bi bi-arrow-left"></i>
+          Go Back</button>
+      </div>
+      <div class="">
+        <h5>Title: <span class="text-primary" > <br>{{ video.title }}</span></h5>
+        <p v-if="video.description">Description: <br> <span class="text-primary">{{ video.description }}</span></p>
+        <p v-else><span class="text-primary">{{ video.title }}</span></p>
+      </div>
+      <div class="d-flex">
+       <p>
+         {{video.link}}
+       </p>
+        <p @click="copyLink(video.link)" class="ms-3">
+          <i class="bi bi-copy"></i>
+        copy link
+        </p>
+      </div>
+    </div>
 
     <!-- Embed YouTube video -->
     <iframe style="width: 100vw; height: 100vh;" v-if="videoId"

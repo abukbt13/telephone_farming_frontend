@@ -14,7 +14,9 @@ const getYoutubeVideos = async () => {
     videos.value = res.data.videos;
   }
 };
-
+function feedback(e){
+  alert(e)
+}
 onMounted(() => {
   getYoutubeVideos()
 })
@@ -22,7 +24,7 @@ onMounted(() => {
 
 <template>
 <!--  {{videos}}-->
-<YoutubeModal />
+  <YoutubeModal @response="feedback"/>
   <div class="table-responsive">
     <table class="table table-bordered">
     <thead>

@@ -22,9 +22,9 @@ onMounted(()=>{
   <nav  style="height: 3rem;background: green;" class="navbar   sticky-top navbar-expand-lg">
     <div class="container-fluid">
       <router-link class="navbar-brand " to="/">Telefarming</router-link>
-      <i style="font-size: 25px" class="d-block d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i style="font-size: 25px" class="d-block bg d-md-block d-lg-none bi-list"  data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       </i>
-      <div style="" class="collapse  navbar-collapse  z-3 justify-content-end" id="navbarNav">
+      <div style="background: green;" class="collapse  navbar-collapse  z-3 justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item  text-primary">
             <router-link class="nav-link active  text-white text-uppercase" to="/">Home</router-link>
@@ -72,7 +72,7 @@ onMounted(()=>{
 </template>
 
 <style scoped>
-
+li{padding-left: 1rem}
 li:hover{
   background: rgb(146, 159, 222);
   color: white;

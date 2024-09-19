@@ -26,6 +26,8 @@ import ReadDocument from "@/views/Dashboard/ReadDocument.vue";
 import TrainingDetails from "@/views/Dashboard/TrainingDetails.vue";
 import YouTube from "@/views/Dashboard/YouTube.vue";
 import WatchVideo from "@/views/Dashboard/WatchVideo.vue";
+import Slots from "@/views/Slots.vue";
+import ChildUseSlot from "@/views/ChildUseSlot.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -84,8 +86,15 @@ const router = createRouter({
       {
       path: '/youtube/videos/:id',
       component: WatchVideo,
-    }
-    ,
+    },
+      {
+      path: '/slots',
+      component: Slots,
+    },
+      {
+      path: '/childslots',
+      component: ChildUseSlot,
+    },
 
     {
       path: '/network',

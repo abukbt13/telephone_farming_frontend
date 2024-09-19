@@ -4,14 +4,44 @@ import Swal from "sweetalert2";
 import { ref } from "vue";
 import { auth } from "@/compossables/auth.js";
 const { base_url, authHeader } = auth();
-
+const emit = defineEmits(['response']);
 const title = ref('');
 const description = ref('');
 const link = ref('');
 const status = ref('');
 const category = ref('others');
 
+const isTitleValid = (title) => {
+  const words = title.trim().split(/\s+/);
+  return words.length <= 5;
+};
+
+const isDescriptionValid = (description) => {
+  const words = description.trim().split(/\s+/);
+  return words.length <= 30;
+};
+
+const isValidYoutubeLink = (link) => {
+  // Regex to check if the link is a valid YouTube URL
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(?:watch\?v=|embed\/|v\/|playlist\?list=)|youtu\.be\/)[\w-]{11}$/;
+  return youtubeRegex.test(link);
+};
+
 const saveYoutubeVideo = async () => {
+  if (!isTitleValid(title.value)) {
+    emit('response', 'Title should not be longer than 5 words.');
+    return;
+  }
+
+  if (!isDescriptionValid(description.value)) {
+    emit('response', 'Description should not be greater than 30 words.');
+    return;
+  }
+
+  if (!isValidYoutubeLink(link.value)) {
+    emit('response', 'Please provide a valid YouTube link.');
+    return;
+  }
   const formData = new FormData();
   formData.append('description', description.value);
   formData.append('title', title.value);

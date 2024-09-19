@@ -15,7 +15,9 @@ const getYoutubeVideos = async () => {
     videos.value = res.data.videos;
   }
 };
-
+function feedback(e){
+  alert(e)
+}
 onMounted(() => {
   getYoutubeVideos()
 })
@@ -23,46 +25,46 @@ onMounted(() => {
 
 <template>
   <Header />
-  <YoutubeModal />
+  <YoutubeModal @response="feedback"/>
   <h2 class="border p-2 text-uppercase d-flex justify-content-around">YouTube Videos Here <button data-bs-toggle="modal" data-bs-target="#youtube" class="btn btn-success">Upload link</button></h2>
   <div  class="videos">
-    <div  v-for="video in videos" :key="video" class="card mb-1">
-      <h5 class="card-header">{{ video.title }}</h5>
-      <div class="card-body">
-        <p v-if="video.description !== ''">
+    <div style="border: 2px solid red;padding:8px;" v-for="video in videos" :key="video" class="mb-1 video">
+      <h5  class="text-center">Title</h5>
+      <p class="text-center">{{ video.title }}</p>
+        <h5 class="text-center">Description</h5>
+        <p v-if="video.description !== ''" class="text-center">
         {{ video.description }}
       </p>
-        <p v-else>
+        <p v-else class="text-center">
           {{ video.title }}
         </p>
-        <router-link :to="'/youtube/videos/' + video.id" class="btn btn-primary">WaTch</router-link>
+        <router-link style="background: green;color: white;" :to="'/youtube/videos/' + video.id" class="btn w-100">WaTch</router-link>
       </div>
-    </div>
   </div>
 </template>
 
 <style scoped>
 .videos{
+  margin: 1rem;
   display: flex;
-  justify-content: space-around;
+  gap: 2rem;
+  justify-content: center;
   flex-wrap: wrap;
 }
-.videos .card{
-  width: 24%;
+.video{
+  max-width: 24%;
+  min-width: 17%;
 }
-@media screen and (min-width: 800px) and (max-width: 1000px) {
-  .videos .card {
-    width: 32%;
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+  .video{
+    max-width: 40%;
+    min-width: 40%;
   }
 }
-@media screen and (min-width: 500px) and (max-width: 800px) {
-  .videos .card {
-    width: 49%;
-  }
-}
-@media screen and (min-width: 1px) and (max-width: 500px) {
-  .videos .card {
-    width: 95%;
+@media screen and (min-width: 200px) and (max-width: 500px) {
+  .video{
+    max-width: 100%;
+    min-width: 100%;
   }
 }
 </style>
