@@ -5,7 +5,7 @@ import Footer from '@/components/includes/Footer.vue'
 
 <template>
   <Header />
-  <div class="main">
+  <div class="">
     <div style="height: 400px;" class="row mx-3 intro my-2 py-2">
       <div class="col d-flex justify-content-center align-items-center col-md-6 col-lg-6">
         <div class="">
@@ -20,16 +20,15 @@ import Footer from '@/components/includes/Footer.vue'
       <div style="background-image: url('img.png'); background-size: cover;" class="col d-none d-md-block d-lg-block">
       </div>
     </div>
-      
+
       <div class="">
         <h2 class="text-center text-primary">
           What Farmers say about us
         </h2>
         <div class="px-3">
-
-          <div class="d-flex justify-content-around farmers">
-            <div class="m-2">
-              <div class="card" style="width: 18rem;">
+          <div  class="row">
+            <div class="mt-2 col-sm-12 col-md-4 col-lg-4">
+              <div class="card" style="">
                 <img src="/home3.jpeg" height="300" width="360"  class="card-img-top" alt="...">
                 <div class="card-body">
                   <p class="card-text">
@@ -39,8 +38,8 @@ import Footer from '@/components/includes/Footer.vue'
                 </div>
               </div>
             </div>
-            <div class="m-2">
-            <div class="card" style="width: 18rem;">
+            <div class="mt-2 col-sm-12 col-md-4 col-lg-4">
+            <div class="card" style="">
               <img src="/cabagefarm.jpeg" height="300" width="360"  class="card-img-top" alt="...">
               <div class="card-body">
                 <h3>Immaculate Daisy</h3>
@@ -49,8 +48,9 @@ import Footer from '@/components/includes/Footer.vue'
                   I couldn't be more satisfied with the results!                </p>
               </div>
             </div>
-          </div>  <div class="m-2">
-            <div class="card" style="width: 18rem;">
+          </div>
+            <div class="mt-2 col-sm-12 col-md-4 col-lg-4">
+            <div class="card">
               <img src="/img_4.png" height="300" width="360"  class="card-img-top" alt="...">
               <div class="card-body">
                 <h3>Freemano Kibet</h3>
@@ -71,10 +71,5 @@ import Footer from '@/components/includes/Footer.vue'
 </template>
 
 <style scoped>
-.farmers{
-  min-width: 100vw;
-  max-width: 100vw;
-  overflow: scroll;
 
-}
 </style>
