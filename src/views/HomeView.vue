@@ -20,7 +20,6 @@ import Footer from '@/components/includes/Footer.vue'
       <div style="background-image: url('img.png'); background-size: cover;" class="col d-none d-md-block d-lg-block">
       </div>
     </div>
-
       <div class="">
         <h2 class="text-center text-primary">
           What Farmers say about us

@@ -17,6 +17,7 @@ const getYoutubeVideos = async () => {
 };
 function feedback(e){
   alert(e)
+  getYoutubeVideos()
 }
 onMounted(() => {
   getYoutubeVideos()

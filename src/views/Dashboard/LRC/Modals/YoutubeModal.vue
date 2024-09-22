@@ -106,15 +106,34 @@ const saveYoutubeVideo = async () => {
               <label for="">
                 Category
               </label>
-              <select  v-model="category" class="form-control">
-              <option value="others">Others</option>
-                <option value="farming">Farming</option>
-                <option value="motivation">motivation</option>
-                <option value="website">website</option>
-                <option value="Entertaintmen">Entertaintmen</option>
-                <option value="Sports">Sports</option>
-                <option value="Religion">Religion</option>
+              <select v-model="category" class="form-control">
+                <option value="others">Others</option>
+                <option value="vegetable_farming">Vegetable farming</option>
+                <option value="poultry_farming">Poultry</option>
+                <option value="Cash_crop_farming">Cash Crop farming</option>
+                <option value="Fish_farming">Fish Farming</option>
+                <option value="motivation">Motivation</option>
+                <option value="web_development">Web Development</option>
+                <option value="construction">Construction</option>
+                <option value="news">News</option>
+                <option value="innovations">Innovations</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="sports">Sports</option>
+                <option value="religion">Religion</option>
+                <option value="technology">Technology</option>
+                <option value="health_wellness">Health & Wellness</option>
+                <option value="education">Education</option>
+                <option value="travel_adventure">Travel & Adventure</option>
+                <option value="finance_business">Finance & Business</option>
+                <option value="diy_crafts">DIY & Crafts</option>
+                <option value="gaming">Gaming</option>
+                <option value="food_cooking">Food & Cooking</option>
+                <option value="automotive">Automotive</option>
+                <option value="science_nature">Science & Nature</option>
+                <option value="fashion_beauty">Fashion & Beauty</option>
+                <option value="lifestyle_vlogs">Lifestyle & Vlogs</option>
               </select>
+
             </div>
 
             <div class="mt-2">
