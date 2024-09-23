@@ -24,7 +24,8 @@ import EducationResource from "@/views/Core/EducationResource.vue";
 import lrc from "@/router/lrc.js";
 import ReadDocument from "@/views/Dashboard/ReadDocument.vue";
 import TrainingDetails from "@/views/Dashboard/TrainingDetails.vue";
-import YouTube from "@/views/Dashboard/YouTube.vue";
+import YouTube from "@/views/Dashboard/Youtube/YouTube.vue";
+import Me from "@/views/Dashboard/Youtube/Me.vue";
 import WatchVideo from "@/views/Dashboard/WatchVideo.vue";
 import Slots from "@/views/Slots.vue";
 import ChildUseSlot from "@/views/ChildUseSlot.vue";
@@ -86,6 +87,10 @@ const router = createRouter({
       {
       path: '/youtube/videos/:id',
       component: WatchVideo,
+    },
+      {
+      path: '/youtube/me',
+      component: Me,
     },
       {
       path: '/slots',
