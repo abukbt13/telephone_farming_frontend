@@ -10,7 +10,16 @@ const description = ref('');
 const link = ref('');
 const status = ref('');
 const category = ref('');
-
+const id = ref('3');
+const props = defineProps(['id']);
+if (!props.id) {
+  id.value = '';
+  // alert(id);
+} else {
+  id.value = props.id;
+  // alert(id.value);
+  // Do something with props.id if needed
+}
 const isTitleValid = (title) => {
   const words = title.trim().split(/\s+/);
   return words.length <= 5;
@@ -46,6 +55,7 @@ const saveYoutubeVideo = async () => {
   formData.append('description', description.value);
   formData.append('title', title.value);
   formData.append('link', link.value);
+  formData.append('user_id', id.value);
   formData.append('category', category.value);
   function clearForm(){
     description.value = ''
@@ -77,7 +87,7 @@ const saveYoutubeVideo = async () => {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Upload YouTube Link </h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Upload YouTube Link {{props.id}} </h1>            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="" v-if="status">
