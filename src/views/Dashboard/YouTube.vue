@@ -6,6 +6,7 @@ import {auth} from "@/compossables/auth.js";
 import YoutubeModal from "@/views/Dashboard/LRC/Modals/YoutubeModal.vue";
 import Header from "@/components/includes/Header.vue";
 
+const search = ref('')
 const { base_url,storage,authUser, authHeader, multipartHeader} = auth();
 
 const videos = ref([])
@@ -27,7 +28,22 @@ onMounted(() => {
 <template>
   <Header />
   <YoutubeModal @response="feedback"/>
-  <h2 class="border p-2 text-uppercase d-flex justify-content-around">YouTube Videos Here <button data-bs-toggle="modal" data-bs-target="#youtube" class="btn btn-success">Upload link</button></h2>
+  <div style="background:green;" class="m-2 p-2 d-md-flex  d-lg-flex justify-content-around align-items-center">
+   <div class="d-flex justify-content-between align-items-center">
+     <h5>
+       YouTube Videos
+     </h5>
+     <span class="input-group ms-3 w-auto">
+          <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+          <input type="text" v-model="search" class="form-control" placeholder="search ..." aria-label="Username" aria-describedby="basic-addon1">
+          <span class="input-group-text" id="basic-addon1"><i class="bi bi-x-lg"></i></span>
+      </span>
+   </div>
+    <div class="d-flex justify-content-between w-auto">
+      <button  data-bs-toggle="modal" data-bs-target="#youtube"  class="btn mx-4 btn-primary">Click to upload Link</button>
+      <router-link to="/me" class="btn mx-4 btn-success">My Videos</router-link>
+    </div>
+  </div>
   <div  class="videos">
     <div style="border: 2px solid red;padding:8px;" v-for="video in videos" :key="video" class="mb-1 video">
       <h5  class="text-center">Title</h5>

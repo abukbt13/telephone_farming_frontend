@@ -9,7 +9,7 @@ const title = ref('');
 const description = ref('');
 const link = ref('');
 const status = ref('');
-const category = ref('others');
+const category = ref('');
 
 const isTitleValid = (title) => {
   const words = title.trim().split(/\s+/);
@@ -106,34 +106,17 @@ const saveYoutubeVideo = async () => {
               <label for="">
                 Category
               </label>
-              <select v-model="category" class="form-control">
+              <select required v-model="category" class="form-control">
+                <option disabled="" selected="" value="">Select an category</option>
                 <option value="others">Others</option>
+                <option value="poultry_farming">Poultry farming</option>
                 <option value="vegetable_farming">Vegetable farming</option>
-                <option value="poultry_farming">Poultry</option>
-                <option value="Cash_crop_farming">Cash Crop farming</option>
-                <option value="Fish_farming">Fish Farming</option>
-                <option value="motivation">Motivation</option>
-                <option value="web_development">Web Development</option>
-                <option value="construction">Construction</option>
-                <option value="news">News</option>
-                <option value="innovations">Innovations</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="sports">Sports</option>
-                <option value="religion">Religion</option>
-                <option value="technology">Technology</option>
-                <option value="health_wellness">Health & Wellness</option>
-                <option value="education">Education</option>
-                <option value="travel_adventure">Travel & Adventure</option>
-                <option value="finance_business">Finance & Business</option>
-                <option value="diy_crafts">DIY & Crafts</option>
-                <option value="gaming">Gaming</option>
-                <option value="food_cooking">Food & Cooking</option>
-                <option value="automotive">Automotive</option>
-                <option value="science_nature">Science & Nature</option>
-                <option value="fashion_beauty">Fashion & Beauty</option>
-                <option value="lifestyle_vlogs">Lifestyle & Vlogs</option>
+                <option value="horticulture">Horticulture</option>
+                <option value="bee_keeping">Bee keeping</option>
+                <option value="fish_farming">Fish farming</option>
+                <option value="livestock_farming">Livestock farming (Cattle, sheep, goat)</option>
+                <option value="rabbit_keeping">Rabbit keeping</option>
               </select>
-
             </div>
 
             <div class="mt-2">
