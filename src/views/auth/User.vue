@@ -60,23 +60,31 @@ onBeforeMount(()=> {
 
   <div class="d-flex justify-content-center align-items-center">
 
-    <div class="profile border m-2">
-      <div class="d-flex justify-content-center pt-4">
+    <div class=" border m-2">
+
+     <h2 class="text-center">My profile</h2>
+      <div class="border p-3">
+        <h3>Full Name</h3>
+        <p>{{currentUser.name}}</p>
+      </div>
+      <div class="border p-3">
+      <h3>Phone</h3>
+      <p>{{currentUser.phone}}</p>
+
+      <div class="d-flex flex-column justify-content-center pt-4">
+        <h3 for="">Profile picture</h3> <br>
         <img v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" height="300" width="300" alt="">
         <img v-else src="/user.png" height="100" width="100" alt="">
 
       </div>
-      <div class="d-flex justify-content-center my-2"><button data-bs-toggle="modal" @click="PopulateUser(currentUser)" data-bs-target="#user" class="btn btn-primary">Edit Profile</button></div>
-      <div class="border p-3">
-        <h2>Full Name</h2>
-        <p>{{currentUser.name}}</p>
-      </div> <div class="border p-3">
-      <h2>Phone</h2>
-      <p>{{currentUser.phone}}</p>
-    </div><div class="border">
-      <button @click="LogOut()" class="btn btn-danger float-end my-2 w-100">Logout</button>
 
-    </div>
+        <div class="d-flex justify-content-center my-2">
+          <button data-bs-toggle="modal" @click="PopulateUser(currentUser)" data-bs-target="#user" class="btn btn-primary">Edit Profile</button>
+         <button @click="LogOut()" class="btn btn-danger mx-2">Logout</button>
+        </div>
+      </div>
+
+
     </div>
   </div>
 

@@ -24,7 +24,7 @@ const getYoutubeVideos = async () => {
   }
 };
 function feedback(e){
-  alert(e)
+  // alert(e)
   getYoutubeVideos()
 }
 const SearchQuery = async () =>{
@@ -68,6 +68,10 @@ onMounted(() => {
     </div>
   </div>
   <div  class="home">
+    <div v-if="searched_videos" class="d-flex flex-column align-items-center justify-content-around">
+      <p>Clear search <button @click="clearSearch" class="btn btn-close"></button></p>
+      <p>Your searches</p>
+    </div>
     <div v-if="searched_videos" class="videos">
 <!--      <div  class="">-->
         <div  style="border: 2px solid red;padding:8px;" v-for="video in searched_videos" :key="video" class="mb-1 video">

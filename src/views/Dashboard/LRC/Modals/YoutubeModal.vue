@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { ref } from "vue";
 import { auth } from "@/compossables/auth.js";
+import {Modal} from "bootstrap";
 const { base_url, authHeader } = auth();
 const emit = defineEmits(['response']);
 const title = ref('');
@@ -10,7 +11,7 @@ const description = ref('');
 const link = ref('');
 const status = ref('');
 const category = ref('');
-const id = ref('3');
+const id = ref('');
 const props = defineProps(['id']);
 if (!props.id) {
   id.value = '';
@@ -55,7 +56,6 @@ const saveYoutubeVideo = async () => {
   formData.append('description', description.value);
   formData.append('title', title.value);
   formData.append('link', link.value);
-  formData.append('user_id', id.value);
   formData.append('category', category.value);
   function clearForm(){
     description.value = ''
@@ -72,12 +72,17 @@ const saveYoutubeVideo = async () => {
           'Video saved Successfully',
           'success'
       );
+      const modalElement = document.getElementById('youtube');
+      const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      bootstrapModal.hide();
+      emit('response', 'Saved successfully.');
     } else {
-      status.value = res.data.message; // Handle failure case
+
+      status.value = res.errors; // Handle failure case
     }
   } catch (error) {
     console.error("Error:", error);
-    status.value = "An error occurred. Please try again.";
+    status.value = "Are you logged in? ,,,Login to proceed.";
   }
 };
 </script>
