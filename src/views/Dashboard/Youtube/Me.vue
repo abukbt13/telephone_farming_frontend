@@ -28,12 +28,21 @@ const isDescriptionValid = (description) => {
   return words.length <= 30;
 };
 
-const isValidYoutubeLink = (link) => {
-  // Regex to check if the link is a valid YouTube URL
-  const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/(?:watch\?v=|embed\/|v\/|playlist\?list=)|youtu\.be\/)[\w-]{11}$/;
-  return youtubeRegex.test(link);
-};
+const extractYoutubeLink = (link) => {
+  link = link.trim(); // Trim spaces from the link
 
+  // Regex to capture YouTube video ID from different types of URLs
+  const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|playlist\?list=)|youtu\.be\/)([\w-]{11})/;
+
+  const match = link.match(youtubeRegex); // Match the link against the regex
+
+  if (match && match[1]) {
+    const videoId = match[1]; // Extract the video ID
+    return `https://www.youtube.com/watch?v=${videoId}`; // Return the valid YouTube link
+  } else {
+    return null; // Return null if no valid video ID is found
+  }
+};
 const saveYoutubeVideo = async () => {
 
   if (!isTitleValid(title.value)) {
@@ -46,8 +55,9 @@ const saveYoutubeVideo = async () => {
     return;
   }
 
-  if (!isValidYoutubeLink(link.value)) {
-    alert('Please provide a valid YouTube link.')
+  const validLink = extractYoutubeLink(link.value);
+  if (!validLink) {
+    emit('response', 'Please provide a valid YouTube link.');
     return;
   }
   const formData = new FormData();
@@ -219,7 +229,7 @@ onMounted(() => {
                 <option value="bee_keeping">Bee keeping</option>
                 <option value="fish_farming">Fish farming</option>
                 <option value="livestock_farming">Livestock farming (Cattle, sheep, goat)</option>
-                <option value="rabbit_keeping">Rabbit keeping</option>
+                <option value="mixed_farming">Mixed farming</option>
               </select>
             </div>
 
