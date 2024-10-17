@@ -6,6 +6,7 @@ import axios from "axios";
 import {auth} from "@/compossables/auth.js";
 import {onMounted, ref} from "vue";
 import {useInactivityLogout} from "@/compossables/useInactivityLogout.js";
+import {Modal} from "bootstrap";
 
 const {resetTimer} = useInactivityLogout
 const {base_url,authHeader} = auth()
@@ -44,7 +45,11 @@ const Addfarm = async () => {
           'Farm created Successfully',
           'success'
       )
-      await getFarms()
+      const modalElement = document.getElementById('addfarm');
+      const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      bootstrapModal.hide();
+
+       getFarms()
     }
     else if (res.data.status === 'failed') {
       await Swal.fire(
@@ -52,7 +57,10 @@ const Addfarm = async () => {
           'something went wrong try again',
           'error'
       );
-      await getFarms()
+      const modalElement = document.getElementById('addfarm');
+      const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      bootstrapModal.hide();
+       getFarms()
     }
     else {
       status.value='network error'
@@ -98,6 +106,9 @@ const createManager = async () => {
           'Farm Manager created Successfully',
           'success'
       )
+      const modalElement = document.getElementById('addFarmManager');
+      const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      bootstrapModal.hide();
       return  getFarmManagers()
     }
   }
@@ -110,6 +121,9 @@ const createManager = async () => {
           'Farm Manager updated Successfully',
           'success'
       )
+      const modalElement = document.getElementById('addFarmManager');
+      const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+      bootstrapModal.hide();
       return  getFarmManagers()
     }
   }
@@ -145,6 +159,10 @@ const AssignManagerToFarm = async () => {
         'Farm Manager assigned Successfully',
         'success'
     )
+    const modalElement = document.getElementById('AssignManager');
+    const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+    bootstrapModal.hide();
+
     await getFarmManagers()
   }
   else if(res.data.status === 'failed'){
@@ -153,6 +171,9 @@ const AssignManagerToFarm = async () => {
         'Manager already assigned',
         'error'
     );
+    const modalElement = document.getElementById('AssignManager');
+    const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+    bootstrapModal.hide();
   }
 else {
     await Swal.fire(
@@ -186,7 +207,8 @@ onMounted(()=>{
           <thead>
           <tr>
             <th colspan="5">
-              <h2>My Farms
+              <h2>
+                My Farms
                 <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addfarm">Create Farm</button>
               </h2>
             </th>
@@ -329,7 +351,7 @@ onMounted(()=>{
                 <label class="form-label">Phone Number</label>
                 <input type="number" v-model="phone" class="form-control">
               </div>
-              <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Create Manager</button>
+              <button type="submit"  class="btn btn-primary">Create Manager</button>
             </form>
           </div>
 
@@ -354,7 +376,7 @@ onMounted(()=>{
                   <option v-for="newfarmer in managers" :key="newfarmer.id" :value="newfarmer.manager_id">{{ newfarmer.name }}</option>
                 </select>
               </div>
-              <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Create Manager</button>
+              <button type="submit"   class="btn btn-primary">Create Manager</button>
             </form>
           </div>
 

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import {onMounted, ref} from "vue";
 import {auth} from "@/compossables/auth.js";
 import {useRoute} from "vue-router";
+import {Modal} from "bootstrap";
 
 const {base_url,storage,authHeader} = auth()
 const routes = useRoute()
@@ -41,7 +42,10 @@ const addProgress = async () => {
         'Farm created Successfully',
         'success'
     )
-    // await getProgress()
+    const modalElement = document.getElementById('progress');
+    const bootstrapModal = Modal.getInstance(modalElement) || new Modal(modalElement);
+    bootstrapModal.hide();
+    getProgress()
   }
 }
 
@@ -111,7 +115,7 @@ onMounted(()=> {
               <label class="form-label">Progress</label>
               <input type="file" @change="pictureUpload" class="form-control" >
             </div>
-            <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Add Farm</button>
+            <button type="submit"  class="btn btn-primary">Add Farm</button>
           </form>
         </div>
 
