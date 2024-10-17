@@ -235,6 +235,9 @@ onMounted(()=>{
           <tr v-else>
             <td colspan="3" class="text-center">
               You dont have any farm create one now
+              <span class="text-uppercase text-primary">
+                Remember the farm  you create is the one you need to monitor of which the farm manager is the one to provide the farm progress
+              </span>
             </td>
           </tr>
           </tbody>
@@ -272,7 +275,12 @@ onMounted(()=>{
           </tr>
           <tr v-else>
             <td colspan="3" class="text-center">
-              You dont have any farm manager create one now
+              You dont have any farm manager create one now <br>
+              <span class="text-primary text-uppercase">
+                Remember the farm manager you create is the one to manage your farm by providing
+                 the information of your farm <br>
+                The farm manager password is the same as the email of the farm manager
+              </span>
             </td>
           </tr>
           </tbody>
