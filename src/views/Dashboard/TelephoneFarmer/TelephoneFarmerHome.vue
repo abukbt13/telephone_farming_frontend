@@ -220,7 +220,7 @@ onMounted(()=>{
           </tr>
           </thead>
           <tbody>
-          <tr v-for="farm in farms" :key="farm">
+          <tr v-if="farms.length>0" v-for="farm in farms" :key="farm">
             <td class="border align-items-center">{{farm.id}}</td>
             <td class="border">{{farm.farm_name}}</td>
             <td class="border">{{farm.type_of_farming}}</td>
@@ -230,6 +230,11 @@ onMounted(()=>{
               </td>
             <td>
               <button class="btn btn-danger btn-sm"  @click="getFarmID(farm.id)"  data-bs-toggle="modal" data-bs-target="#AssignManager">Assign manager</button>
+            </td>
+          </tr>
+          <tr v-else>
+            <td colspan="3" class="text-center">
+              You dont have any farm create one now
             </td>
           </tr>
           </tbody>
@@ -255,7 +260,7 @@ onMounted(()=>{
           </tr>
           </thead>
           <tbody>
-          <tr v-for="manager in managers" :key="manager">
+          <tr v-if="managers.length>0" v-for="manager in managers" :key="manager">
             <td class="border">{{manager.name}}</td>
             <td class="border">{{manager.email}}</td>
             <td class="border">{{manager.phone}}</td>
@@ -264,6 +269,11 @@ onMounted(()=>{
               <button @click="populateDetails(manager)" data-bs-toggle="modal" data-bs-target="#addFarmManager" class="btn btn-sm  btn-success">View</button>
             </td>
 
+          </tr>
+          <tr v-else>
+            <td colspan="3" class="text-center">
+              You dont have any farm manager create one now
+            </td>
           </tr>
           </tbody>
         </table>
