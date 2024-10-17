@@ -26,9 +26,9 @@ onMounted(()=>{
     </div>
   </div>
 
-      <div class="main">
+      <div class="new-main">
         <TelephoneFarmer />
-          <div class="main-content">
+          <div class="new-main-content">
           <RouterView />
           </div>
       </div>
@@ -36,11 +36,11 @@ onMounted(()=>{
 </template>
 
 <style scoped>
-.main{
+.new-main{
   display: flex;
 }
 
-.main-content{
+.new-main-content{
   margin-top:0;
   padding:0;
   width: 80vw;
@@ -49,8 +49,8 @@ onMounted(()=>{
   overflow:scroll;
 }
 
-@media (min-width: 300px) and (max-width: 800px) {
-  .main-content{
+@media (min-width: 100px) and (max-width: 800px) {
+  .new-main-content{
     width: 100vw;
   }
 }

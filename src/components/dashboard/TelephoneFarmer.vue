@@ -35,6 +35,8 @@
   border-top: 1px solid grey;
   width: 20vw;
   height: 87vh;
+  border-right: 1px solid grey;
+  padding-right: 1rem;
 }
 li:hover{
   background-color: red;

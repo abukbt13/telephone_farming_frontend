@@ -1,7 +1,8 @@
 <script setup>
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import axios from "axios";
+const router = useRouter()
 import {auth} from "@/compossables/auth.js";
 
 const {base_url,authHeader,storage} = auth()
@@ -24,80 +25,111 @@ const  getFarm = async () => {
     farm_progress.value = res.data.farm_progress
   }
 }
+function formatDate(dateString) {
+  const date = new Date(dateString); // Convert string to Date object
+  const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with 0
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month (0-indexed) and pad with 0
+  const year = date.getFullYear(); // Get full year
+  return `${day}-${month}-${year}`; // Return formatted date as dd-mm-yyyy
+}
+function  goBack() {
+  router.back();
+}
 onMounted(()=> {
   getFarm()
 })
 </script>
 
 <template>
-<!--  {{farm}}-->
-<!--  <p>mhb</p>-->
-<!--  {{farm_managers}}-->
-  <div class="row p-4 m-2">
-      <div class="col col-sm-12 col-md-6 col-lg-6">
-        <div class="border p-4">
-          <h2>Farm Details</h2>
-          <p>Farm Name: <span>{{farm.farm_name}}</span></p>
-          <p>Location: <span>{{farm.location}}</span></p>
+
+  <button  @click="goBack" class="btn m-3 btn-primary"><i class="bi bi-arrow-left"></i>
+    Go Back
+  </button>
 
 
+ <div class="table-responsive mx-4">
 
-
-          <div v-if="farm_managers.length ===0"  class="bg-danger">
-            <p>No farm manager</p>
-          </div>
-          <div v-else-if="farm_managers.length ===1" class="p-3 ">
-            <h2>Farm Manager</h2>
-            <div class=" border" v-for="farm_manager in farm_managers" :key="farm_manager">
-              <p class="fs-2">Name: <span class="text-primary">{{farm_manager.name}}</span></p>
-              <p class="fs-2">Email: <span class="text-primary">{{farm_manager.email}}</span></p>
-              <p class="fs-2">Phone Number: <span class="text-primary">{{farm_manager.phone}}</span></p>
-            </div>
-          </div>
-          <div v-else class="">
-            <h2>Farm Managers</h2>
-            <div class=" border" v-for="farm_manager in farm_managers" :key="farm_manager">
-              <p class="fs-2">Name: <span class="text-primary">{{farm_manager.name}}</span></p>
-              <p class="fs-2">Email: <span class="text-primary">{{farm_manager.email}}</span></p>
-              <p class="fs-2">Phone Number: <span class="text-primary">{{farm_manager.phone}}</span></p>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <div class="col col-sm-12 col-md-6 col-lg-6">
         <table class="table table-bordered">
           <thead>
           <tr>
             <th colspan="5">
-              <h2>
+              <h3>
                 Farms Progress
-              </h2>
+                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Farm Details
+                </button>
+              </h3>
             </th>
           </tr>
           <tr>
             <th>#</th>
-            <th>description</th>
-            <th>activity name</th>
             <th>Picture</th>
+            <th>activity name</th>
+            <th>description</th>
+            <th>date</th>
           </tr>
           </thead>
           <tbody>
-          <tr v-for="farm in farm_progress" :key="farm">
-            <td class="border">{{farm.id}}</td>
-            <td class="border">{{farm.description}}</td>
-            <td class="border">{{farm.activity_name}}</td>
-            <td>
-              <img :src="storage +'Farm/Photos/' + farm.photos" class="card-img-top" alt="">
+          <tr v-for="(farm,index) in farm_progress" :key="farm">
+            <td class="border">{{index}}</td>
+            <td class="text-center align-middle">
+              <img :src="storage +'Farm/Photos/' + farm.photos" class="img img-fluid" alt="">
             </td>
+            <td class="border text-center align-middle">{{farm.description}}</td>
+            <td class="border text-center align-middle">{{farm.activity_name}}</td>
+            <td class="border text-center align-middle">{{ formatDate(farm.date) }}</td>
+
           </tr>
           </tbody>
         </table>
       </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Farm details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="">
+            <div class="border p-4">
+              <div class="border m-1 p-2">
+                <h3>Farm Details</h3>
+                <p>Farm Name: <span>{{farm.farm_name}}</span></p>
+                <p>Location: <span>{{farm.location}}</span></p>
+              </div>
+
+              <div v-if="farm_managers.length ===0"  class="bg-danger">
+                <p>No farm manager</p>
+              </div>
+              <div v-else-if="farm_managers.length ===1" class="p-3 ">
+                <h3>Farm Manager</h3>
+                <div class=" border p-2" v-for="farm_manager in farm_managers" :key="farm_manager">
+                  <h1 class="fs-2">Name: </h1>
+                  <p class="text-primary fs-3">{{farm_manager.name}}</p>
+                  <p class="fs-2">Email:</p>
+                  <p class="text-primary fs-3">{{farm_manager.email}}</p>
+                  <p class="fs-2">Phone Number:</p>
+                  <p class="text-primary fs-3">{{farm_manager.phonee}}</p>
+                </div>
+              </div>
+              <div v-else class="">
+                <h2>Farm Managers</h2>
+                <div class=" border" v-for="farm_manager in farm_managers" :key="farm_manager">
+                  <p class="fs-2">Name: <span class="text-primary">{{farm_manager.name}}</span></p>
+                  <p class="fs-2">Email: <span class="text-primary">{{farm_manager.email}}</span></p>
+                  <p class="fs-2">Phone Number: <span class="text-primary">{{farm_manager.phone}}</span></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </template>
 
 <style scoped>

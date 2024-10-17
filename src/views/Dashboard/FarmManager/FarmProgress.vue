@@ -66,21 +66,22 @@ onMounted(()=> {
           </tr>
           <tr>
             <th>#</th>
+            <th>Picture</th>
             <th>Title/activity</th>
             <th>Description</th>
-            <th>Picture</th>
             <th>Picture</th>
           </tr>
           </thead>
           <tbody>
-          <tr v-for="All in Allprogress" :key="All">
-            <td class=" ">{{ All.id }}</td>
-            <td class="border ">{{ All.activity_name }}</td>
-            <td class="border ">{{ All.description }}</td>
+          <tr v-for="(All, index) in Allprogress" :key="All">
+            <td class=" ">{{ index }}</td>
             <td class="">
               <img :src="storage + 'Farm/Photos/' + All.photos" class="img img-fluid">
             </td>
-            <td class="border "><button class="btn bg-secondary">More Info</button></td>
+            <td class="border text-center align-middle">{{ All.activity_name }}</td>
+            <td class="border text-center align-middle">{{ All.description }}</td>
+
+            <td class="border text-center align-middle"><button class="btn bg-secondary">More Info</button></td>
           </tr>
           </tbody>
         </table>

@@ -20,6 +20,7 @@ const manager_id = ref('')
 const user_id = ref('')
 
 
+const id = ref('')
 const status = ref('')
 const farms = ref([])
 const managers = ref([])
@@ -86,21 +87,49 @@ const createManager = async () => {
   formData.append('email', email.value);
   formData.append('phone', phone.value);
   formData.append('name', name.value);
+  formData.append('id', id.value);
 
-  const res = await axios.post(base_url.value + 'tf/manager', formData,authHeader);
+  if(id.value ===''){
+    const res = await axios.post(base_url.value + 'tf/manager', formData,authHeader);
 
-  if (res.data.status === 'success') {
-    await  Swal.fire(
-        'Success!',
-        'Farm Manager created Successfully',
-        'success'
-    )
-    await getFarmManagers()
+    if (res.data.status === 'success') {
+      await  Swal.fire(
+          'Success!',
+          'Farm Manager created Successfully',
+          'success'
+      )
+      return  getFarmManagers()
+    }
   }
+  else {
+    const res = await axios.post(base_url.value + 'tf/manager/update/'+id.value, formData,authHeader);
+
+    if (res.data.status === 'success') {
+      await  Swal.fire(
+          'Success!',
+          'Farm Manager updated Successfully',
+          'success'
+      )
+      return  getFarmManagers()
+    }
+  }
+
 }
 
 function getFarmID(id){
   farm_id.value = id
+}
+function populateDetails(data){
+  id.value =data.manager_id
+  email.value=data.email
+  phone.value=data.phone
+  name.value =data.name
+}
+function depopulateDetails(){
+  id.value=''
+  email.value=''
+  phone.value=''
+  name.value =''
 }
 
 const AssignManagerToFarm = async () => {
@@ -150,15 +179,15 @@ onMounted(()=>{
 
 <template>
   <div v-if="status" class="bg-danger p-1 text-uppercase text-white">{{status}}</div>
-  <div class="row m-1">
-    <div class="col col-sm-12  col-md-6 col-lg-6">
+  <div class="m-4">
+    <div class="">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
           <tr>
             <th colspan="5">
               <h2>My Farms
-                <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Farm</button>
+                <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addfarm">Create Farm</button>
               </h2>
             </th>
           </tr>
@@ -185,7 +214,6 @@ onMounted(()=>{
         </table>
       </div>
     </div>
-    <div class="col col-sm-12 col-md-6 col-lg-6">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
@@ -193,7 +221,7 @@ onMounted(()=>{
             <th colspan="5">
               <h2>
                 Farm managers
-                <button class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFarmManager">New Manager</button>
+                <button @click="depopulateDetails()" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#addFarmManager">New Manager</button>
               </h2>
             </th>
           </tr>
@@ -209,20 +237,18 @@ onMounted(()=>{
             <td class="border">{{manager.name}}</td>
             <td class="border">{{manager.email}}</td>
             <td class="border">{{manager.phone}}</td>
+<!--            {{manager}}-->
             <td>
-              <button class="btn btn-sm  btn-success">View</button>
+              <button @click="populateDetails(manager)" data-bs-toggle="modal" data-bs-target="#addFarmManager" class="btn btn-sm  btn-success">View</button>
             </td>
-            <td>
-              <button class="btn btn-sm btn-danger">Edit</button>
-            </td>
+
           </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addfarm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -280,7 +306,6 @@ onMounted(()=>{
         </div>
       </div>
     </div>
-
   <div class="modal fade" id="addFarmManager" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -291,22 +316,18 @@ onMounted(()=>{
           <div class="modal-body">
             <form @submit.prevent="createManager">
               <div class="mb-3">
+                id {{id}}
                 <label class="form-label">Full Name</label>
                 <input type="text" v-model="name" class="form-control" >
               </div>
               <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" v-model="email" class="form-control">
+                <input type="email" v-model="email" class="form-control">
               </div>
 
               <div class="mb-3">
                 <label class="form-label">Phone Number</label>
-                <input type="text" v-model="phone" class="form-control">
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Location</label>
-                <input type="text" v-model="location" class="form-control" >
+                <input type="number" v-model="phone" class="form-control">
               </div>
               <button type="submit"  data-bs-dismiss="modal" class="btn btn-primary">Create Manager</button>
             </form>

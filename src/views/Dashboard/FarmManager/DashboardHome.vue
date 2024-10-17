@@ -17,7 +17,7 @@ import Header from "@/components/includes/Header.vue";
         <router-link  class="text-decoration-none link" to="/farm_manager"><li  class="fs-3 list-unstyled border-bottom ps-3">Home</li></router-link>
         <router-link  class="text-decoration-none link" to="/education"><li  class="fs-3 list-unstyled border-bottom ps-3">Education</li></router-link>
         <router-link  class="text-decoration-none link" to="/training"><li  class="fs-3 list-unstyled border-bottom ps-3">Trainingt</li></router-link>
-        <router-link  class="text-decoration-none link" to="/videos"><li  class="fs-3 list-unstyled border-bottom ps-3">Videos</li></router-link>
+        <router-link  class="text-decoration-none link" to="/youtube/videos"><li  class="fs-3 list-unstyled border-bottom ps-3">Videos</li></router-link>
         <router-link  class="text-decoration-none link" to="/network"><li  class="fs-3 list-unstyled border-bottom ps-3">Networking</li></router-link>
       </div>
     </div>
