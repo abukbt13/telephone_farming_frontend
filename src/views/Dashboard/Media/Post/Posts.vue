@@ -101,7 +101,8 @@ onMounted(() => {
          </div>
          <div v-else class="">
            <div class="col col-12" v-for="(photo, index) in post.photos" :key="index">
-             <img :src="storage+'posts/photos/'+photo" alt="Image" class="img-fluid border-4"  >
+<!--             <img src="http://127.0.0.1:8000/storage/posts/photos/67177d56037da.png" alt="">-->
+             <img :src="storage+'posts/photos/'+photo" alt="Image" class="img-fluid border-4">
            </div>
          </div>
        </div>

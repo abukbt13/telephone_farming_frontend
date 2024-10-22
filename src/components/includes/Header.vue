@@ -107,7 +107,8 @@ onMounted(()=>{
             </div>
             <!--            @click="LogOut()"-->
             <li    class="nav-item text-uppercase" >
-              <router-link to="/auth/user"><img style="border-radius:50%; " src="/user.png" height="40" width="40" alt=""></router-link>
+              <router-link v-if="currentUser.profile" to="/auth/user"><img style="border-radius:50%; " :src="storage+'profile_pictures/'+currentUser.profile" height="40" width="40" alt=""></router-link>
+              <router-link v-else to="/auth/user"><img style="border-radius:50%; " src="/user.png" height="40" width="40" alt=""></router-link>
             </li>
           </div>
 

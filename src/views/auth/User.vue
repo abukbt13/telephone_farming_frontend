@@ -73,7 +73,7 @@ onBeforeMount(()=> {
 
       <div class="d-flex flex-column justify-content-center pt-4">
         <h3 for="">Profile picture</h3> <br>
-        <img v-if="currentUser.profile" :src="storage+'Profile/picture/'+currentUser.profile" height="300" width="300" alt="">
+        <img v-if="currentUser.profile" :src="storage+'profile_pictures/'+currentUser.profile" height="300" width="300" alt="">
         <img v-else src="/user.png" height="100" width="100" alt="">
 
       </div>

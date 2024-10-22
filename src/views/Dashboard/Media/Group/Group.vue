@@ -77,7 +77,7 @@ onMounted(() => {
 <!--      <img src="/img_2.png" class="card-img-top" alt="...">-->
       <div  class="card-body d-flex align-items-center">
         <div class="">
-          <img v-if="group.profile" style="border-radius: 50%;" :src="storage+'Groups/profiles/'+group.profile"  width="200" height="200"  alt="">
+          <img v-if="group.profile" style="border-radius: 50%;" :src="storage+'groups/photos/'+group.profile"  width="200" height="200"  alt="">
 
           <img v-else src="/ss.png" class="rounded-circle" width="200" height="200" alt="">
         </div>
