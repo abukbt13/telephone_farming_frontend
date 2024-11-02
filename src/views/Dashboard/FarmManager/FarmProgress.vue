@@ -80,7 +80,7 @@ onMounted(()=> {
           <tr v-for="(All, index) in Allprogress" :key="All">
             <td class=" ">{{ index }}</td>
             <td class="">
-              <img :src="storage + 'Farm/Photos/' + All.photos" class="img img-fluid">
+              <img :src="storage  + All.photos" class="img img-fluid" width="200" height="200">
             </td>
             <td class="border text-center align-middle">{{ All.activity_name }}</td>
             <td class="border text-center align-middle">{{ All.description }}</td>
