@@ -107,6 +107,7 @@ onMounted(() => {
          </div>
        </div>
 
+
      </div>
 
       <p @click="likeStatuses.id =''" v-if="likeStatuses.id == post.id" style="background: orange;" class="d-flex align-items-center justify-content-between fs-2">{{likeStatuses.message}} <button class="btn btn-primary ">Close</button> </p>
