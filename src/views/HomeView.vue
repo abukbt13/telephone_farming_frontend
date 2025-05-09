@@ -9,8 +9,8 @@ import Footer from '@/components/includes/Footer.vue'
     <div style="height: 400px;" class="row mx-3 intro my-2 py-2">
       <div class="col d-flex justify-content-center align-items-center col-md-6 col-lg-6">
         <div class="">
-          <h1>Telefarming,<br> Your caring PartNer</h1>
-          <p>Your Loving Farming Partner revolutionizes agriculture with sustainable and innovative solutions, partnering with local farmers to nurture high-quality crops and foster a community of growth and prosperity.r</p>
+          <h1>Telefarm Limited Company,<br> Your caring farming partner</h1>
+          <p>Revolutionizes agricultural sector through automation in agriculture as users enjoy production at its maximization with our tailored technologies and innovative ways on agricultural production.r</p>
           <router-link to="/auth/register" style="background-color: #3f1be0;font-size: 23px;color: white;" class="btn">
             Get started
             <i style="font-size: 23px;color: blue;" class="bi bi-plug"></i>
@@ -22,7 +22,7 @@ import Footer from '@/components/includes/Footer.vue'
     </div>
       <div class="">
         <h2 class="text-center text-primary">
-          What Farmers say about us
+          Success stories
         </h2>
         <div class="px-3">
           <div  class="row">
@@ -32,7 +32,8 @@ import Footer from '@/components/includes/Footer.vue'
                 <div class="card-body">
                   <p class="card-text">
                     <h3>Alex Juma</h3>
-                    I do really like LRC for their support I could not  have done much like this during this harvest season.
+                    I really love to work with the telefarm company, they provide the best designed agricultural inputs, It doesnt give a barrier to urban settlers.
+                    I have a small kitchen garden and can highly produce using their areal production design, using limited space with multiple production points.
                   </p>
                 </div>
               </div>
@@ -43,8 +44,7 @@ import Footer from '@/components/includes/Footer.vue'
               <div class="card-body">
                 <h3>Immaculate Daisy</h3>
                 <p class="card-text">
-                  LRC has been a game-changer for my farming. Their innovative solutions have made managing my crops easier and more productive than ever.
-                  I couldn't be more satisfied with the results!                </p>
+                  Telefarm company has been a game-changer for my farming. Their innovative solutions have made managing my crops easier and more productive than ever.                </p>
               </div>
             </div>
           </div>
@@ -54,8 +54,8 @@ import Footer from '@/components/includes/Footer.vue'
               <div class="card-body">
                 <h3>Freemano Kibet</h3>
                 <p class="card-text">
-                  I’m incredibly grateful to LRC for revolutionizing my farming experience. Their tools and support have significantly boosted my crop yields, making the entire process smoother and more efficient.
-                  Highly recommended for any farmer looking to elevate their operations                </p>
+                  I’m incredibly grateful to Telefarm for revolutionizing my farming experience. Their tools and support have significantly boosted my crop yields, making the entire process smoother and more efficient.
+                  Highly recommended for any farmer looking to elevate their operations and enhance farm transparency remotely.                </p>
               </div>
             </div>
           </div>
