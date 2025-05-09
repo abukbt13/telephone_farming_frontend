@@ -2,18 +2,18 @@
   <Header />
   <div class="main">
     <section>
-      <h2>Welcome to Telefarming</h2>
+      <h2>Welcome to Telefarm Limited Company</h2>
       <p>
-        We are a company dedicated to empowering farmers by providing innovative solutions that facilitate efficient farming. Our platform offers farmers a robust website that allows them to communicate directly with their farm managers, ensuring seamless coordination and productivity.
+        Our company is dedicated to transform agri-business sector through automation in production and marketing strategies.
       </p>
       <p>
-        In addition to our communication tools, we also provide a wide range of educational resources designed to enhance farmers' knowledge and skills. Our goal is to support and improve farming practices through technology and education.
+        We provide smallholder farmers with trainings on sustainable agricultural produntion and value social networks among them,  we provide various designed innovative inputs that utilizes less space with higher production. we provide remote monitoring technology for transparency on farm operations. 
       </p>
     </section>
     <section class="mission">
       <h2>Our Mission</h2>
       <p>
-        Our mission is to support farmers in their day-to-day operations by offering user-friendly tools and valuable educational content. We strive to make farming more accessible and efficient, ultimately contributing to the success and growth of agricultural communities.
+        Our mission is to support farmers in their day-to-day operations by offering user-friendly tools and valuable educational content. We strive to make farming more accessible and efficient, ultimately contributing to the success and growth of agri-businesses.
       </p>
     </section>
     <section class="services">
